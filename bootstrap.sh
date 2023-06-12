@@ -44,8 +44,20 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 fi
 
 # Install and set to use zsh if not already default
-echo "Installing zsh..."
-brew install zsh
+if [[ $(command -v zsh) == "" ]]; then
+  echo "Installing zsh..."
+  brew install zsh
+
+fi
+
+# Install Oh my zsh
+if [ ! -d "~/.oh-my-zsh" ]; then
+  echo "Installing Oh my zsh..."
+  rm -rf ~/.oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  source ~/.zshrc
+fi
+
 
 echo "Settings as default shell..."
 chsh -s $(which zsh)

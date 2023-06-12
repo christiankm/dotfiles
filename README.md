@@ -17,7 +17,7 @@ cd ~/.dotfiles
 
 ## Uninstall
 
-To uninstall and remove the symlinks, run:
+To uninstall software and remove files and symlinks, run:
 
 `~/.dotfiles/unlink.sh`
 
