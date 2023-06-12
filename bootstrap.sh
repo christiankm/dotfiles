@@ -51,7 +51,9 @@ if [[ $(command -v zsh) == "" ]]; then
 fi
 
 # Install Oh my zsh
-if [ ! -d "~/.oh-my-zsh" ]; then
+if [ -d "~/.oh-my-zsh" ]; then
+  echo "Oh my zsh installed"
+else
   echo "Installing Oh my zsh..."
   rm -rf ~/.oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -61,4 +63,20 @@ fi
 
 echo "Settings as default shell..."
 chsh -s $(which zsh)
+
+
+# Configure Homebrew Brewfile and install programs
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  # Symlink Brewfile based on machine type
+  echo "Symlinking Brewfile..."
+  ln -sf "$(pwd)/Brewfile" ~/Brewfile
+
+  # Append additional Homebrew packages depending on machine-use
+
+  cd ~/
+
+  # Install programs via Homebrew
+  echo "Installing programs for macOS via Homebrew..."
+  brew bundle install
+fi
 

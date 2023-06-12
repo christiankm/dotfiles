@@ -1,11 +1,13 @@
 #!/bin/sh
 
+# Uninstall software (leave settings)
+#brew uninstall
+
 # Remove files and folders
 rm -rf ~/.oh-my-zsh
 rm ~/.zshrc*
 
-# Unlink files
-unlink ~/Brewfile
+# Unlink filesunlink ~/Brewfile
 unlink ~/.zshrc
 
 # Done
