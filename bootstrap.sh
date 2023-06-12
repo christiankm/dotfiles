@@ -51,32 +51,54 @@ if [[ $(command -v zsh) == "" ]]; then
 fi
 
 # Install Oh my zsh
-if [ -d "~/.oh-my-zsh" ]; then
+if [ -d "$HOME/.oh-my-zsh" ]; then
   echo "Oh my zsh installed"
 else
   echo "Installing Oh my zsh..."
   rm -rf ~/.oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  source ~/.zshrc
 fi
 
+# Configure Zsh, Oh my Zsh and Plugins
 
 echo "Settings as default shell..."
 chsh -s $(which zsh)
+# Install fonts
+echo "Installing fonts..."
+brew install --cask homebrew/cask-fonts/font-fira-code
+brew install --cask homebrew/cask-fonts/font-hack-nerd-font
 
+# Install powerlevel10k
+echo "Installing Powerlevel10k..."
+rm -rf $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+echo "Symlinking .p10k.zsh"
+ln -sf "$(pwd)/.p10k.zsh" $HOME/.p10k.zsh
+#echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" >> $HOME/.zshrc
+
+echo "Installing zsh-syntax-highlighting..."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+echo "Installing zsh-autosuggestions..."
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Set Oh my zsh theme
+echo "Configuring Oh my zsh theme..."
+ln -sf "($pwd)/.oh-my-zsh/themes/mitteldorf.zsh-theme" $HOME/.oh-my-zsh/themes/
 
 # Configure Homebrew Brewfile and install programs
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   # Symlink Brewfile based on machine type
   echo "Symlinking Brewfile..."
-  ln -sf "$(pwd)/Brewfile" ~/Brewfile
+  ln -sf "$(pwd)/Brewfile" $HOME/Brewfile
 
   # Append additional Homebrew packages depending on machine-use
 
-  cd ~/
+  cd $HOME
 
   # Install programs via Homebrew
   echo "Installing programs for macOS via Homebrew..."
   brew bundle install
-fi
 
+  cd $(pwd)
+fi
