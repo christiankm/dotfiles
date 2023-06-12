@@ -43,3 +43,10 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   brew analytics off
 fi
 
+# Install and set to use zsh if not already default
+echo "Installing zsh..."
+brew install zsh
+
+echo "Settings as default shell..."
+chsh -s $(which zsh)
+
