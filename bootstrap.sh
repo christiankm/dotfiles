@@ -102,3 +102,14 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 
   cd $(pwd)
 fi
+
+# Symlink dotfiles to users home folder
+echo "Symlinking .zshrc"
+rm $HOME/.zshrc
+ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
+
+
+source $HOME/.zshrc
+
+# Done
+echo "All done. Please reboot computer to make all changes take effect"
