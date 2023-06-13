@@ -109,6 +109,10 @@ rm $HOME/.zshrc
 ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 
 
+
+# Configure macOS Preferences
+sh $(pwd)/configure-macos-preferences.sh
+
 source $HOME/.zshrc
 
 # Done
