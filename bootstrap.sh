@@ -110,6 +110,9 @@ ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 
 
 
+# Copy .hushlogin
+cp .hushlogin $HOME/
+
 # Configure macOS Preferences
 sh $(pwd)/configure-macos-preferences.sh
 

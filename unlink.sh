@@ -4,8 +4,11 @@
 #brew uninstall
 
 # Remove files and folders
-rm -rf ~/.oh-my-zsh
-rm ~/.zshrc*
+rm -rf $HOME/.oh-my-zsh
+rm $HOME/Brewfile
+rm $HOME/.zshrc
+rm $HOME/.p10k.zsh
+rm $HOME/.hushlogin
 
 # Unlink filesunlink ~/Brewfile
 unlink ~/.zshrc
