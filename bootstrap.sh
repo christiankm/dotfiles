@@ -74,15 +74,17 @@ brew install --cask homebrew/cask-fonts/font-hack-nerd-font
 
 # Install powerlevel10k
 echo "Installing Powerlevel10k..."
-rm -rf $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+rm -rf ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 echo "Symlinking .p10k.zsh"
 ln -sf "$(pwd)/.p10k.zsh" $HOME/.p10k.zsh
 
 echo "Installing zsh-syntax-highlighting..."
+rm -rf ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "Installing zsh-autosuggestions..."
+rm -rf ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Set Oh my zsh theme
@@ -115,8 +117,8 @@ ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 cp .hushlogin $HOME/
 
 # Symlink files for Xcode
-ln -s "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"
-ln -s "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcdebugger/"
+ln -sf "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"
+ln -sf "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcdebugger/"
 
 # Configure macOS Preferences
 sh $(pwd)/configure-macos-preferences.sh
