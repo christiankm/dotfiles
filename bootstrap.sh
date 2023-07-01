@@ -6,6 +6,8 @@
 
 set -e # stop on first error
 
+DOTFILES=$(pwd)
+
 # Detect OS
 echo "Detected OS:"
 case "$OSTYPE" in
@@ -106,7 +108,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   echo "Installing programs for macOS via Homebrew..."
   brew bundle install
 
-  cd $(pwd)
+  cd $DOTFILES
 fi
 
 # Symlink dotfiles to users home folder
@@ -114,7 +116,12 @@ echo "Symlinking .zshrc"
 ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 
 # Copy .hushlogin
-cp .hushlogin $HOME/
+ln -sf "$(pwd)/.hushlogin" $HOME/.hushlogin
+
+# Configure git
+ln -sf "$(pwd)/gitconfig" $HOME/.gitconfig
+ln -sf "$(pwd)/gitignore" $HOME/.gitignore
+git config --global core.excludesfile $HOME/.gitignore
 
 # Symlink files for Xcode
 ln -sf "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"

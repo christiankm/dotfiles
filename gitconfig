@@ -1,0 +1,19 @@
+[user]
+    name = "Christian Mitteldorf"
+    email = "christian.km@me.com"
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+    branch = magenta
+
+[alias]
+  b  = branch
+
+  co  = checkout
+
+  cm     = commit --message
+
+  s  = status
+  a  = add
