@@ -47,8 +47,15 @@ fi
 if [[ $(command -v zsh) == "" ]]; then
   echo "Installing zsh..."
   brew install zsh
-
 fi
+
+echo "Settings zsh as default shell..."
+shell_path="$(command -v zsh)"
+if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
+  echo "Adding '$shell_path' to /etc/shells"
+  sudo sh -c "echo $shell_path >> /etc/shells"
+fi
+sudo chsh -s "$shell_path" "$USER"
 
 # Install Oh my zsh
 if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -60,8 +67,6 @@ fi
 
 # Configure Zsh, Oh my Zsh and Plugins
 
-echo "Settings as default shell..."
-chsh -s $(which zsh)
 # Install fonts
 echo "Installing fonts..."
 brew install --cask homebrew/cask-fonts/font-fira-code
