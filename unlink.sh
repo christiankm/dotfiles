@@ -9,9 +9,10 @@ rm $HOME/Brewfile
 rm $HOME/.zshrc
 rm $HOME/.p10k.zsh
 rm $HOME/.hushlogin
+rm $HOME/.vimrc
+rm $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
+rm $HOME/Library/Developer/Xcode/UserData/xcdebugger
 
-# Unlink filesunlink ~/Brewfile
-unlink ~/.zshrc
 # Reset to default preferences
 defaults delete com.apple.TextEdit
 

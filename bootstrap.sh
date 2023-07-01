@@ -113,6 +113,11 @@ ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 # Copy .hushlogin
 cp .hushlogin $HOME/
 
+
+# Symlink files for Xcode
+ln -s "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"
+ln -s "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcdebugger/"
+
 # Configure macOS Preferences
 sh $(pwd)/configure-macos-preferences.sh
 
