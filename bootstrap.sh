@@ -55,7 +55,6 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
   echo "Oh my zsh installed"
 else
   echo "Installing Oh my zsh..."
-  rm -rf ~/.oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
@@ -74,7 +73,6 @@ rm -rf $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 echo "Symlinking .p10k.zsh"
 ln -sf "$(pwd)/.p10k.zsh" $HOME/.p10k.zsh
-#echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" >> $HOME/.zshrc
 
 echo "Installing zsh-syntax-highlighting..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -84,7 +82,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Set Oh my zsh theme
 echo "Configuring Oh my zsh theme..."
-ln -sf "($pwd)/.oh-my-zsh/themes/mitteldorf.zsh-theme" $HOME/.oh-my-zsh/themes/
+mkdir -p $HOME/.oh-my-zsh/themes
+ln -sf "($pwd)/mitteldorf.zsh-theme" $HOME/.oh-my-zsh/themes/mitteldorf.zsh-theme
 
 # Configure Homebrew Brewfile and install programs
 if [[ "$OSTYPE" =~ ^darwin ]]; then
@@ -105,14 +104,10 @@ fi
 
 # Symlink dotfiles to users home folder
 echo "Symlinking .zshrc"
-rm $HOME/.zshrc
 ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
-
-
 
 # Copy .hushlogin
 cp .hushlogin $HOME/
-
 
 # Symlink files for Xcode
 ln -s "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"
@@ -121,7 +116,8 @@ ln -s "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcde
 # Configure macOS Preferences
 sh $(pwd)/configure-macos-preferences.sh
 
-source $HOME/.zshrc
 
-# Done
+# Initialize new settings
+source ~/.zshrc
+
 echo "All done. Please reboot computer to make all changes take effect"
