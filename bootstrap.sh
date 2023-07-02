@@ -6,6 +6,9 @@
 
 set -e # stop on first error
 
+# Ask for the administrator password upfront
+sudo -v
+
 DOTFILES=$(pwd)
 
 # Detect OS
@@ -107,6 +110,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   # Install programs via Homebrew
   echo "Installing programs for macOS via Homebrew..."
   brew bundle install
+  brew update
 
   cd $DOTFILES
 fi

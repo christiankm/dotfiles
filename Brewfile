@@ -13,12 +13,13 @@ tap "woshiccm/tap"
 brew "aria2"
 brew "carthage"
 brew "cocoapods"
+brew "coreutils"
 brew "fastlane"
 brew "ffmpeg"
 brew "git"
 brew "gh"
 brew "htop"
-brew "imagemagick"
+brew "imagemin"
 brew "jpeg", link: true
 brew "libpng"
 brew "mas"
@@ -28,9 +29,11 @@ brew "pre-commit"
 brew "pyenv"
 brew "python@3.9"
 brew "robotsandpencils/made/xcodes"
+brew "sqlite3"
 brew "swiftformat"
-brew "swiftlint"
+# brew "swiftlint" # requires Xcode 14.0 and will fail on older systems
 brew "tree"
+brew "yt-dlp"
 brew "zsh"
 
 cask "aerial"
@@ -53,6 +56,8 @@ cask "slack"
 cask "stats"
 cask "thingsmacsandboxhelper"
 cask "tower"
+cask "transmission"
+cask "transmission-cli"
 cask "visual-studio-code"
 cask "virtualbox"
 cask "vlc"
@@ -69,8 +74,8 @@ mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Swift Playgrounds", id: 1496833156
-mas "Rocketsim", id: 1504940162
-mas "TestFlight", id: 899247664
+# mas "Rocketsim", id: 1504940162
+# mas "TestFlight", id: 899247664
 mas "Things 3", id: 904280696
 mas "Transporter", id: 1450874784
 mas "Twitter", id: 1482454543
