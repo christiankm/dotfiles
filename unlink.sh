@@ -15,12 +15,14 @@ rm $HOME/.p10k.zsh
 rm $HOME/.gitconfig
 rm $HOME/.gitignore
 rm $HOME/.hushlogin
+rm $HOME/.ssh/config
 rm $HOME/.vimrc
 rm $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
 rm $HOME/Library/Developer/Xcode/UserData/xcdebugger
 
 # Reset to default preferences
 defaults delete com.apple.TextEdit
+defaults delete com.fournova.tower3
 
 # Done
 success "Removed everything. It's recommended to reboot the machine now."

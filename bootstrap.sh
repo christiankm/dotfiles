@@ -127,6 +127,11 @@ ln -sf "$(pwd)/gitconfig" $HOME/.gitconfig
 ln -sf "$(pwd)/gitignore" $HOME/.gitignore
 git config --global core.excludesfile $HOME/.gitignore
 
+# Configure ssh
+mkdir -p $HOME/.ssh
+ln -sf "$(pwd)/ssh/config" $HOME/.ssh/config
+chmod 600 $HOME/.ssh/config
+
 # Symlink files for Xcode
 ln -sf "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"
 ln -sf "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcdebugger/"

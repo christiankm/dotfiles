@@ -1,0 +1,14 @@
+Host newton
+  HostName 192.168.0.200
+  User newton
+
+Host *
+  AddKeysToAgent yes
+  ConnectTimeout 2
+  ForwardAgent yes
+  HashKnownHosts yes
+  KeepAlive yes
+  UseKeychain yes
+  ServerAliveCountMax 6
+  ServerAliveInterval 30
+  StrictHostKeyChecking ask
