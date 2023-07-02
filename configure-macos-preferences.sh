@@ -45,6 +45,17 @@ defaults write -globalDomain AppleScrollerPagingBehavior -bool true             
 defaults write -globalDomain NSTableViewDefaultSizeMode -int 2                      # Set sidebar icon sizes to Medium
 defaults -currentHost write com.apple.screensaver idleTime -int 120                 # Start screensaver after 2 minutes
 
+# Language, Keyboard, Trackpad
+
+defaults write NSGlobalDomain KeyRepeat -int 1                                                        # Set very fast keyboard repeat
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true                 # Enable tap to click
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true                   # Enable three-finger drag
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool false
+defaults write -g ApplePressAndHoldEnabled -bool false                                                # Disable press-and-hold for keys in favor of key repeat
+
 # Menu bar
 
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true             # Enable transparency
@@ -70,13 +81,24 @@ defaults write com.apple.dock autohide-time-modifier -float 0.5    # Show and hi
 defaults write com.apple.dock autohide-delay -float 0.0            # Hide quickly
 defaults write com.apple.dock show-process-indicators -bool true   # Show indicator for open apps
 
-# Trackpad
 
 
-# Enable Tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+
+# Transmission
+
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true                        # Use incomplete downloads folder
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents" # Set incomplete downloads folder
+defaults write org.m0k.transmission DownloadLocationConstant -bool true                           # Use `~/Downloads` to store completed downloads
+defaults write org.m0k.transmission DownloadAsk -bool false                                       # Disable promp before starting torrents
+defaults write org.m0k.transmission MagnetOpenAsk -bool false                                     # Disable promp before starting magnet links
+defaults write org.m0k.transmission CheckRemoveDownloading -bool true                             # Disable prompt when removing upload-only transfers
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true                              # Delete torrent files
+defaults write org.m0k.transmission WarningDonate -bool false                                     # Never show donate message
+defaults write org.m0k.transmission WarningLegal -bool false                                      # Never show legal disclaimer
+defaults write org.m0k.transmission BlocklistNew -bool true                                       # Configure blocklist and auto-update
+defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+
 
 
 # Tower
