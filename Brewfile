@@ -19,7 +19,6 @@ brew "ffmpeg"
 brew "git"
 brew "gh"
 brew "htop"
-brew "imagemin"
 brew "jpeg", link: true
 brew "libpng"
 brew "mas"
@@ -42,7 +41,7 @@ cask "devutils"
 cask "figma"
 cask "keka"
 cask "google-chrome"
-cask "imagemagick"
+#cask "imagemagick"
 cask "iterm2"
 cask "lulu"
 cask "obs"
@@ -57,7 +56,7 @@ cask "stats"
 cask "thingsmacsandboxhelper"
 cask "tower"
 cask "transmission"
-cask "transmission-cli"
+#cask "transmission-cli"
 cask "visual-studio-code"
 cask "virtualbox"
 cask "vlc"
@@ -67,7 +66,7 @@ cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Bakery", id: 1575220747
 mas "DevCleaner for Xcode", id: 1388020431
-mas "Developer", id: 640199958
+#mas "Developer", id: 640199958
 mas "iA Writer", id: 775737590
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
