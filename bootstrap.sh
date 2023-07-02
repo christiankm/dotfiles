@@ -118,6 +118,10 @@ ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 # Copy .hushlogin
 ln -sf "$(pwd)/.hushlogin" $HOME/.hushlogin
 
+# Configure vim
+mkdir -p $HOME/.vim
+ln -sf "$(pwd)/vimrc" $HOME/.vimrc
+
 # Configure git
 ln -sf "$(pwd)/gitconfig" $HOME/.gitconfig
 ln -sf "$(pwd)/gitignore" $HOME/.gitignore

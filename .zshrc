@@ -8,6 +8,16 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export LANG=en_US.UTF-8
+export EDITOR='vim'
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+
+# Hide the “default interactive shell is now zsh” warning on macOS.
+export BASH_SILENCE_DEPRECATION_WARNING=1;
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
