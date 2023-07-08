@@ -17,3 +17,5 @@
 
   s  = status
   a  = add
+[core]
+	excludesfile = /Users/christian/.gitignore
