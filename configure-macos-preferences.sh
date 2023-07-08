@@ -47,8 +47,8 @@ defaults -currentHost write com.apple.screensaver idleTime -int 120             
 
 # Language, Keyboard, Trackpad
 
-defaults write NSGlobalDomain KeyRepeat -int 1                                                        # Set very fast keyboard repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain KeyRepeat -int 12                                                        # Set very fast keyboard repeat
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true                 # Enable tap to click
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true                   # Enable three-finger drag
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
