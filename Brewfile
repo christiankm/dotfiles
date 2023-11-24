@@ -2,10 +2,8 @@
 
 tap "buo/cask-upgrade"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "peripheryapp/periphery"
 tap "robotsandpencils/made"
 tap "woshiccm/tap"

@@ -11,11 +11,10 @@ fi
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 
-# Don’t clear the screen after quitting a manual page.
+# Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
-
-# Hide the “default interactive shell is now zsh” warning on macOS.
+# Hide the "default interactive shell is now zsh" warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
 # Path to your oh-my-zsh installation.
@@ -80,8 +79,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -113,3 +110,4 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 # Always source oh-my-zsh as the last thing
 source $ZSH/oh-my-zsh.sh
 
+eval "$(rbenv init - zsh)"
