@@ -137,13 +137,13 @@ ln -sf "$(pwd)/ssh/config" $HOME/.ssh/config
 chmod 600 $HOME/.ssh/config
 
 # Symlink files for Xcode
+mkdir -p $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/
 mkdir -p $HOME/Library/Developer/Xcode/UserData/xcdebugger/
 ln -sf "$(pwd)/xcode/Fira Code Dark.xccolortheme" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/"
 ln -sf "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcdebugger/"
 
 # Configure macOS Preferences
 sh $(pwd)/configure-macos-preferences.sh
-
 
 # Initialize new settings
 source ~/.zshrc
