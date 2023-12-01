@@ -9,13 +9,11 @@
     branch = magenta
 
 [alias]
-  b  = branch
+    b = branch
+    co = checkout
+    cm = commit --message
+    s = status
+    a = add
 
-  co  = checkout
-
-  cm     = commit --message
-
-  s  = status
-  a  = add
 [core]
-	excludesfile = /Users/christian/.gitignore
+    excludesfile = /Users/christian/.gitignore
