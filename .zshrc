@@ -104,6 +104,8 @@ plugins=(git)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+eval "$(rbenv init - zsh)"
+alias flutter=~/flutter_3.10.3/bin/flutter
 
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
