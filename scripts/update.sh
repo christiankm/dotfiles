@@ -1,4 +1,4 @@
 #!bin/sh
 
-git pull && bootstrap.sh
-
+git pull
+./install.sh
