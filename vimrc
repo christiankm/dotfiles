@@ -65,8 +65,3 @@ set conceallevel=2
 
 " Don't use swapfiles
 set noswapfile
-
-
-
-
-

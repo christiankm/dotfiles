@@ -6,14 +6,17 @@
 
 set -e # stop on first error
 
+# Ask for the administrator password upfront
+sudo -v
+
 success() {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
+  printf "\r\033[2K  [\033[00;32mOK\033[0m] %s\n" "$1"
 }
 
 DOTFILES=$(pwd)
 
 # Detect OS
-echo "Detected OS:"
+printf "Detected OS: "
 case "$OSTYPE" in
   solaris*) echo "Solaris" ;;
   darwin*)  echo "macOS" ;; 
@@ -36,6 +39,19 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
+  
+  # Add Homebrew to PATH
+  if [[ $(uname -m) == 'arm64' ]]; then
+    # for Apple Sillicon Mac
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    # for Intel Mac
+    (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+
+  success "Homebrew installed to $(which brew)"
 fi
 
 # Symlink dotfiles
