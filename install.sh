@@ -54,6 +54,17 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   success "Homebrew installed to $(which brew)"
 fi
 
+# Install sshpass
+if [[ $(command -v sshpass) == "" ]]; then
+  brew tap esolitos/ipa
+  brew install esolitos/ipa/sshpass
+fi
+
+# Install Ansible
+if [[ $(command -v ansible) == "" ]]; then
+  brew install ansible
+fi
+
 # Symlink dotfiles
 ln -sf "$(pwd)/.hushlogin" $HOME/.hushlogin
 ln -sf "$(pwd)/.zshrc" $HOME/.zshrc

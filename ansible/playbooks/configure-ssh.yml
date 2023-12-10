@@ -1,0 +1,14 @@
+---
+- name: Configure SSH
+  hosts: localhost
+  tasks:
+    - name: Create .ssh folder
+      ansible.builtin.file:
+        path: ~/.ssh/
+        state: directory
+    - name: Symlink SSH config
+      ansible.builtin.file:
+        src: ~/dotfiles/ssh/config
+        dest: ~/.ssh/config
+        state: link
+        force: true

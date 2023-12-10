@@ -1,12 +1,21 @@
+Host nas
+  HostName 192.168.0.34
+  User admin
+
 Host newton
   HostName 192.168.0.200
   User newton
+
+Host lisa
+  HostName 192.168.0.210
+  User lisa
 
 Host *
   AddKeysToAgent yes
   ConnectTimeout 2
   ForwardAgent yes
   HashKnownHosts yes
+  IdentityFile ~/.ssh/id_ed25519
   KeepAlive yes
   UseKeychain yes
   ServerAliveCountMax 6

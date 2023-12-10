@@ -5,20 +5,22 @@ This is a collection of my personal dotfiles (configuration files and install sc
 ## Installation
 
 I keep this repo in `~/.dotfiles` and symlink the files and directories inside.
-This happens automatically when running the `bootstrap.sh` script, which will interactively configure everything.
+This happens automatically when running the `install.sh` script, which will interactively configure everything.
 
 On any new computer (Linux, macOS or Windows), all I need to do is open the default terminal and run:
 
-```
-git clone https://github.com/christiankm/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-./bootstrap.sh
+```bash
+git clone https://github.com/christiankm/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./install.sh
 ```
 
 ## Uninstall
 
 To uninstall software and remove files and symlinks, run:
 
-`~/.dotfiles/unlink.sh`
+```bash
+~/dotfiles/uninstall.sh
+```
 
 Then restart your terminal.
