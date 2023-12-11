@@ -16,14 +16,16 @@
 
     - name: Symlink SSH public key
       ansible.builtin.file:
-        src: "{{ playbook_dir }}/../../ssh/id_25519.pub"
-        dest: ~/.ssh/id_25519.pub
+        src: "{{ playbook_dir }}/../../ssh/id_ed25519.pub"
+        dest: ~/.ssh/id_ed25519.pub
         state: link
-        force: true
+        force: false
+      ignore_errors: true
 
     - name: Symlink SSH private key
       ansible.builtin.file:
-        src: "{{ playbook_dir }}/../../ssh/id_25519"
-        dest: ~/.ssh/id_25519
+        src: "{{ playbook_dir }}/../../ssh/id_ed25519"
+        dest: ~/.ssh/id_ed25519
         state: link
-        force: true
+        force: false
+      ignore_errors: true
