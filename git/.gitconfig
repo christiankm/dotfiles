@@ -2,6 +2,12 @@
     name = "Christian Mitteldorf"
     email = "christian.km@me.com"
 
+[init]
+	defaultBranch = main
+
+[core]
+	excludesfile = ~/.gitignore
+
 [color "status"]
     added = yellow
     changed = green
@@ -15,5 +21,12 @@
     s = status
     a = add
 
-[core]
-	excludesfile = ~/.gitignore
+[push]
+	autoSetupRemote = true
+
+[pull]
+ 	rebase = true
+
+[fetch]
+    prune = true
+

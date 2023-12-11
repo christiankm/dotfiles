@@ -7,3 +7,6 @@
 - name: Configure and symlink SSH config and keys
   import_playbook: configure-ssh.yml
 
+- name: Install and configure git
+  import_playbook: install-git.yml
+
