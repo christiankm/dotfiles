@@ -54,6 +54,11 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 
     success "Homebrew installed to $(which brew)"
   fi
+  
+  # Opt-out of Homebrew analytics
+  echo "Disabling Homebrew analytics..."
+  export HOMEBREW_NO_ANALYTICS=1
+  brew analytics off
 
   # Install sshpass
   if [[ $(command -v sshpass) == "" ]]; then

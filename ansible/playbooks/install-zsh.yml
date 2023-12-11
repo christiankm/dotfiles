@@ -1,0 +1,8 @@
+---
+- name: Install zsh from Homebrew
+  hosts: local
+  tasks:
+    - name: Install zsh
+      community.general.homebrew:
+        name: zsh
+        state: present
