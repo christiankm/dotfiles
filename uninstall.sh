@@ -4,6 +4,11 @@ success() {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
+# Uninstall fonts
+brew uninstall font-fira-code
+brew uninstall font-hack-nerd-font
+brew untap homebrew/cask-fonts
+
 # Unlink symlinks
 unlink $HOME/Brewfile
 unlink $HOME/.zshrc

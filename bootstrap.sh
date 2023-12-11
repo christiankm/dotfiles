@@ -1,10 +1,4 @@
 
-
-  # Opt-out of Homebrew analytics
-  echo "Disabling Homebrew analytics..."
-  export HOMEBREW_NO_ANALYTICS=1
-  brew analytics off
-
 # Install and set to use zsh if not already default
 if [[ $(command -v zsh) == "" ]]; then
   echo "Installing zsh..."
@@ -28,11 +22,6 @@ else
 fi
 
 # Configure Zsh, Oh my Zsh and Plugins
-
-# Install fonts
-echo "Installing fonts..."
-brew install --cask homebrew/cask-fonts/font-fira-code
-brew install --cask homebrew/cask-fonts/font-hack-nerd-font
 
 # Install powerlevel10k
 echo "Installing Powerlevel10k..."

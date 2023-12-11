@@ -1,0 +1,13 @@
+---
+- name: Install fonts
+  hosts: local
+  tasks:
+    - name: Install Fira Code font
+      community.general.homebrew_cask:
+        name: homebrew/cask-fonts/font-fira-code
+        state: present
+
+    - name: Install Hack Nerd font
+      community.general.homebrew_cask:
+        name: homebrew/cask-fonts/font-hack-nerd-font
+        state: present
