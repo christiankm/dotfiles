@@ -1,0 +1,9 @@
+---
+- name: Create symlinks to other dotfiles
+  hosts: localhost
+  tasks:
+    - name: Create .hushlogin
+      ansible.builtin.file:
+        path: ~/.hushlogin
+        state: link
+        force: true

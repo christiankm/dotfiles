@@ -67,8 +67,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   fi
 fi
 
-# Symlink dotfiles
-ln -sf "$(pwd)/.hushlogin" $HOME/.hushlogin
 ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
 
 # Run Ansible

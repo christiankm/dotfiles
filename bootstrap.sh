@@ -74,24 +74,11 @@ fi
 
 # Symlink dotfiles to users home folder
 echo "Symlinking .zshrc"
-ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
-
-# Copy .hushlogin
-ln -sf "$(pwd)/.hushlogin" $HOME/.hushlogin
+ln -sf "$(pwd)/zshrc" $HOME/.zshrc
 
 # Configure vim
 mkdir -p $HOME/.vim
 ln -sf "$(pwd)/vimrc" $HOME/.vimrc
-
-# Configure git
-ln -sf "$(pwd)/gitconfig" $HOME/.gitconfig
-ln -sf "$(pwd)/gitignore" $HOME/.gitignore
-git config --global core.excludesfile $HOME/.gitignore
-
-# Configure ssh
-mkdir -p $HOME/.ssh
-ln -sf "$(pwd)/ssh/config" $HOME/.ssh/config
-chmod 600 $HOME/.ssh/config
 
 # Symlink files for Xcode
 mkdir -p $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/
@@ -102,11 +89,3 @@ ln -sf "$(pwd)/xcode/Breakpoints_v2" "$HOME/Library/Developer/Xcode/UserData/xcd
 # Configure macOS Preferences
 sh $(pwd)/configure-macos-preferences.sh
 
-# Initialize new settings
-source ~/.zshrc
-
-# Cleanup
-rm -rf $HOME/.zcompdump*
-rm -rf $HOME/.zshrc.pre-oh-my-*
-
-echo "All done. Please reboot computer to make all changes take effect"
