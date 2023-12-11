@@ -5,5 +5,4 @@
     - name: Create .hushlogin
       ansible.builtin.file:
         path: ~/.hushlogin
-        state: link
-        force: true
+        state: touch
