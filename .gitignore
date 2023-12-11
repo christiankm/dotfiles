@@ -1,2 +1,7 @@
 .vscode
-/.DS_Store
+.DS_Store
+
+# SSH Keys
+ssh/id_ed25519
+ssh/id_ed25519.pub
+*.log

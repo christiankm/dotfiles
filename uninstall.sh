@@ -18,6 +18,7 @@ unlink $HOME/.vimrc
 rm -rf $HOME/.oh-my-zsh
 rm -rf $HOME/.zcomp*
 rm -rf $HOME/.zprofile
+
 rm $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
 rm $HOME/Library/Developer/Xcode/UserData/xcdebugger
 

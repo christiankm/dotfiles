@@ -1,6 +1,6 @@
 ---
 - name: Configure SSH
-  hosts: localhost
+  hosts: local
   tasks:
     - name: Create .ssh folder
       ansible.builtin.file:
@@ -8,7 +8,19 @@
         state: directory
     - name: Symlink SSH config
       ansible.builtin.file:
-        src: ~/dotfiles/ssh/config
+        src: "{{ playbook_dir }}/../../ssh/config"
         dest: ~/.ssh/config
+        state: link
+        force: true
+    - name: Symlink SSH public key
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/../../ssh/id_25519.pub"
+        dest: ~/.ssh/id_25519.pub
+        state: link
+        force: true
+    - name: Symlink SSH private key
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/../../ssh/id_25519"
+        dest: ~/.ssh/id_25519
         state: link
         force: true

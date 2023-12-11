@@ -1,0 +1,9 @@
+---
+- name: Set up a new machine or update settings on current
+  hosts: local
+  gather_facts: true
+  vars:
+
+- name: Configure and symlink SSH config and keys
+  import_playbook: configure-ssh.yml
+
