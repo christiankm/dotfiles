@@ -4,6 +4,9 @@ success() {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
+# Ask for the administrator password upfront
+sudo -v -u $(whoami)
+
 # Uninstall fonts
 brew uninstall font-fira-code
 brew uninstall font-hack-nerd-font
@@ -24,8 +27,8 @@ rm -rf $HOME/.oh-my-zsh
 rm -rf $HOME/.zcomp*
 rm -rf $HOME/.zprofile
 
-rm $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
-rm $HOME/Library/Developer/Xcode/UserData/xcdebugger
+rm -rf $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
+rm -rf $HOME/Library/Developer/Xcode/UserData/xcdebugger
 
 # Reset to default preferences
 defaults delete com.apple.TextEdit
