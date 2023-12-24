@@ -15,6 +15,11 @@
 - name: Install zsh
   ansible.builtin.import_playbook: install-zsh.yml
 
+- name: Configure vim
+  ansible.builtin.import_playbook: configure-vim.yml
+
 - name: Create other dotfiles
   ansible.builtin.import_playbook: create-dotfiles.yml
 
+- name: Reload shell
+  ansible.builtin.import_playbook: reload-shell.yml

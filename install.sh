@@ -72,13 +72,11 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   fi
 fi
 
-ln -sf "$(pwd)/.zshrc" $HOME/.zshrc
-
 # Run Ansible
 export ANSIBLE_CONFIG=./ansible/ansible.cfg
 ansible-playbook \
   ./ansible/playbooks/main.yml \
-  -c local \
+  -c localhost \
   -i ./ansible/inventory/hosts
 
 # Cleanup
@@ -89,3 +87,7 @@ rm -rf $HOME/.zshrc.pre-oh-my-*
 source $HOME/.zshrc
 
 success "All done. Please reboot computer to make all changes take effect"
+
+if command -v terminal-notifier 1>/dev/null 2>&1; then
+  terminal-notifier -title "dotfiles install complete" -message "Successfully set up environment."
+fi

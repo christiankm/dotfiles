@@ -1,0 +1,11 @@
+---
+- name: Configure vim
+  hosts: localhost
+  tasks:
+    - name: Link .vimrc to Home
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/../../vim/vimrc"
+        dest: ~/.vimrc
+        state: link
+        force: true
+

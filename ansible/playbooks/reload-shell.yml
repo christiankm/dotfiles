@@ -1,0 +1,6 @@
+---
+- name: Link zshrc
+  hosts: localhost
+  tasks:
+    - name: Source .zshrc
+      ansible.builtin.shell: "source ~/.zshrc"
