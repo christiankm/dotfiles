@@ -3,10 +3,10 @@
     email = "christian.km@me.com"
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
 [color "status"]
     added = yellow
@@ -22,10 +22,10 @@
     a = add
 
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
 
 [pull]
- 	rebase = true
+    rebase = true
 
 [fetch]
     prune = true
