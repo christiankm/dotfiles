@@ -1,8 +1,22 @@
 ---
 - name: Install zsh from Homebrew
   hosts: local
+  vars:
+    - zsh_dir: "{{ playbook_dir }}/../../zsh"
   tasks:
     - name: Install zsh
       community.general.homebrew:
         name: zsh
         state: present
+
+    - name: Link .zshrc to home-directory
+      ansible.builtin.file:
+        src: "{{ zsh_dir }}/.zshrc"
+        dest: "$HOME/.zshrc"
+        state: link
+        follow: false
+        force: true
+
+    - name: Source .zshrc
+      ansible.builtin.shell: "source $HOME/.zshrc"
+
