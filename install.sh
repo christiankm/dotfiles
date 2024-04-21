@@ -4,7 +4,8 @@
 # It will configure them as needed, and setup all program configurations and settings.
 # This script can be run on any machine, on any OS, and should act accordingly.
 
-set -e # stop on first error
+# Stop on first error
+set -e
 
 # Ask for the administrator password upfront
 sudo -v -u $(whoami)
@@ -76,14 +77,14 @@ fi
 export ANSIBLE_CONFIG=./ansible/ansible.cfg
 ansible-playbook \
   ./ansible/playbooks/main.yml \
-  -c localhost \
-  -i ./ansible/inventory/hosts
+  -i ./ansible/inventory/hosts.ini
 
 # Cleanup
 rm -rf $HOME/.zcompdump*
 rm -rf $HOME/.zshrc.pre-oh-my-*
 
 # Reload new settings
+source $HOme/.zprofile
 source $HOME/.zshrc
 
 success "All done. Please reboot computer to make all changes take effect"
