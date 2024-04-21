@@ -6,7 +6,7 @@
     defaultBranch = main
 
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore_global
 
 [color "status"]
     added = yellow
