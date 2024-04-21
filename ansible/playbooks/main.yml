@@ -21,6 +21,11 @@
 - name: Create other dotfiles
   ansible.builtin.import_playbook: create-dotfiles.yml
 
+#- name: Install Brew packages
+
+- name: Install Mac App Store apps
+  ansible.builtin.import_playbook: install-mac-app-store-apps.yml
+
 - name: Reload shell
   ansible.builtin.import_playbook: reload-shell.yml
 
