@@ -1,0 +1,9 @@
+---
+- name: Configure Finder preferences and create folders
+  hosts: local
+  tasks:
+    - name: Create Developer directory
+      ansible.builtin.file:
+        path: "$HOME/Developer"
+        state: directory
+

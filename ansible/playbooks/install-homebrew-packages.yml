@@ -1,0 +1,28 @@
+---
+- name: Install and configure git
+  hosts: local
+  tasks:
+    - name: Install Homebrew packages
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ansible
+        - ansible-lint
+        - swiftformat
+        - swiftlint
+
+#    - name: Install Homebrew taps
+#      ansible.builtin.file:
+#        src: "{{ playbook_dir }}/../../git/.gitignore_global"
+#        dest: ~/.gitignore_global
+#        state: link
+#        force: true
+
+#    - name: Install Homebrew casks
+#      ansible.builtin.file:
+#        src: "{{ playbook_dir }}/../../git/.gitconfig"
+#        dest: ~/.gitconfig
+#        state: link
+#        force: true
+
