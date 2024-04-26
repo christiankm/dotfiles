@@ -12,6 +12,7 @@
         - htop
         - vim
         - neovim
+        - publish
         - swiftformat
         - swiftlint
         - tmux

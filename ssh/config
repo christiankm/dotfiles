@@ -1,4 +1,4 @@
-Host nas
+Host vault
   HostName 192.168.0.34
   User admin
 
@@ -9,6 +9,10 @@ Host newton
 Host lisa
   HostName 192.168.0.210
   User lisa
+
+Host pippin
+  HostName 192.168.0.220
+  User pippin
 
 Host *
   AddKeysToAgent yes
