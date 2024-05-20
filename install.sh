@@ -84,7 +84,7 @@ rm -rf $HOME/.zcompdump*
 rm -rf $HOME/.zshrc.pre-oh-my-*
 
 # Reload new settings
-source $HOme/.zprofile
+source $HOME/.zprofile
 source $HOME/.zshrc
 
 success "All done. Please reboot computer to make all changes take effect"

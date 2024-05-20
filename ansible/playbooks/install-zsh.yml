@@ -17,6 +17,14 @@
         follow: false
         force: true
 
+    - name: Link .zprofile to home-directory
+      ansible.builtin.file:
+        src: "{{ zsh_dir }}/.zprofile"
+        dest: "$HOME/.zprofile"
+        state: link
+        follow: false
+        force: true
+
     - name: Source .zshrc
       ansible.builtin.shell: "source $HOME/.zshrc"
 
