@@ -15,17 +15,20 @@
 - name: Install zsh
   ansible.builtin.import_playbook: install-zsh.yml
 
+- name: Install Brew packages
+  ansible.builtin.import_playbook: install-homebrew-packages.yml
+
 - name: Configure vim
   ansible.builtin.import_playbook: configure-vim.yml
+
+- name: Configure todo.txt
+  ansible.builtin.import_playbook: configure-todo.yml
 
 - name: Configure Finder
   ansible.builtin.import_playbook: configure-finder.yml
 
 - name: Create other dotfiles
   ansible.builtin.import_playbook: create-dotfiles.yml
-
-- name: Install Brew packages
-  ansible.builtin.import_playbook: install-homebrew-packages.yml
 
 - name: Install Mac App Store apps
   ansible.builtin.import_playbook: install-mac-app-store-apps.yml

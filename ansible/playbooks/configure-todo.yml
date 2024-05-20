@@ -1,0 +1,16 @@
+---
+- name: Configure todo.txt
+  hosts: localhost
+  tasks:
+    - name: Create .todo directory
+      ansible.builtin.file:
+        dest: "~/.todo"
+        state: directory
+
+    - name: Link .todo to Home direectory
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/../../todo/config"
+        dest: ~/.todo/config
+        state: link
+        force: true
+
