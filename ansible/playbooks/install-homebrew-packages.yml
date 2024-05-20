@@ -9,8 +9,12 @@
       with_items:
         - ansible
         - ansible-lint
+        - htop
+        - vim
+        - neovim
         - swiftformat
         - swiftlint
+        - tmux
 
 #    - name: Install Homebrew taps
 #      ansible.builtin.file:
