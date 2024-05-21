@@ -1,0 +1,11 @@
+---
+- name: Configure tmux
+  hosts: localhost
+  tasks:
+    - name: Link .tmux.conf to Home
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/../../tmux/.tmux.conf"
+        dest: ~/.tmux.conf
+        state: link
+        force: true
+
