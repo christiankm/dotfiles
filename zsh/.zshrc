@@ -19,7 +19,7 @@ export MANPAGER='less -X';
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
 # Load plugins
-plugins=(git)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
