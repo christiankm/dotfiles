@@ -2,6 +2,12 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
 
+# Path to your oh-my-zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set ZSH theme
+ZSH_THEME="robbyrussell"
+
 # Environment
 export LANG=en_US.UTF-8
 export EDITOR='vim'
@@ -12,12 +18,10 @@ export MANPAGER='less -X';
 # Hide the "default interactive shell is now zsh" warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Load plugins
 plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 

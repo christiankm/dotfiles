@@ -12,6 +12,9 @@
 - name: Install zsh
   ansible.builtin.import_playbook: install-zsh.yml
 
+- name: Install oh-my-zsh
+  ansible.builtin.import_playbook: install-oh-my-zsh.yml
+
 - name: Install Brew packages
   ansible.builtin.import_playbook: install-homebrew-packages.yml
   when: ansible_architecture == "darwin"
@@ -37,7 +40,3 @@
 
 - name: Symlink other dotfiles
   ansible.builtin.import_playbook: symlink-dotfiles.yml
-
-- name: Reload shell
-  ansible.builtin.import_playbook: reload-shell.yml
-

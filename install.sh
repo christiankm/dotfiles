@@ -20,7 +20,7 @@ DOTFILES=$(pwd)
 printf "Detected operating system: "
 case "$OSTYPE" in
   solaris*) echo "Solaris" ;;
-  darwin*)  echo "macOS" ;; 
+  darwin*)  echo "macOS" ;;
   linux*)   echo "Linux" ;;
   bsd*)     echo "BSD" ;;
   msys*)    echo "Windows" ;;
@@ -55,7 +55,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 
     success "Homebrew installed to $(which brew)"
   fi
-  
+
   # Opt-out of Homebrew analytics
   echo "Disabling Homebrew analytics..."
   export HOMEBREW_NO_ANALYTICS=1
@@ -98,10 +98,10 @@ rm -rf $HOME/.zcompdump*
 rm -rf $HOME/.zshrc.pre-oh-my-*
 
 # Reload new settings
-source $HOME/.zprofile
-source $HOME/.zshrc
+/bin/zsh -c "source $HOME/.zprofile"
+/bin/zsh -c "source $HOME/.zshrc"
 
-success "All done. Please reboot computer to make all changes take effect"
+success "Done. You will need to source your .zshrc to finish, or open a new Terminal. Please reboot computer to make all changes take effect"
 
 if command -v terminal-notifier 1>/dev/null 2>&1; then
   terminal-notifier -title "dotfiles install complete" -message "Successfully set up environment."

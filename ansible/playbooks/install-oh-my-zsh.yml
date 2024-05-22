@@ -1,0 +1,41 @@
+---
+- name: Install and configure Oh my zsh and plugins
+  hosts: local
+  vars:
+    - zsh_dir: "{{ playbook_dir }}/../../zsh"
+    - ohmyzsh_dir: "$HOME/.oh-my-zsh"
+    - user_home: "$HOME"
+  tasks:
+    - name: Check for oh-my-zsh installation
+      ansible.builtin.stat: "path={{ ohmyzsh_dir }}"
+      register: oh_my_zsh_stat
+
+    - name: Install Oh my zsh
+      ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      when: not oh_my_zsh_stat.stat.exists
+
+    - name: Remove default .zshrc after installation
+      ansible.builtin.file:
+        path: "{{ user_home }}/.zshrc"
+        state: absent
+
+    - name: Remove .zshrc.pre-oh-my-zsh
+      ansible.builtin.file:
+        path: "{{ user_home }}/.zshrc.pre-oh-my-zsh"
+        state: absent
+
+    - name: Symlink .zshrc back to home-directory
+      ansible.builtin.file:
+        src: "{{ zsh_dir }}/.zshrc"
+        dest: "{{ user_home }}/.zshrc"
+        state: link
+        follow: false
+        force: true
+
+    - name: Add source block in .zshrc
+      ansible.builtin.blockinfile:
+        path: "{{ zsh_dir }}/.zshrc"
+        block: |
+          # Always source oh-my-zsh as the last thing
+          source $ZSH/oh-my-zsh.sh
+        state: present
