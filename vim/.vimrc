@@ -13,6 +13,19 @@ syntax on
 " Color scheme
 "colorscheme distinguished
 
+" Hide intro menu
+"set shortmess=a
+"set shortmess+=I
+
+" Enable file type detection
+"filetype on
+
+" Show filetype
+"set filetype
+
+" Highlight current line
+"set cursorline
+
 " Set tab width
 set shiftwidth=4
 set tabstop=4
@@ -31,6 +44,9 @@ set ruler
 set colorcolumn=80,100
 highlight ColorColumn guibg=Black
 highlight ColorColumn ctermbg=0
+
+" Enable soft wrapping at the edge of the screen
+" set softwrap
 
 " Avoid wrap in the middle of words
 set linebreak

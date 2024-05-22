@@ -5,8 +5,12 @@ export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
 # Path to your oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
+# Configure Oh my zsh
 # Set ZSH theme
 ZSH_THEME="robbyrussell"
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+HIST_STAMPS="dd/mm/yyyy"
 
 # Environment
 export LANG=en_US.UTF-8
