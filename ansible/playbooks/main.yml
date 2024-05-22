@@ -21,6 +21,9 @@
 - name: Configure vim
   ansible.builtin.import_playbook: configure-vim.yml
 
+- name: Configure tmux
+  ansible.builtin.import_playbook: configure-tmux.yml
+
 - name: Configure todo.txt
   ansible.builtin.import_playbook: configure-todo.yml
 
