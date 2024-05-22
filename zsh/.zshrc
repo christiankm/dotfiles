@@ -34,5 +34,7 @@ alias todos="todo.sh list"
 alias todoa="todo.sh a"
 alias did="todo.sh -A do"
 
+alias flutter=~/flutter_3.10.3/bin/flutter
+
 # Load rbenv
 eval "$(rbenv init - zsh)"
