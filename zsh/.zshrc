@@ -1,5 +1,6 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Update $PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
 
 # Environment
 export LANG=en_US.UTF-8
@@ -31,4 +32,3 @@ alias did="todo.sh -A do"
 
 # Load rbenv
 eval "$(rbenv init - zsh)"
-

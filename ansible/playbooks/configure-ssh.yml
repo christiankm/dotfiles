@@ -26,6 +26,7 @@
         src: "{{ playbook_dir }}/../../ssh/id_ed25519.pub"
         dest: "$HOME/.ssh/id_ed25519.pub"
         state: link
+        mode: 0600
         force: false
       ignore_errors: true
       when: result.stat.exists
@@ -35,6 +36,7 @@
         src: "{{ ssh_dir }}/id_ed25519"
         dest: "$HOME/.ssh/id_ed25519"
         state: link
+        mode: 0600
         force: false
       ignore_errors: true
       when: result.stat.exists

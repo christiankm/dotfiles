@@ -2,6 +2,7 @@
 - name: Install zsh from Homebrew
   hosts: local
   vars:
+    - user_home: "$HOME"
     - zsh_dir: "{{ playbook_dir }}/../../zsh"
   tasks:
     - name: Install zsh
@@ -9,10 +10,20 @@
         name: zsh
         state: present
 
-    - name: Link .zshrc to home-directory
+    - name: Check for .zshrc
+      stat: path="{{ user_home }}/.zshrc"
+      register: zshrc_stat
+
+    - name: Back up .zshrc
+      command: mv ~/.zshrc ~/.zshrc.bak
+      args:
+        creates: "{{ user_home }}/.zshrc.bak"
+      when: zshrc_stat.stat.exists
+
+    - name: Symlink .zshrc to home-directory
       ansible.builtin.file:
         src: "{{ zsh_dir }}/.zshrc"
-        dest: "$HOME/.zshrc"
+        dest: "{{ user_home }}/.zshrc"
         state: link
         follow: false
         force: true
@@ -20,11 +31,10 @@
     - name: Link .zprofile to home-directory
       ansible.builtin.file:
         src: "{{ zsh_dir }}/.zprofile"
-        dest: "$HOME/.zprofile"
+        dest: "{{ user_home }}/.zprofile"
         state: link
         follow: false
         force: true
 
     - name: Source .zshrc
-      ansible.builtin.shell: "source $HOME/.zshrc"
-
+      ansible.builtin.shell: "source {{ user_home }}/.zshrc"

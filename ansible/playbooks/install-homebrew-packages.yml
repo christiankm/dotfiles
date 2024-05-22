@@ -9,10 +9,12 @@
       with_items:
         - ansible
         - ansible-lint
+        - dotnet@6
         - htop
         - vim
         - neovim
         - publish
+        - rbenv
         - swiftformat
         - swiftlint
         - tmux

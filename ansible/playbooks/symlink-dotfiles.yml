@@ -1,0 +1,9 @@
+---
+- name: Symlinks to dotfiles
+  hosts: localhost
+  tasks:
+    - name: Link .hushlogin
+      ansible.builtin.file:
+        path: "$HOME/.hushlogin"
+        state: touch
+        mode: "0644"

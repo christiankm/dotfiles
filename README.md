@@ -15,6 +15,10 @@ cd ~/dotfiles
 ./install.sh
 ```
 
+## Run with Ansible
+
+`$ ansible-playbook ./ansible/playbooks/main.yml -i ./ansible/inventory/hosts.ini`
+
 ## Uninstall
 
 To uninstall software and remove files and symlinks, run:

@@ -1,11 +1,12 @@
 ---
 - name: Configure todo.txt
-  hosts: localhost
+  hosts: local
   tasks:
     - name: Create .todo directory
       ansible.builtin.file:
         dest: "~/.todo"
         state: directory
+        mode: "0766"
 
     - name: Link .todo to Home direectory
       ansible.builtin.file:
@@ -13,4 +14,3 @@
         dest: ~/.todo/config
         state: link
         force: true
-

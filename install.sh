@@ -79,6 +79,20 @@ ansible-playbook \
   ./ansible/playbooks/main.yml \
   -i ./ansible/inventory/hosts.ini
 
+# Install and set to use zsh if not already default
+if [[ $(command -v zsh) == "" ]]; then
+  echo "Installing zsh..."
+  brew install zsh
+fi
+
+echo "Setting zsh as default shell..."
+shell_path="$(command -v zsh)"
+if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
+  echo "Adding '$shell_path' to /etc/shells"
+  sudo sh -c "echo $shell_path >> /etc/shells"
+fi
+sudo chsh -s "$shell_path" "$USER"
+
 # Cleanup
 rm -rf $HOME/.zcompdump*
 rm -rf $HOME/.zshrc.pre-oh-my-*
