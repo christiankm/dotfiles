@@ -6,7 +6,7 @@
       ansible.builtin.file:
         dest: "~/.todo"
         state: directory
-        mode: "0766"
+        mode: "0755"
 
     - name: Link .todo to Home direectory
       ansible.builtin.file:
