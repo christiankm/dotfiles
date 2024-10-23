@@ -14,7 +14,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Environment
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
@@ -30,6 +30,10 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 # Add aliases
 #
 # For a full list of active aliases, run `alias`.
+
+# Remap vim to use neovim
+alias vi="nvim"
+alias vim="nvim"
 alias reload="source ~/.zshrc"
 alias todo="todo.sh"
 alias todos="todo.sh list"
@@ -41,5 +45,11 @@ alias flutter=~/flutter_3.10.3/bin/flutter
 # Load rbenv
 eval "$(rbenv init - zsh)"
 
+# Source functions
+
 # Task and note management
 source "$HOME/dotfiles/bash/functions/task.sh"
+
+alias emptytrash="sudo rm -rf ~/.Trash"
+alias mail='open -a Mail'
+alias cal='open -a Calendar'
