@@ -9,7 +9,10 @@
       with_items:
         - ansible
         - ansible-lint
+        - asitop
+        - docker
         - dotnet@6
+        - dotnet@8
         - htop
         - vim
         - neovim
@@ -19,6 +22,7 @@
         - swiftlint
         - tmux
         - todo-txt
+        - vapor
         - zsh
 
 #    - name: Install Homebrew taps

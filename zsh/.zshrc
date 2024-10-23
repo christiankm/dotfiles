@@ -13,7 +13,7 @@ export MANPAGER='less -X';
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
 # Load plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git macos ruby zsh-syntax-highlighting zsh-autosuggestions)
 
 # User configuration
 
