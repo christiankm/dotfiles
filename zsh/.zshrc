@@ -25,8 +25,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1;
 # Load plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # Add aliases
@@ -42,3 +40,6 @@ alias flutter=~/flutter_3.10.3/bin/flutter
 
 # Load rbenv
 eval "$(rbenv init - zsh)"
+
+# Task and note management
+source "$HOME/dotfiles/bash/functions/task.sh"
