@@ -1,6 +1,8 @@
 [user]
-    name = "Christian Mitteldorf"
-    email = "christian.km@me.com"
+    # Imported from ~/.gitconfig_local
+
+[include]
+    path = ~/.gitconfig_local
 
 [init]
     defaultBranch = main
