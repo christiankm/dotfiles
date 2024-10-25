@@ -74,9 +74,9 @@ defaults write com.apple.finder ShowPathbar -bool true                          
 defaults write com.apple.dock tilesize -int 46                     # Set icon size
 defaults write com.apple.dock magnification -bool false            # Disable magnification
 defaults write com.apple.dock largesize -int 54                    # Set size when hovering
-defaults write com.apple.dock mineffect -string "scale"            # Set minimization animation
+defaults write com.apple.dock mineffect -string "suck"             # Set minimization animation
 defaults write com.apple.dock minimize-to-application -bool true   # Minimize to application symbol
-defaults write com.apple.dock autohide -bool false                  # Auto-hide Dock
+defaults write com.apple.dock autohide -bool false                 # Auto-hide Dock
 defaults write com.apple.dock autohide-time-modifier -float 0.5    # Show and hide very quickly
 defaults write com.apple.dock autohide-delay -float 0.0            # Hide quickly
 defaults write com.apple.dock show-process-indicators -bool true   # Show indicator for open apps
