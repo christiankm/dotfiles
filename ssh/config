@@ -1,27 +1,16 @@
-Host vault
-  HostName 192.168.0.34
-  User admin
-
-Host newton
-  HostName 192.168.0.200
-  User newton
-
-Host lisa
-  HostName 192.168.0.210
-  User lisa
-
-Host pippin
-  HostName 192.168.0.220
-  User pippin
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519_github
 
 Host *
   AddKeysToAgent yes
+  UseKeychain yes
   ConnectTimeout 2
   ForwardAgent yes
   HashKnownHosts yes
   IdentityFile ~/.ssh/id_ed25519
   KeepAlive yes
-  UseKeychain yes
   ServerAliveCountMax 6
   ServerAliveInterval 30
   StrictHostKeyChecking ask
