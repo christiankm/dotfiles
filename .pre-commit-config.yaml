@@ -8,3 +8,7 @@ repos:
     -   id: end-of-file-fixer
     -   id: check-yaml
     -   id: check-added-large-files
+-   repo: https://github.com/ansible/ansible-lint
+    rev: ... # put latest release tag from https://github.com/ansible/ansible-lint/releases/
+    hooks:
+    - id: ansible-lint
