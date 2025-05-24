@@ -1,6 +1,5 @@
 # Update $PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/Users/christian/fvm/default/bin:$PATH"
 
 # Environment
 export LANG=en_US.UTF-8
