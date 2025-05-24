@@ -10,8 +10,17 @@ This happens automatically when running the `install.sh` script, which will inte
 On any new computer (Linux, macOS or Windows), all I need to do is open the default terminal and run:
 
 ```bash
-git clone https://github.com/christiankm/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/christiankm/dotfiles.git ~/.dotfiles
+```
+
+Before proceeding, edit and configure the relevant Ansible playbooks to install
+and configure only the programs and settings you need. You may also comment out
+any playbooks that you do not need in `ansible/playbooks/main.yml`.
+
+When ready, we can now go ahead and start the installation process:
+
+```bash
+cd ~/.dotfiles
 ./install.sh
 ```
 

@@ -3,11 +3,9 @@
   hosts: local
   gather_facts: true
 
+# Install programs
 - name: Install and configure git
   ansible.builtin.import_playbook: install-git.yml
-
-- name: Install fonts
-  ansible.builtin.import_playbook: install-fonts.yml
 
 - name: Install zsh
   ansible.builtin.import_playbook: install-zsh.yml
@@ -23,6 +21,11 @@
   ansible.builtin.import_playbook: install-mac-app-store-apps.yml
   when: ansible_architecture == "darwin"
 
+# Install resources
+- name: Install fonts
+  ansible.builtin.import_playbook: install-fonts.yml
+
+# Configure programs
 - name: Configure and symlink SSH config and keys
   ansible.builtin.import_playbook: configure-ssh.yml
 
@@ -35,8 +38,23 @@
 - name: Configure todo.txt
   ansible.builtin.import_playbook: configure-todo.yml
 
+# Configure macOS system preferences
 - name: Configure Finder
   ansible.builtin.import_playbook: configure-finder.yml
+  when: ansible_architecture == "darwin"
 
+# Copy or link files
 - name: Symlink other dotfiles
   ansible.builtin.import_playbook: symlink-dotfiles.yml
+
+- name: Clean up
+  hosts: local
+  gather_facts: false
+  tasks:
+    - name: Show completion message
+      ansible.builtin.debug:
+        msg: "Setup complete."
+
+    - name: Show reboot message
+      ansible.builtin.debug:
+        msg: "Reboot is required to apply all changes. Please reboot your system now."

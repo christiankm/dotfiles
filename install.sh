@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# This script will install all required software, packages and tools on a new machine, to my liking.
-# It will configure them as needed, and setup all program configurations and settings.
-# This script can be run on any machine, on any OS, and should act accordingly.
-
 # Stop on first error
 set -e
 
@@ -32,28 +28,28 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   HOME=/Users/$(whoami)
 fi
 
-# Install package managers
+# Install Ansible prerequisites
 
-# Install Homebrew, if macOS
 if [[ "$OSTYPE" =~ ^darwin ]]; then
+  # Install Homebrew, if macOS
   if [[ $(command -v brew) == "" ]]; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # Add Homebrew to PATH
     if [[ $(uname -m) == 'arm64' ]]; then
-      # for Apple Sillicon Mac
+      # Apple Sillicon Mac
       (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
       eval "$(/opt/homebrew/bin/brew shellenv)"
     else
-      # for Intel Mac
+      # Intel Mac
       (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
       eval "$(/usr/local/bin/brew shellenv)"
     fi
 
     source $HOME/.zprofile
 
-    success "Homebrew installed to $(which brew)"
+    echo "Homebrew installed to $(which brew)"
   fi
 
   # Opt-out of Homebrew analytics
@@ -63,46 +59,24 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 
   # Install sshpass
   if [[ $(command -v sshpass) == "" ]]; then
+    echo "Installing sshpass..."
     brew tap esolitos/ipa
     brew install esolitos/ipa/sshpass
   fi
 
-  # Install Ansible
+  # Install Ansible and required collections
   if [[ $(command -v ansible) == "" ]]; then
+    echo "Installing Ansible..."
     brew install ansible
+    ansible-galaxy collection install community.general
   fi
 fi
 
 # Run Ansible
+echo "Running Ansible playbooks..."
 export ANSIBLE_CONFIG=./ansible/ansible.cfg
 ansible-playbook \
   ./ansible/playbooks/main.yml \
   -i ./ansible/inventory/hosts.ini
 
-# Install and set to use zsh if not already default
-if [[ $(command -v zsh) == "" ]]; then
-  echo "Installing zsh..."
-  brew install zsh
-fi
-
-echo "Setting zsh as default shell..."
-shell_path="$(command -v zsh)"
-if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
-  echo "Adding '$shell_path' to /etc/shells"
-  sudo sh -c "echo $shell_path >> /etc/shells"
-fi
-sudo chsh -s "$shell_path" "$USER"
-
-# Cleanup
-rm -rf $HOME/.zcompdump*
-rm -rf $HOME/.zshrc.pre-oh-my-*
-
-# Reload new settings
-/bin/zsh -c "source $HOME/.zprofile"
-/bin/zsh -c "source $HOME/.zshrc"
-
-success "Done. You will need to source your .zshrc to finish, or open a new Terminal. Please reboot computer to make all changes take effect"
-
-if command -v terminal-notifier 1>/dev/null 2>&1; then
-  terminal-notifier -title "dotfiles install complete" -message "Successfully set up environment."
-fi
+success "Installation completed. Reboot your machine now for all changes to take effect"

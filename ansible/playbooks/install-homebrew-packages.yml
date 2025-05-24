@@ -1,8 +1,16 @@
 ---
-- name: Install and configure git
+- name: Install packages using Homebrew
   hosts: local
+  vars_files:
+    - vars/main.yml
   tasks:
-    - name: Install Homebrew packages
+    - name: Ensure Homebrew is installed and updated
+      community.general.homebrew:
+        state: present
+        update_homebrew: true
+
+    # Install Homebrew packages used on any machine
+    - name: Install standard Homebrew packages
       community.general.homebrew:
         name: "{{ item }}"
         state: present
@@ -10,31 +18,48 @@
         - ansible
         - ansible-lint
         - asitop
-        - docker
-        - dotnet@6
-        - dotnet@8
         - htop
         - vim
         - neovim
-        - publish
         - rbenv
         - swiftformat
         - swiftlint
         - tmux
-        - todo-txt
-        - vapor
         - zsh
 
-#    - name: Install Homebrew taps
-#      ansible.builtin.file:
-#        src: "{{ playbook_dir }}/../../git/.gitignore_global"
-#        dest: ~/.gitignore_global
-#        state: link
-#        force: true
+    # Install Homebrew packages specific to the machine and role
+    # Some packages are project-specific and should be installed on a per-machine basis
+    # Add or remove packages from this list as needed
+    - name: Install machine-specific Homebrew packages
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - dotnet@8
+        # - docker
+        # - dotnet@8
+        #- nvm
+        # - node
+        #- npm
+        # - publish
+        # - todo-txt
+        # - vapor
 
-#    - name: Install Homebrew casks
-#      ansible.builtin.file:
-#        src: "{{ playbook_dir }}/../../git/.gitconfig"
-#        dest: ~/.gitconfig
-#        state: link
-#        force: true
+    # Install Mac apps
+    - name: Install Homebrew cask apps
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        # Note: Some apps are not used on all machines. Uncomment or add the ones you need.
+        #- 1password
+        #- discord
+        #- figma
+        #- google-chrome
+        #- google-drive
+        - microsoft-edge
+        - microsoft-teams
+        - slack
+        - visual-studio-code
+# TODO:
+

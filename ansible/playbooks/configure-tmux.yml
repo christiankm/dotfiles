@@ -1,20 +1,24 @@
 ---
 - name: Configure tmux
   hosts: localhost
+  vars:
+    tmux_dir: "{{ playbook_dir }}/../../tmux"
   tasks:
     - name: Create tmux config directories
       ansible.builtin.file:
         path: "$HOME/.tmux/plugins/tpm"
         state: directory
+        mode: "0755"
 
     - name: Install tmux package manager
       ansible.builtin.git:
         repo: "https://github.com/tmux-plugins/tpm"
         dest: "$HOME/.tmux/plugins/tpm"
+        update: no
 
     - name: Link .tmux.conf to Home
       ansible.builtin.file:
-        src: "{{ playbook_dir }}/../../tmux/.tmux.conf"
+        src: "{{ tmux_dir }}/.tmux.conf"
         dest: "$HOME/.tmux.conf"
         state: link
         force: true
