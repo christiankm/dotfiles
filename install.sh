@@ -31,21 +31,27 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Add Homebrew to PATH
-    if [[ $(uname -m) == 'arm64' ]]; then
-      # Apple Sillicon Mac
-      (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    else
-      # Intel Mac
-      (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
-      eval "$(/usr/local/bin/brew shellenv)"
-    fi
-
-    source $HOME/.zprofile
-
     echo "Homebrew installed to $(which brew)"
   fi
+
+  # Add Homebrew to PATH if not already present
+  if [[ $(uname -m) == 'arm64' ]]; then
+    # Apple Sillicon Mac
+    if ! grep -q '/opt/homebrew/bin' $HOME/.zprofile; then
+      echo "Adding Homebrew to PATH..."
+      (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+    fi
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    # Intel Mac
+    if ! grep -q '/opt/homebrew/bin' $HOME/.zprofile; then
+      echo "Adding Homebrew to PATH..."
+      (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
+    fi
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+
+  source $HOME/.zprofile
 
   # Opt-out of Homebrew analytics
   echo "Disabling Homebrew analytics..."

@@ -47,14 +47,26 @@
 - name: Symlink other dotfiles
   ansible.builtin.import_playbook: symlink-dotfiles.yml
 
-- name: Clean up
+- name: Clean up and reboot
   hosts: local
   gather_facts: false
   tasks:
-    - name: Show completion message
-      ansible.builtin.debug:
-        msg: "Setup complete."
 
-    - name: Show reboot message
+    - name: "Prompt user to reboot"
+      ansible.builtin.pause:
+        prompt: "Setup complete. Reboot is required to apply all changes. Reboot now? (Y/n)"
+        echo: true
+      register: confirm_reboot
+      delegate_to: localhost
+
+    - name: "Show rebooting message"
       ansible.builtin.debug:
-        msg: "Reboot is required to apply all changes. Please reboot your system now."
+        msg: "Rebooting {{ inventory_hostname }}"
+      when: confirm_reboot.user_input | lower == 'y'
+
+    - name: Reboot machine and send a message
+      ansible.builtin.command:
+        cmd: "sudo shutdown -r now"
+      become: true
+      when: confirm_reboot.user_input | lower == 'y'
+      changed_when: true
