@@ -15,6 +15,7 @@
         name: "{{ item }}"
         state: present
       with_items:
+        - actionlint
         - ansible
         - ansible-lint
         - asitop
@@ -25,6 +26,7 @@
         - swiftformat
         - swiftlint
         - tmux
+        - yamllint
         - zsh
 
     # Install Homebrew packages specific to the machine and role
@@ -62,4 +64,3 @@
         - slack
         - visual-studio-code
 # TODO:
-

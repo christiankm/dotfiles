@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Update $PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 

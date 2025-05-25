@@ -41,5 +41,3 @@ Double-check that the packages were installed in `~/.ansible/collections/ansible
 ```bash
 $ ansible-galaxy collection install community.general --force
 ```
-
-

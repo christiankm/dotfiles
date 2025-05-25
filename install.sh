@@ -3,14 +3,8 @@
 # Stop on first error
 set -e
 
-# Ask for the administrator password upfront
-sudo -v -u $(whoami)
-
-success() {
-  printf "\r\033[2K[\033[00;32mOK\033[0m] %s\n" "$1"
-}
-
-DOTFILES=$(pwd)
+# Ask for administrator password
+sudo --askpass --bell --validate -u $(whoami) --prompt 'Enter sudo password for $(whoami): '
 
 # Detect OS
 printf "Detected operating system: "
@@ -26,6 +20,7 @@ esac
 # Set environment variables
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   HOME=/Users/$(whoami)
+  DOTFILES=$(pwd)
 fi
 
 # Install Ansible prerequisites
@@ -68,15 +63,19 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   if [[ $(command -v ansible) == "" ]]; then
     echo "Installing Ansible..."
     brew install ansible
-    ansible-galaxy collection install community.general
+
+    export ANSIBLE_CONFIG=./ansible/ansible.cfg
+    ansible-galaxy collection install community.general --force
   fi
 fi
 
 # Run Ansible
-echo "Running Ansible playbooks..."
-export ANSIBLE_CONFIG=./ansible/ansible.cfg
-ansible-playbook \
-  ./ansible/playbooks/main.yml \
-  -i ./ansible/inventory/hosts.ini
-
-success "Installation completed. Reboot your machine now for all changes to take effect"
+ANSIBLE_USER=$(whoami)
+echo "Running Ansible playbooks as $ANSIBLE_USER..."
+sudo -u "$ANSIBLE_USER" ansible-playbook \
+  ansible/playbooks/main.yml \
+  -i ./ansible/inventory/hosts.ini \
+  --extra-vars "\
+    ansible_user=$ANSIBLE_USER \
+    ansible_become_user=$ANSIBLE_USER \
+    ansible_become_pass=$(sudo -v -u "$ANSIBLE_USER")"
