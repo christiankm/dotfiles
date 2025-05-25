@@ -28,12 +28,18 @@ cd ~/.dotfiles
 
 `$ ansible-playbook ./ansible/playbooks/main.yml -i ./ansible/inventory/hosts.ini`
 
-## Uninstall
+## Troubleshooting
 
-To uninstall software and remove files and symlinks, run:
+On a new machine, some commands may fail or not work as expected due to certain preconditions (or lack of handling in the scripts). Here is a collection of problems I've run into in the past and how to fix them.
+
+### couldn't resolve module/action 'community.general.homebrew
+
+This error may appear if the script fails to install the community packages correctly or the environment is unable to locate them.
+
+Double-check that the packages were installed in `~/.ansible/collections/ansible_collections/community/general`. If not installed, install manually by running the following command, and then retry running the `install.sh` script:
 
 ```bash
-~/dotfiles/uninstall.sh
+$ ansible-galaxy collection install community.general --force
 ```
 
-Then restart your terminal.
+
