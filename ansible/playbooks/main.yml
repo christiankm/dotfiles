@@ -54,6 +54,9 @@
   when: ansible_facts['distribution'] == "MacOSX"
 
 # Copy or link files
+- name: Copy programs, scripts and files
+  ansible.builtin.import_playbook: copy-files.yml
+
 - name: Symlink other dotfiles
   ansible.builtin.import_playbook: symlink-dotfiles.yml
 

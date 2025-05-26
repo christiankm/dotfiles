@@ -81,12 +81,11 @@ If you have a need to use different name and/or e-mail addresses on a specifc re
 ### Install additional applications
 
 - Install Little Snitch Network Filter
-- Install Tower from the https://gittower.com website
 - Install Xcode using `xcodes` command line tool
 - Install SwiftLint
   - SwiftLint requires a full installation of Xcode to be present to install, otherwise homebrew installation will fail. Install SwiftLint to the system with `$ brew install swiftlint`.
 - Install Microsoft Office
-- Install other Mac App Store applications (paid)
+- Install other Mac App Store applications
   - GarageBand, iMovie, Final Cut Pro, Logic Pro
   - Wipr, DaisyDisk, GrandPerspective, etc.
 

@@ -16,11 +16,16 @@ export BASH_SILENCE_DEPRECATION_WARNING=1;
 # Load plugins
 plugins=(git macos ruby zsh-syntax-highlighting zsh-autosuggestions)
 
-# User configuration
+# Load rbenv
+eval "$(rbenv init - zsh)"
 
-# Add aliases
-#
-# For a full list of active aliases, run `alias`.
+# Load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Create aliases
+alias reload="source ~/.zshrc"
 
 # Remap vim to use neovim
 alias vi="nvim"
@@ -30,19 +35,16 @@ alias vim="nvim"
 alias commit="git commit -m "
 alias branch="git branch -c "
 
-alias reload="source ~/.zshrc"
+# Source functions
+
+# ...
+
+# Task and note management
+source "$HOME/.dotfiles/bash/functions/task.sh"
 alias todo="todo.sh"
 alias todos="todo.sh list"
 alias todoa="todo.sh a"
 alias did="todo.sh -A do"
-
-# Load rbenv
-eval "$(rbenv init - zsh)"
-
-# Load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # BEGIN ANSIBLE MANAGED BLOCK
 # Configure Oh my zsh
@@ -52,17 +54,3 @@ ZSH_THEME="christianmitteldorf"
 # Always source oh-my-zsh as the last thing
 source $ZSH/oh-my-zsh.sh
 # END ANSIBLE MANAGED BLOCK
-
-# Source functions
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/christian/.dart-cli-completion/zsh-config.zsh ]] && . /Users/christian/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
-
-# Task and note management
-source "$HOME/dotfiles/bash/functions/task.sh"
-
-alias emptytrash="sudo rm -rf ~/.Trash"
-alias mail='open -a Mail'
-alias cal='open -a Calendar'
