@@ -2,6 +2,16 @@
 - name: Set up a new machine or update settings on current
   hosts: local
   gather_facts: true
+  tasks:
+    #- name: System details
+    #  debug:
+    #    msg: "{{ ansible_facts }}"
+
+    - name: "Prompt user to continue"
+      ansible.builtin.pause:
+        prompt: "Running installation for {{ ansible_facts['distribution'] }}. Press ENTER to continue, or Ctrl+C to cancel installation" # yamllint disable-line rule:line-length
+        echo: true
+      delegate_to: localhost
 
 # Install programs
 - name: Install and configure git
@@ -15,11 +25,11 @@
 
 - name: Install Brew packages
   ansible.builtin.import_playbook: install-homebrew-packages.yml
-  when: ansible_architecture == "darwin"
+  when: ansible_facts['distribution'] == "MacOSX"
 
 - name: Install Mac App Store apps
   ansible.builtin.import_playbook: install-mac-app-store-apps.yml
-  when: ansible_architecture == "darwin"
+  when: ansible_facts['distribution'] == "MacOSX"
 
 # Install resources
 - name: Install fonts
@@ -41,7 +51,7 @@
 # Configure macOS system preferences
 - name: Configure Finder
   ansible.builtin.import_playbook: configure-finder.yml
-  when: ansible_architecture == "darwin"
+  when: ansible_facts['distribution'] == "MacOSX"
 
 # Copy or link files
 - name: Symlink other dotfiles
