@@ -15,6 +15,7 @@ repos:
     name: Format JSON files
     description: Formats JSON files using `jq`
     args: [--autofix]
+    exclude: '^terminal/.*\.json$'
   - id: trailing-whitespace
 - repo: https://github.com/ansible/ansible-lint
   rev: v25.4.0
