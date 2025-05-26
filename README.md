@@ -95,6 +95,30 @@ If you have a need to use different name and/or e-mail addresses on a specifc re
 - Log in to Internet Accounts (e-mail, calendar, contacts, etc.) with Google, Microsoft, etc.
 - Authorize Music app to use account (required for Apple Music sync)
 
+### Configure application preferences
+
+- Import Dark terminal theme in Terminal to use as default
+  1. Open Terminal → Settings → Profiles
+  2. Click the … icon and choose Import…
+  3. Navigate to .dotfiles directory, inside the Terminal folder, to select the `Dark.terminal` file
+  4. Click the new Dark theme when it appears in the list
+  5. Click the Default button to use this theme as the default
+  6. Open a new Terminal window to use the new theme
+- Configure Safari
+  1. Set up desired Profiles
+  2. Configure Preferences
+  3. Log in and configure Extensions
+- Configure Xcode preferences and install Simulator versions
+  1. Open Xcode to import and select your preferred theme
+  2. Login to GitHub and Apple Accounts in Xcode
+  3. Enable Check spelling in Xcode, going to Edit
+- Log in to various account in Xcode, vscode to synchrise other settings/extensions
+- Log in to applications, and activate Licenses
+  - Slack, Microsoft Teams, Little Snitch, VMWare Fusion, CrossOver, Tower Git, Postman, Figma, etc.
+- Log in to and configure Visual Studio Code
+  1. Sign In with GitHub account to Backup and Sync Settings and Extensions
+  2. Sign In with GitHub account to clone repositories, manage Pull Requests, manage GitHub Actions and GitHub Copilot access (might have to do this a few times for each service)
+
 ## Troubleshooting
 
 On a new machine, some commands may fail or not work as expected due to certain preconditions (or lack of handling in the scripts). Here is a collection of problems I've run into in the past and how to fix them.

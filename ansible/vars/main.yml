@@ -39,9 +39,17 @@ homebrew_user_packages:
 # application in `/Applications`
 homebrew_cask_apps:
   - chatgpt
+  #- crossover
   - devutils
+  #- discord
+  #- docker
   - figma
+  #- google-chrome
+  #- google-drive
+  #- little-snitch
   - keka
+  - microsoft-auto-update
+  - microsoft-edge
   - microsoft-teams
   - miro
   - postman
@@ -50,7 +58,13 @@ homebrew_cask_apps:
   - stats
   - tower
   - visual-studio-code
-# Mac apps via Mac App Store (brew mas)
+  #- vlc
+  #- windows-app
+
+# Mac apps via App Store (brew mas)
+# This assumes you have already purchased (or get as free) the apps with your Apple ID.
+# You will be prompted to log in to App Store with your Apple ID if not already.
+# If you have not purchased the app, this will fail.
 homebrew_mas_apps:
   - 1569813296 # 1Password for Safari Extension
   - 1440147259 # AdGuard for Safari Extension
@@ -58,8 +72,14 @@ homebrew_mas_apps:
   - 1462114288 # Grammarly Safari Extension
   - 775737590  # iA Writer
   - 409183694  # Keynote
-  - 1592917505 # Noir - Dark Mode for Safari Extension
+  - 441258766  # Magnet
+  - 6738511300 # Microsoft Copilot
+  #- 823766827  # Microsoft OneDrive
+  #- 784801555  # Microsoft OneNote
+  #- 1592917505 # Noir - Dark Mode for Safari Extension
   - 409203825  # Numbers
   - 409201541  # Pages
   - 899247664  # TestFlight
+  #- 904280696  # Things 3
+  #- 1607635845 # Velja
   # Xcode would normally be here, but I prefer to install Xcode via xcodes
