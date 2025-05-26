@@ -35,7 +35,7 @@ rules:
     indent-sequences: consistent
 
   line-length:
-    max: 130
+    max: 100
 
   octal-values:
     forbid-explicit-octal: true
