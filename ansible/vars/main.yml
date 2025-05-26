@@ -1,4 +1,55 @@
+---
+# Homebrew packages used on any machine
+homebrew_global_packages:
+  - actionlint
+  - ansible
+  - ansible-lint
+  - asitop
+  - htop
+  - mas
+  - neovim
+  #- pyenv
+  #- python3
+  - rbenv
+  - swiftformat
+  #- swiftlint # disabled by default, requires full Xcode installation
+  - tmux
+  - vim
+  - yamllint
+  #- yt-dlp
+  - zsh
 
+# Homebrew packages specific to the machine and role
+# Some packages are project-specific and should be installed on a per-machine basis
+# Add or remove packages from this list as needed an run install.sh
+homebrew_user_packages:
+  #- docker
+  - dotnet@8
+  #- nvm
+  #- node
+  #- npm
+  #- publish
+  #- todo-txt
+  #- vapor
+  - xcodes
+
+# Mac apps via cask
+# Some apps are not used on all machines. Uncomment or add the ones you need.
+# Cask apps will be installed with --force, overwriting any existing
+# application in `/Applications`
+homebrew_cask_apps:
+  - chatgpt
+  - devutils
+  - figma
+  - keka
+  - microsoft-teams
+  - miro
+  - postman
+  - proxyman
+  - slack
+  - stats
+  - tower
+  - visual-studio-code
 # Mac apps via Mac App Store (brew mas)
 homebrew_mas_apps:
   - 1569813296 # 1Password for Safari Extension

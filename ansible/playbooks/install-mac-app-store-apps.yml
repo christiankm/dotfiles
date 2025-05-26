@@ -1,6 +1,8 @@
 ---
 - name: Install Mac App Store apps using Homebrew mas
   hosts: local
+  vars_files:
+    - ../vars/main.yml
   tasks:
     - name: Install mas package
       community.general.homebrew:

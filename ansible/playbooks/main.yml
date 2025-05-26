@@ -51,7 +51,6 @@
   hosts: local
   gather_facts: false
   tasks:
-
     - name: "Prompt user to reboot"
       ansible.builtin.pause:
         prompt: "Setup complete. Reboot is required to apply all changes. Reboot now? (Y/n)"

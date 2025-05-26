@@ -12,7 +12,7 @@
       register: oh_my_zsh_stat
 
     - name: Install Oh my zsh
-      ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # yamllint disable-line rule:line-length
       when: not oh_my_zsh_stat.stat.exists
       changed_when: oh_my_zsh_stat.stat.exists == false
 

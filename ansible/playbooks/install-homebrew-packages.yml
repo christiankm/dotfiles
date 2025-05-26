@@ -2,65 +2,28 @@
 - name: Install packages using Homebrew
   hosts: local
   vars_files:
-    - vars/main.yml
+    - ../vars/main.yml
   tasks:
     - name: Ensure Homebrew is installed and updated
       community.general.homebrew:
         state: present
         update_homebrew: true
 
-    # Install Homebrew packages used on any machine
-    - name: Install standard Homebrew packages
+    - name: Install global Homebrew packages
       community.general.homebrew:
         name: "{{ item }}"
         state: present
-      with_items:
-        - actionlint
-        - ansible
-        - ansible-lint
-        - asitop
-        - htop
-        - vim
-        - neovim
-        - rbenv
-        - swiftformat
-        - swiftlint
-        - tmux
-        - yamllint
-        - zsh
+      with_items: "{{ homebrew_global_packages }}"
 
-    # Install Homebrew packages specific to the machine and role
-    # Some packages are project-specific and should be installed on a per-machine basis
-    # Add or remove packages from this list as needed
     - name: Install machine-specific Homebrew packages
       community.general.homebrew:
         name: "{{ item }}"
         state: present
-      with_items:
-        - dotnet@8
-        # - docker
-        # - dotnet@8
-        #- nvm
-        # - node
-        #- npm
-        # - publish
-        # - todo-txt
-        # - vapor
+      with_items: "{{ homebrew_user_packages }}"
 
-    # Install Mac apps
     - name: Install Homebrew cask apps
       community.general.homebrew_cask:
         name: "{{ item }}"
         state: present
-      with_items:
-        # Note: Some apps are not used on all machines. Uncomment or add the ones you need.
-        #- 1password
-        #- discord
-        #- figma
-        #- google-chrome
-        #- google-drive
-        - microsoft-edge
-        - microsoft-teams
-        - slack
-        - visual-studio-code
-# TODO:
+        install_options: "force"
+      with_items: "{{ homebrew_cask_apps }}"

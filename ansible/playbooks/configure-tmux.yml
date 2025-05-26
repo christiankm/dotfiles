@@ -14,8 +14,8 @@
       ansible.builtin.git:
         repo: "https://github.com/tmux-plugins/tpm"
         dest: "$HOME/.tmux/plugins/tpm"
+        version: master
         update: no
-      changed_when: true
 
     - name: Link .tmux.conf to Home
       ansible.builtin.file:
