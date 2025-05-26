@@ -6,7 +6,7 @@
       ansible.builtin.file:
         path: "$HOME/.tmux/plugins/tpm"
         state: directory
-        
+
     - name: Install tmux package manager
       ansible.builtin.git:
         repo: "https://github.com/tmux-plugins/tpm"
