@@ -40,4 +40,3 @@
         force: false
       ignore_errors: true
       when: result.stat.exists
-

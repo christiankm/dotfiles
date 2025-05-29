@@ -10,7 +10,7 @@
 # Print all domains present on system. Useful for finding new preferences
 #  to explore.
 # Making the output of domains a little bit cleaner
-# If you (like me) are not a big fan of the comma separated output of 
+# If you (like me) are not a big fan of the comma separated output of
 # defaults domains, you can pipe it through a translate command to make the
 # output much easier to read.
 # defaults domains | tr ',' '\n'
@@ -19,14 +19,14 @@
 # defaults read-type com.apple.Notes NotesContinuousSpellCheckingEnabled
 # defaults write com.apple.Notes NotesContinuousSpellCheckingEnabled -bool true
 #
-# In order to find out the option name, we do have to go in the TextEdit UI and 
-# edit the preference manually. Use ⌘+, then in New Document check the box named 
+# In order to find out the option name, we do have to go in the TextEdit UI and
+# edit the preference manually. Use ⌘+, then in New Document check the box named
 # Check grammar with spelling. Close the preference pane.
-# Now, if you run again the defaults command above, your new output 
+# Now, if you run again the defaults command above, your new output
 # should look like as below and include the CheckGrammarWithSpelling key.
 # $ defaults read com.apple.TextEdit
 # {
-#     ...  
+#     ...
 #     CheckGrammarWithSpelling = 1;
 #     ...
 # }

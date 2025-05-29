@@ -8,4 +8,3 @@ git pull
 
 # Run Ansible install playbooks
 ./install.sh
-

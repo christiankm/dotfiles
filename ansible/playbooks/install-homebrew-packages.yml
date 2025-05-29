@@ -38,4 +38,3 @@
 #        dest: ~/.gitconfig
 #        state: link
 #        force: true
-
