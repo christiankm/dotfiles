@@ -23,9 +23,11 @@ homebrew_global_packages:
 # Some packages are project-specific and should be installed on a per-machine basis
 # Add or remove packages from this list as needed an run install.sh
 homebrew_user_packages:
+  - aria2
   #- docker
   - dotnet@8
   #- nvm
+  - dotnet@9
   #- node
   #- npm
   #- publish
@@ -38,7 +40,9 @@ homebrew_user_packages:
 # Cask apps will be installed with --force, overwriting any existing
 # application in `/Applications`
 homebrew_cask_apps:
+  - bezel
   - chatgpt
+  - coteditor
   #- crossover
   - devutils
   #- discord
@@ -46,16 +50,19 @@ homebrew_cask_apps:
   - figma
   #- google-chrome
   #- google-drive
-  #- little-snitch
+  #- little-snitch # install manually, requires license to older version
   - keka
+  - markedit
   - microsoft-auto-update
   - microsoft-edge
   - microsoft-teams
   - miro
   - postman
   - proxyman
+  - rocket
   - slack
   - stats
+  - time-out
   - tower
   - visual-studio-code
   #- vlc
@@ -70,6 +77,7 @@ homebrew_mas_apps:
   - 1440147259 # AdGuard for Safari Extension
   - 640199958  # Apple Developer
   - 1462114288 # Grammarly Safari Extension
+  - 1452453066 # Hidden Bar
   - 775737590  # iA Writer
   - 409183694  # Keynote
   - 441258766  # Magnet
@@ -81,5 +89,4 @@ homebrew_mas_apps:
   - 409201541  # Pages
   - 899247664  # TestFlight
   #- 904280696  # Things 3
-  #- 1607635845 # Velja
-  # Xcode would normally be here, but I prefer to install Xcode via xcodes
+  - 1607635845 # Velja
