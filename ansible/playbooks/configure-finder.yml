@@ -6,3 +6,4 @@
       ansible.builtin.file:
         path: "$HOME/Developer"
         state: directory
+        mode: "0755"

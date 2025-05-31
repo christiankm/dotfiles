@@ -1,0 +1,26 @@
+---
+- name: Copy files
+  hosts: local
+  vars:
+    scripts_dir: "{{ playbook_dir }}/../../scripts/"
+  tasks:
+    - name: Create scripts directory
+      ansible.builtin.file:
+        dest: "$HOME/scripts"
+        state: directory
+        mode: "0755"
+
+    - name: Find all scripts
+      ansible.builtin.find:
+        paths: "{{ scripts_dir }}"
+        recurse: true
+        file_type: file
+      register: scripts_to_link
+
+    - name: Symlink scripts
+      ansible.builtin.file:
+        src: "{{ item.path }}"
+        dest: "$HOME/scripts/{{ item.path | basename }}"
+        state: link
+      loop: "{{ scripts_to_link.files }}"
+      when: scripts_to_link.matched > 0

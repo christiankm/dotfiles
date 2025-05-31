@@ -1,13 +1,17 @@
 ---
-- name: Install fonts
+- name: Install fonts via Homebrew
   hosts: local
   tasks:
-    - name: Install Fira Code font
-      community.general.homebrew_cask:
-        name: homebrew/cask-fonts/font-fira-code
+    - name: Ensure Homebrew is installed and updated
+      community.general.homebrew:
         state: present
+        update_homebrew: true
 
-    - name: Install Hack Nerd font
+    - name: Install fonts
       community.general.homebrew_cask:
-        name: homebrew/cask-fonts/font-hack-nerd-font
+        name: "{{ item }}"
         state: present
+      with_items:
+        - homebrew/cask-fonts/font-fira-code
+        - homebrew/cask-fonts/font-hack-nerd-font
+      failed_when: false
