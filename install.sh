@@ -1,20 +1,10 @@
 #!/bin/sh
 
-# This script will install all required software, packages and tools on a new machine, to my liking.
-# It will configure them as needed, and setup all program configurations and settings.
-# This script can be run on any machine, on any OS, and should act accordingly.
-
 # Stop on first error
 set -e
 
-# Ask for the administrator password upfront
-sudo -v -u $(whoami)
-
-success() {
-  printf "\r\033[2K[\033[00;32mOK\033[0m] %s\n" "$1"
-}
-
-DOTFILES=$(pwd)
+# Ask for administrator password
+sudo --askpass --bell --validate -u $(whoami) --prompt 'Enter sudo password for $(whoami): '
 
 # Detect OS
 printf "Detected operating system: "
@@ -30,31 +20,38 @@ esac
 # Set environment variables
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   HOME=/Users/$(whoami)
+  DOTFILES=$(pwd)
 fi
 
-# Install package managers
+# Install Ansible prerequisites
 
-# Install Homebrew, if macOS
 if [[ "$OSTYPE" =~ ^darwin ]]; then
+  # Install Homebrew, if macOS
   if [[ $(command -v brew) == "" ]]; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Add Homebrew to PATH
-    if [[ $(uname -m) == 'arm64' ]]; then
-      # for Apple Sillicon Mac
-      (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    else
-      # for Intel Mac
-      (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
-      eval "$(/usr/local/bin/brew shellenv)"
-    fi
-
-    source $HOME/.zprofile
-
-    success "Homebrew installed to $(which brew)"
+    echo "Homebrew installed to $(which brew)"
   fi
+
+  # Add Homebrew to PATH if not already present
+  if [[ $(uname -m) == 'arm64' ]]; then
+    # Apple Sillicon Mac
+    if ! grep -q '/opt/homebrew/bin' $HOME/.zprofile; then
+      echo "Adding Homebrew to PATH..."
+      (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+    fi
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    # Intel Mac
+    if ! grep -q '/opt/homebrew/bin' $HOME/.zprofile; then
+      echo "Adding Homebrew to PATH..."
+      (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
+    fi
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+
+  source $HOME/.zprofile
 
   # Opt-out of Homebrew analytics
   echo "Disabling Homebrew analytics..."
@@ -63,46 +60,28 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 
   # Install sshpass
   if [[ $(command -v sshpass) == "" ]]; then
+    echo "Installing sshpass..."
     brew tap esolitos/ipa
     brew install esolitos/ipa/sshpass
   fi
 
-  # Install Ansible
+  # Install Ansible and required collections
   if [[ $(command -v ansible) == "" ]]; then
+    echo "Installing Ansible..."
     brew install ansible
+
+    export ANSIBLE_CONFIG=./ansible/ansible.cfg
+    ansible-galaxy collection install community.general --force
   fi
 fi
 
 # Run Ansible
-export ANSIBLE_CONFIG=./ansible/ansible.cfg
-ansible-playbook \
-  ./ansible/playbooks/main.yml \
-  -i ./ansible/inventory/hosts.ini
-
-# Install and set to use zsh if not already default
-if [[ $(command -v zsh) == "" ]]; then
-  echo "Installing zsh..."
-  brew install zsh
-fi
-
-echo "Setting zsh as default shell..."
-shell_path="$(command -v zsh)"
-if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
-  echo "Adding '$shell_path' to /etc/shells"
-  sudo sh -c "echo $shell_path >> /etc/shells"
-fi
-sudo chsh -s "$shell_path" "$USER"
-
-# Cleanup
-rm -rf $HOME/.zcompdump*
-rm -rf $HOME/.zshrc.pre-oh-my-*
-
-# Reload new settings
-/bin/zsh -c "source $HOME/.zprofile"
-/bin/zsh -c "source $HOME/.zshrc"
-
-success "Done. You will need to source your .zshrc to finish, or open a new Terminal. Please reboot computer to make all changes take effect"
-
-if command -v terminal-notifier 1>/dev/null 2>&1; then
-  terminal-notifier -title "dotfiles install complete" -message "Successfully set up environment."
-fi
+ANSIBLE_USER=$(whoami)
+echo "Running Ansible playbooks as $ANSIBLE_USER..."
+sudo -u "$ANSIBLE_USER" ansible-playbook \
+  ansible/playbooks/main.yml \
+  -i ./ansible/inventory/hosts.ini \
+  --extra-vars "\
+    ansible_user=$ANSIBLE_USER \
+    ansible_become_user=$ANSIBLE_USER \
+    ansible_become_pass=$(sudo -v -u "$ANSIBLE_USER")"

@@ -2,12 +2,13 @@
 - name: Configure SSH
   hosts: local
   vars:
-    - ssh_dir: "{{ playbook_dir }}/../../ssh"
+    ssh_dir: "{{ playbook_dir }}/../../ssh"
   tasks:
     - name: Create .ssh folder
       ansible.builtin.file:
         path: "$HOME/.ssh/"
         state: directory
+        mode: "0755"
 
     - name: Symlink SSH config
       ansible.builtin.file:
@@ -17,18 +18,18 @@
         force: true
 
     - name: Check if SSH keys exist in dotfiles-dir
-      stat:
+      ansible.builtin.stat:
         path: "{{ ssh_dir }}/id_ed25519"
       register: result
 
     - name: Symlink SSH public key
       ansible.builtin.file:
-        src: "{{ playbook_dir }}/../../ssh/id_ed25519.pub"
+        src: "{{ ssh_dir }}/id_ed25519.pub"
         dest: "$HOME/.ssh/id_ed25519.pub"
         state: link
-        mode: 0600
+        mode: "0600"
         force: false
-      ignore_errors: true
+      failed_when: false
       when: result.stat.exists
 
     - name: Symlink SSH private key
@@ -36,7 +37,7 @@
         src: "{{ ssh_dir }}/id_ed25519"
         dest: "$HOME/.ssh/id_ed25519"
         state: link
-        mode: 0600
+        mode: "0600"
         force: false
-      ignore_errors: true
+      failed_when: false
       when: result.stat.exists

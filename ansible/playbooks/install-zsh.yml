@@ -2,8 +2,8 @@
 - name: Install zsh from Homebrew
   hosts: local
   vars:
-    - user_home: "$HOME"
-    - zsh_dir: "{{ playbook_dir }}/../../zsh"
+    user_home: "$HOME"
+    zsh_dir: "{{ playbook_dir }}/../../zsh"
   tasks:
     - name: Install zsh
       community.general.homebrew:
@@ -11,11 +11,12 @@
         state: present
 
     - name: Check for .zshrc
-      stat: path="{{ user_home }}/.zshrc"
+      ansible.builtin.stat:
+        path: "{{ user_home }}/.zshrc"
       register: zshrc_stat
 
     - name: Back up .zshrc
-      command: mv ~/.zshrc ~/.zshrc.bak
+      ansible.builtin.command: mv ~/.zshrc ~/.zshrc.bak
       args:
         creates: "{{ user_home }}/.zshrc.bak"
       when: zshrc_stat.stat.exists

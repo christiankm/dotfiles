@@ -1,11 +1,14 @@
 #!/bin/sh
 
-# Update all Homebrew packages
+# Install system updates and installables from the Mac App Store
+sudo softwareupdate --all --install --verbose
+
+# Upgrade all Homebrew packages
 brew update
 brew upgrade
-brew bundle -v
+brew upgrade --cask --greedy
+mas upgrade
+
+# Clean up Homebrew
 brew cleanup
 brew doctor -v
-
-# Install system updates and installables from the Mac App Store
-sudo softwareupdate -i -a --verbose

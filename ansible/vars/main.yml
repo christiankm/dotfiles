@@ -1,0 +1,92 @@
+---
+# Homebrew packages used on any machine
+homebrew_global_packages:
+  - actionlint
+  - ansible
+  - ansible-lint
+  - asitop
+  - htop
+  - mas
+  - neovim
+  #- pyenv
+  #- python3
+  - rbenv
+  - swiftformat
+  #- swiftlint # disabled by default, requires full Xcode installation
+  - tmux
+  - vim
+  - yamllint
+  #- yt-dlp
+  - zsh
+
+# Homebrew packages specific to the machine and role
+# Some packages are project-specific and should be installed on a per-machine basis
+# Add or remove packages from this list as needed an run install.sh
+homebrew_user_packages:
+  - aria2
+  #- docker
+  - dotnet@8
+  #- nvm
+  - dotnet@9
+  #- node
+  #- npm
+  #- publish
+  #- todo-txt
+  #- vapor
+  - xcodes
+
+# Mac apps via cask
+# Some apps are not used on all machines. Uncomment or add the ones you need.
+# Cask apps will be installed with --force, overwriting any existing
+# application in `/Applications`
+homebrew_cask_apps:
+  - bezel
+  - chatgpt
+  - coteditor
+  #- crossover
+  - devutils
+  #- discord
+  #- docker
+  - figma
+  #- google-chrome
+  #- google-drive
+  #- little-snitch # install manually, requires license to older version
+  - keka
+  - markedit
+  - microsoft-auto-update
+  - microsoft-edge
+  - microsoft-teams
+  - miro
+  - postman
+  - proxyman
+  - rocket
+  - slack
+  - stats
+  - time-out
+  - tower
+  - visual-studio-code
+  #- vlc
+  #- windows-app
+
+# Mac apps via App Store (brew mas)
+# This assumes you have already purchased (or get as free) the apps with your Apple ID.
+# You will be prompted to log in to App Store with your Apple ID if not already.
+# If you have not purchased the app, this will fail.
+homebrew_mas_apps:
+  - 1569813296 # 1Password for Safari Extension
+  - 1440147259 # AdGuard for Safari Extension
+  - 640199958  # Apple Developer
+  - 1462114288 # Grammarly Safari Extension
+  - 1452453066 # Hidden Bar
+  - 775737590  # iA Writer
+  - 409183694  # Keynote
+  - 441258766  # Magnet
+  - 6738511300 # Microsoft Copilot
+  #- 823766827  # Microsoft OneDrive
+  #- 784801555  # Microsoft OneNote
+  #- 1592917505 # Noir - Dark Mode for Safari Extension
+  - 409203825  # Numbers
+  - 409201541  # Pages
+  - 899247664  # TestFlight
+  #- 904280696  # Things 3
+  - 1607635845 # Velja

@@ -2,12 +2,20 @@
 - name: Set up a new machine or update settings on current
   hosts: local
   gather_facts: true
+  tasks:
+    #- name: System details
+    #  debug:
+    #    msg: "{{ ansible_facts }}"
 
+    - name: "Prompt user to continue"
+      ansible.builtin.pause:
+        prompt: "Running installation for {{ ansible_facts['distribution'] }}. Press ENTER to continue, or Ctrl+C to cancel installation" # yamllint disable-line rule:line-length
+        echo: true
+      delegate_to: localhost
+
+# Install programs
 - name: Install and configure git
   ansible.builtin.import_playbook: install-git.yml
-
-- name: Install fonts
-  ansible.builtin.import_playbook: install-fonts.yml
 
 - name: Install zsh
   ansible.builtin.import_playbook: install-zsh.yml
@@ -17,12 +25,17 @@
 
 - name: Install Brew packages
   ansible.builtin.import_playbook: install-homebrew-packages.yml
-  when: ansible_architecture == "darwin"
+  when: ansible_facts['distribution'] == "MacOSX"
 
 - name: Install Mac App Store apps
   ansible.builtin.import_playbook: install-mac-app-store-apps.yml
-  when: ansible_architecture == "darwin"
+  when: ansible_facts['distribution'] == "MacOSX"
 
+# Install resources
+- name: Install fonts
+  ansible.builtin.import_playbook: install-fonts.yml
+
+# Configure programs
 - name: Configure and symlink SSH config and keys
   ansible.builtin.import_playbook: configure-ssh.yml
 
@@ -35,8 +48,37 @@
 - name: Configure todo.txt
   ansible.builtin.import_playbook: configure-todo.yml
 
+# Configure macOS system preferences
 - name: Configure Finder
   ansible.builtin.import_playbook: configure-finder.yml
+  when: ansible_facts['distribution'] == "MacOSX"
+
+# Copy or link files
+- name: Copy programs, scripts and files
+  ansible.builtin.import_playbook: copy-files.yml
 
 - name: Symlink other dotfiles
   ansible.builtin.import_playbook: symlink-dotfiles.yml
+
+- name: Clean up and reboot
+  hosts: local
+  gather_facts: false
+  tasks:
+    - name: "Prompt user to reboot"
+      ansible.builtin.pause:
+        prompt: "Setup complete. Reboot is required to apply all changes. Reboot now? (Y/n)"
+        echo: true
+      register: confirm_reboot
+      delegate_to: localhost
+
+    - name: "Show rebooting message"
+      ansible.builtin.debug:
+        msg: "Rebooting {{ inventory_hostname }}"
+      when: confirm_reboot.user_input | lower == 'y'
+
+    - name: Reboot machine and send a message
+      ansible.builtin.command:
+        cmd: "sudo shutdown -r now"
+      become: true
+      when: confirm_reboot.user_input | lower == 'y'
+      changed_when: true
