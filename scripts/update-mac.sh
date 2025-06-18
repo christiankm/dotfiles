@@ -2,8 +2,7 @@
 
 # Update all Homebrew packages
 brew update
-brew upgrade
-brew bundle -v
+brew upgrade --greedy
 brew cleanup
 brew doctor -v
 
