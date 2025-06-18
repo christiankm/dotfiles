@@ -5,7 +5,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Environment
 export LANG=en_US.UTF-8
-export EDITOR='nvim'
+#export EDITOR='nvim'
+export EDITOR='vim'
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
