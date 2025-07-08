@@ -21,7 +21,7 @@ repos:
   rev: v25.6.1
   hooks:
   - id: ansible-lint
-    name: Line Ansible files
+    name: Lint Ansible files
     description: Runs ansible-lint to check Ansible playbooks and roles
 - repo: https://github.com/rhysd/actionlint
   rev: v1.7.7
