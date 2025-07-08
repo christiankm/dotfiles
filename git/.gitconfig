@@ -36,4 +36,4 @@
     prune = true
 
 [commit]
-	template = ~/.dotfiles/git/commit-template 
+	template = ~/.dotfiles/git/commit-template
