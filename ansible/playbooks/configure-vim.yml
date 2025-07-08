@@ -7,6 +7,18 @@
     - name: Link .vimrc to Home
       ansible.builtin.file:
         src: "{{ vim_dir }}/.vimrc"
-        dest: ~/.vimrc
+        dest: "$HOME/.vimrc"
         state: link
+        force: true
+
+    - name: Create vim pack directory
+      ansible.builtin.file:
+        path: "$HOME/.vim/pack/default/start"
+        state: directory
+        mode: '0755'
+
+    - name: Clone gruvbox theme
+      ansible.builtin.git:
+        repo: https://github.com/morhetz/gruvbox.git
+        dest: "$HOME/.vim/pack/default/start/gruvbox"
         force: true

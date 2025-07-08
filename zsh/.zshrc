@@ -37,13 +37,12 @@ export NVM_DIR="$HOME/.nvm"
 # Create aliases
 alias reload="source ~/.zshrc"
 
-# Remap vim to use neovim
-alias vi="nvim"
-alias vim="nvim"
+# Configure vim/neovim
+source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 
-# Git aliases
-alias commit="git commit -m "
-alias branch="git branch -c "
+# Remap vim to use neovim
+#alias vi="nvim"
+#alias vim="nvim"
 
 # Source functions
 
