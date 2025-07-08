@@ -42,8 +42,6 @@ fi
 # Configure vim/neovim
 source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 
-# Configure vim/neovim
-source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 
 # Remap vim to use neovim
 #alias vi="nvim"
