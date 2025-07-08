@@ -9,11 +9,12 @@ fi
 
 # Update $PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
 
 # Environment
 export LANG=en_US.UTF-8
-#export EDITOR='nvim'
 export EDITOR='vim'
+export HOMEBREW_NO_ENV_HINTS=1
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
@@ -27,35 +28,57 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git macos ruby zsh-syntax-highlighting zsh-autosuggestions)
 
 # Load rbenv
-eval "$(rbenv init - zsh)"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init - zsh)"
+fi
 
 # Load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+if which nvm > /dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
 
-# Create aliases
-alias reload="source ~/.zshrc"
+# Configure vim/neovim
+source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
+
 
 # Remap vim to use neovim
-alias vi="nvim"
-alias vim="nvim"
+#alias vi="nvim"
+#alias vim="nvim"
 
-# Git aliases
-alias commit="git commit -m "
-alias branch="git branch -c "
+# Create aliases
+
+# System aliases
+alias reload="source ~/.zshrc"
+alias see="cat"
+alias del="rm"
+
+# Shell aliases
+alias ls="ls -l"
+
+# Git and GitHub aliases
+alias g="git"
+alias gst="git status"
+alias gcm="git commit"
+alias commit="git commit"
+alias gbr="git branch -c "
+alias push="git push"
+alias pull="git pull --rebase"
+alias glg="git log --all --decorate --graph"
+
+alias prs="gh pr list"
 
 # Source functions
 
-# ...
-
 # Task and note management
 source "$HOME/.dotfiles/bash/functions/task.sh"
+
 alias todo="todo.sh"
 alias todos="todo.sh list"
-alias todoa="todo.sh a"
-alias did="todo.sh -A do"
-
+alias t="todo"
+alias did="todo.sh do"
+alias idea="todo.sh add"
 
 # Always source oh-my-zsh as the last thing
 source $ZSH/oh-my-zsh.sh
