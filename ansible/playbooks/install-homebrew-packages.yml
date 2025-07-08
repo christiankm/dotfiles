@@ -13,17 +13,17 @@
       community.general.homebrew:
         name: "{{ item }}"
         state: present
-      with_items: "{{ homebrew_global_packages }}"
+      loop: "{{ homebrew_global_packages }}"
 
     - name: Install machine-specific Homebrew packages
       community.general.homebrew:
         name: "{{ item }}"
         state: present
-      with_items: "{{ homebrew_user_packages }}"
+      loop: "{{ homebrew_user_packages }}"
 
     - name: Install Homebrew cask apps
       community.general.homebrew_cask:
         name: "{{ item }}"
         state: present
         install_options: "force"
-      with_items: "{{ homebrew_cask_apps }}"
+      loop: "{{ homebrew_cask_apps }}"
