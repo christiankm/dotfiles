@@ -1,0 +1,27 @@
+---
+- name: Install and configure powerlevel10k theme
+  hosts: localhost
+  connection: local
+  vars:
+    zsh_dir: "{{ playbook_dir }}/../../zsh"
+    ohmyzsh_dir: "$HOME/.oh-my-zsh"
+  tasks:
+    - name: Check if powerlevel10k theme exists
+      ansible.builtin.stat:
+        path: "{{ ohmyzsh_dir }}/custom/themes/powerlevel10k"
+      register: powerlevel10k_stat
+
+    - name: Install powerlevel10k theme
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ ohmyzsh_dir }}/custom/themes/powerlevel10k"
+        depth: 1
+        version: HEAD
+      when: not powerlevel10k_stat.stat.exists
+
+    - name: Symlink powerlevel10k config
+      ansible.builtin.file:
+        src: "{{ zsh_dir }}/.p10k.zsh"
+        dest: "$HOME/.p10k.zsh"
+        state: link
+        force: true

@@ -23,6 +23,9 @@
 - name: Install oh-my-zsh
   ansible.builtin.import_playbook: install-oh-my-zsh.yml
 
+- name: Install powerlevel10k theme
+  ansible.builtin.import_playbook: install-powerlevel10k.yml
+
 - name: Install Brew packages
   ansible.builtin.import_playbook: install-homebrew-packages.yml
   when: ansible_facts['distribution'] == "MacOSX"

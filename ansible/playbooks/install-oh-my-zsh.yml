@@ -60,16 +60,3 @@
         state: link
         follow: false
         force: true
-
-    - name: Configure Oh my zsh
-      ansible.builtin.blockinfile:
-        path: "{{ zsh_dir }}/.zshrc"
-        prepend_newline: true
-        block: |
-          # Configure Oh my zsh
-          export ZSH="$HOME/.oh-my-zsh"
-          ZSH_THEME="christianmitteldorf"
-
-          # Always source oh-my-zsh as the last thing
-          source $ZSH/oh-my-zsh.sh
-        state: present
