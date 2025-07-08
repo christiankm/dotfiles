@@ -9,7 +9,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
-	ignorecase = false
+    ignorecase = false
 
 [color "status"]
     added = yellow
@@ -20,7 +20,9 @@
 [alias]
     b = branch
     co = checkout
-    cm = commit --message
+    sw = switch
+    c = commit
+    cn = commit --no-verify
     s = status
     a = add
 
@@ -32,3 +34,6 @@
 
 [fetch]
     prune = true
+
+[commit]
+	template = ~/.dotfiles/git/commit-template 
