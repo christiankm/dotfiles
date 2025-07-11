@@ -27,8 +27,10 @@
     a = add
     pushnew = push -u origin HEAD
 
-[push]
+[branch]
     autosetupmerge = true
+
+[push]
     default = current
 
 [pull]
