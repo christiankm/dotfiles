@@ -30,15 +30,8 @@ endif
 " Color scheme
 colorscheme gruvbox
 
-" Hide intro menu
-"set shortmess=a
-"set shortmess+=I
-
 " Enable file type detection
-"filetype on
-
-" Show filetype
-"set filetype
+filetype on
 
 " Highlight current line
 set cursorline
@@ -52,21 +45,24 @@ set softtabstop=4
 set expandtab
 
 " Disable line wrap
-"set nowrap
-set wrap
+set nowrap
 
 " Avoid wrap in the middle of words
 set linebreak
 set nolist
 
-" Status Bar
-set ruler
+" Show Status Bar
+set laststatus=2
+set statusline=%f\ %m%r%w\ %=\ [%{&filetype}]\ [%l/%L,%c]\ %p%%
 
-" Show character column limit
+" Show vertical guide ruler
 set colorcolumn=80
 
 " Disable hard wrapping
-set textwidth=0
+set textwidth=80
+
+" Auto-wrap while typing
+ set formatoptions+=t
 
 " Set cursor control keys
 set whichwrap+=<,>,h,l
