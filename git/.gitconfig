@@ -25,9 +25,13 @@
     cn = commit --no-verify
     s = status
     a = add
+    pushnew = push -u origin HEAD
+
+[branch]
+    autosetupmerge = true
 
 [push]
-    autoSetupRemote = true
+    default = current
 
 [pull]
     rebase = true
