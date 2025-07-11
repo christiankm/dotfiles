@@ -25,10 +25,11 @@
     cn = commit --no-verify
     s = status
     a = add
+    pushnew = push -u origin HEAD
 
 [push]
     autosetupmerge = true
-    default = upstream
+    default = current
 
 [pull]
     rebase = true
