@@ -27,7 +27,8 @@
     a = add
 
 [push]
-    autoSetupRemote = true
+    autosetupmerge = true
+    default = upstream
 
 [pull]
     rebase = true
