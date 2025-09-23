@@ -46,12 +46,11 @@ fi
 # Configure vim/neovim
 source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 
-
 # Remap vim to use neovim
 #alias vi="nvim"
 #alias vim="nvim"
 
-# Create aliases
+## Aliases
 
 # System aliases
 alias reload="source ~/.zshrc"
@@ -61,7 +60,7 @@ alias del="rm"
 # Shell aliases
 alias ls="ls -l"
 
-# Git and GitHub aliases
+# Git aliases
 alias g="git"
 alias gst="git status"
 alias gcm="git commit"
@@ -71,7 +70,11 @@ alias push="git push"
 alias pull="git pull --rebase"
 alias glg="git log --all --decorate --graph"
 
+# GitHub aliases
 alias prs="gh pr list"
+
+# iOS/Swift Development aliases
+alias fl="bundle exec fastlane"
 
 # Source functions
 
