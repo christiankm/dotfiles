@@ -16,6 +16,10 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 export HOMEBREW_NO_ENV_HINTS=1
 
+# Source any secret environment variables such as API keys, and other things
+# which should never be committed to version control
+source "$HOME/.env.secret.sh"
+
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
