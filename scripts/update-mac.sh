@@ -3,11 +3,13 @@
 # Install system updates and installables from the Mac App Store
 sudo softwareupdate --all --install --verbose
 
-# Upgrade all Homebrew packages
+# Install Mac App Store updates
+mas upgrade
+
+# Upgrade Homebrew packages
 brew update
 brew upgrade
-brew upgrade --cask --greedy
-mas upgrade
+brew upgrade --cask
 
 # Clean up Homebrew
 brew cleanup
