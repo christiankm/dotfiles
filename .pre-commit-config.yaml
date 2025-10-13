@@ -18,13 +18,13 @@ repos:
     exclude: '^terminal/.*\.json$'
   - id: trailing-whitespace
 - repo: https://github.com/ansible/ansible-lint
-  rev: v25.9.0
+  rev: v25.9.2
   hooks:
   - id: ansible-lint
     name: Lint Ansible files
     description: Runs ansible-lint to check Ansible playbooks and roles
 - repo: https://github.com/rhysd/actionlint
-  rev: v1.7.7
+  rev: v1.7.8
   hooks:
   - id: actionlint
     name: Lint GitHub Actions workflow files
