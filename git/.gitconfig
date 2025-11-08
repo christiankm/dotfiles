@@ -19,6 +19,7 @@
 
 [alias]
     b = branch
+    branches = branch -l
     co = checkout
     sw = switch
     c = commit
