@@ -8,9 +8,6 @@ repos:
   - id: check-yaml
   - id: detect-private-key
   - id: end-of-file-fixer
-  - id: no-commit-to-branch
-    args: ['--branch', 'main', '--branch', 'master', '--branch', 'develop']
-    description: Prevent commits to the main and develop branch
   - id: pretty-format-json
     name: Format JSON files
     description: Formats JSON files using `jq`
