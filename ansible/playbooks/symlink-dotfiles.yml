@@ -1,9 +1,28 @@
 ---
 - name: Symlinks to dotfiles
   hosts: localhost
+  vars:
+    user_home: "$HOME"
+    bash_dir: "{{ playbook_dir }}/../../bash"
+
   tasks:
     - name: Link .hushlogin
       ansible.builtin.file:
         path: "$HOME/.hushlogin"
         state: touch
         mode: "0644"
+
+    - name: Ensure .config directory exists
+      ansible.builtin.file:
+        path: "{{ user_home }}/.config"
+        state: directory
+        mode: "0755"
+
+    - name: Symlink aliases.sh to .config directory
+      ansible.builtin.file:
+        src: "{{ bash_dir }}/aliases.sh"
+        dest: "{{ user_home }}/.config/aliases.sh"
+        state: link
+        follow: false
+        force: true
+
