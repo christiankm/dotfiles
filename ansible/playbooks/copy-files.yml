@@ -1,6 +1,6 @@
 ---
 - name: Copy files
-  hosts: local
+  hosts: localhost
   vars:
     scripts_dir: "{{ playbook_dir }}/../../scripts/"
   tasks:

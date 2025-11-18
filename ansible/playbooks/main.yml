@@ -1,12 +1,9 @@
 ---
 - name: Set up a new machine or update settings on current
-  hosts: local
+  hosts: localhost
   gather_facts: true
-  tasks:
-    #- name: System details
-    #  debug:
-    #    msg: "{{ ansible_facts }}"
 
+  pre_tasks:
     - name: "Prompt user to continue"
       ansible.builtin.pause:
         prompt: "Running installation for {{ ansible_facts['distribution'] }}. Press ENTER to continue, or Ctrl+C to cancel installation" # yamllint disable-line rule:line-length
@@ -64,7 +61,7 @@
   ansible.builtin.import_playbook: symlink-dotfiles.yml
 
 - name: Clean up and reboot
-  hosts: local
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: "Prompt user to reboot"
@@ -72,7 +69,6 @@
         prompt: "Setup complete. Reboot is required to apply all changes. Reboot now? (Y/n)"
         echo: true
       register: confirm_reboot
-      delegate_to: localhost
 
     - name: "Show rebooting message"
       ansible.builtin.debug:
@@ -84,4 +80,4 @@
         cmd: "sudo shutdown -r now"
       become: true
       when: confirm_reboot.user_input | lower == 'y'
-      changed_when: true
+      changed_when: false

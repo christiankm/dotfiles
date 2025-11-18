@@ -1,6 +1,6 @@
 ---
 - name: Configure todo.txt
-  hosts: local
+  hosts: localhost
   vars:
     todo_dir: "{{ playbook_dir }}/../../todo"
   tasks:

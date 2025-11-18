@@ -1,6 +1,6 @@
 ---
 - name: Install packages using Homebrew
-  hosts: local
+  hosts: localhost
   vars_files:
     - ../vars/main.yml
   tasks:

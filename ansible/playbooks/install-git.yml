@@ -1,6 +1,6 @@
 ---
 - name: Install and configure git
-  hosts: local
+  hosts: localhost
   tasks:
     - name: Install git
       community.general.homebrew:

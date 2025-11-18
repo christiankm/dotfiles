@@ -1,6 +1,6 @@
 ---
 - name: Install Mac App Store apps using Homebrew mas
-  hosts: local
+  hosts: localhost
   vars_files:
     - ../vars/main.yml
   tasks:
