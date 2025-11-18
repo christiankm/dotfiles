@@ -1,5 +1,5 @@
 This folder contains files, keys, scripts and any other resources specific
-to the current local machine. Use this
+to the current local machine.
 
 Use this folder to store SSH keys, shell files, and anything else which you can
 source from your .zshrc (or similar config). All content inside this local

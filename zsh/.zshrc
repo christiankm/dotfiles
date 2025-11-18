@@ -17,9 +17,6 @@ export EDITOR='vim'
 export COLORTERM=1
 export HOMEBREW_NO_ENV_HINTS=1
 
-# Source any secret environment variables such as API keys, and other things
-# which should never be committed to version control
-source "$HOME/.env.secret.sh"
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
@@ -63,6 +60,11 @@ alias todos="todo.sh list"
 alias t="todo"
 alias did="todo.sh do"
 alias idea="todo.sh add"
+# Source any local resources, secret environment variables such as API keys,
+# and other things which should never be committed to version control
+if [[ -f "$HOME/.dotfiles/local/local.sh" ]]; then
+  source "$HOME/.dotfiles/local/local.sh"
+fi
 
 # Always source oh-my-zsh as the last thing
 source $ZSH/oh-my-zsh.sh
