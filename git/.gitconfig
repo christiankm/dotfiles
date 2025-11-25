@@ -1,14 +1,14 @@
 [user]
-    # Imported from ~/.gitconfig_local
+    # Configure in local/local.sh
 
 [include]
-    path = ~/.gitconfig_local
+    path = ~/.config/local/.gitconfig_local
 
 [init]
     defaultBranch = main
 
 [core]
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/.gitignore_global
     ignorecase = false
 
 [color "status"]

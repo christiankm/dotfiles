@@ -10,6 +10,9 @@
         echo: true
       delegate_to: localhost
 
+- name: Symlink other dotfiles
+  ansible.builtin.import_playbook: symlink-dotfiles.yml
+
 # Install programs
 - name: Install and configure git
   ansible.builtin.import_playbook: install-git.yml
@@ -56,9 +59,6 @@
 # Copy or link files
 - name: Copy programs, scripts and files
   ansible.builtin.import_playbook: copy-files.yml
-
-- name: Symlink other dotfiles
-  ansible.builtin.import_playbook: symlink-dotfiles.yml
 
 - name: Clean up and reboot
   hosts: localhost
