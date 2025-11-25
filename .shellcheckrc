@@ -1,0 +1,8 @@
+# ShellCheck configuration file
+
+# Set shell dialect (bash, sh, dash, ksh)
+shell=bash
+
+# Enable all optional checks
+enable=all
+

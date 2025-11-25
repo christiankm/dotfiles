@@ -14,11 +14,9 @@ export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
 # Environment
 export LANG=en_US.UTF-8
 export EDITOR='vim'
+export COLORTERM=1
 export HOMEBREW_NO_ENV_HINTS=1
 
-# Source any secret environment variables such as API keys, and other things
-# which should never be committed to version control
-source "$HOME/.env.secret.sh"
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
@@ -50,42 +48,26 @@ source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 #alias vi="nvim"
 #alias vim="nvim"
 
-## Aliases
-
-# System aliases
-alias reload="source ~/.zshrc"
-alias see="cat"
-alias del="rm"
-
-# Shell aliases
-alias ls="ls -l"
-
-# Git aliases
-alias g="git"
-alias gst="git status"
-alias gcm="git commit"
-alias commit="git commit"
-alias gbr="git branch -c "
-alias push="git push"
-alias pull="git pull --rebase"
-alias glg="git log --all --decorate --graph"
-
-# GitHub aliases
-alias prs="gh pr list"
-
-# iOS/Swift Development aliases
-alias fl="bundle exec fastlane"
-
 # Source functions
 
 # Task and note management
 source "$HOME/.dotfiles/bash/functions/task.sh"
+# Aliases
+source "$HOME/.config/aliases.sh"
 
 alias todo="todo.sh"
 alias todos="todo.sh list"
 alias t="todo"
 alias did="todo.sh do"
 alias idea="todo.sh add"
+
+# Source any local resources, secret environment variables such as API keys,
+# and other things which should never be committed to version control
+if [[ -f "$HOME/.config/local/local.sh" ]]; then
+  source "$HOME/.config/local/local.sh"
+  chmod +x "$HOME/.config/local/local.sh"
+  sh "$HOME/.config/local/local.sh"
+fi
 
 # Always source oh-my-zsh as the last thing
 source $ZSH/oh-my-zsh.sh

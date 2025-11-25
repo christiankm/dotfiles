@@ -1,6 +1,6 @@
 ---
 - name: Configure SSH
-  hosts: local
+  hosts: localhost
   vars:
     ssh_dir: "{{ playbook_dir }}/../../ssh"
   tasks:

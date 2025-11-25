@@ -1,6 +1,6 @@
 ---
 - name: Install and configure Oh my zsh and plugins
-  hosts: local
+  hosts: localhost
   vars:
     zsh_dir: "{{ playbook_dir }}/../../zsh"
     ohmyzsh_dir: "$HOME/.oh-my-zsh"

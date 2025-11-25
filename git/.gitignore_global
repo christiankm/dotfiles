@@ -1,3 +1,8 @@
+# User workflow files
+todo.*
+tasks.*
+*.secret
+
 # Compiled source #
 ###################
 *.class
@@ -100,6 +105,9 @@ Thumbs.db
 svn-commit.*
 tags
 TAGS
+
+# Caches
+.swiftlint
 
 # Dependencies
 .bundle

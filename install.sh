@@ -80,7 +80,6 @@ ANSIBLE_USER=$(whoami)
 echo "Running Ansible playbooks as $ANSIBLE_USER..."
 sudo -u "$ANSIBLE_USER" ansible-playbook \
   ansible/playbooks/main.yml \
-  -i ./ansible/inventory/hosts.ini \
   --extra-vars "\
     ansible_user=$ANSIBLE_USER \
     ansible_become_user=$ANSIBLE_USER \

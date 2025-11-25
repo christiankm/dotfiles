@@ -1,6 +1,6 @@
 ---
 - name: Install fonts via Homebrew
-  hosts: local
+  hosts: localhost
   tasks:
     - name: Ensure Homebrew is installed and updated
       community.general.homebrew:

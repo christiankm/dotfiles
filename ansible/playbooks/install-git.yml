@@ -1,6 +1,6 @@
 ---
 - name: Install and configure git
-  hosts: local
+  hosts: localhost
   tasks:
     - name: Install git
       community.general.homebrew:
@@ -10,13 +10,13 @@
     - name: Link global gitignore file
       ansible.builtin.file:
         src: "{{ playbook_dir }}/../../git/.gitignore_global"
-        dest: ~/.gitignore_global
+        dest: "$HOME/.config/.gitignore_global"
         state: link
         force: true
 
     - name: Link git config
       ansible.builtin.file:
         src: "{{ playbook_dir }}/../../git/.gitconfig"
-        dest: ~/.gitconfig
+        dest: "$HOME/.gitconfig"
         state: link
         force: true

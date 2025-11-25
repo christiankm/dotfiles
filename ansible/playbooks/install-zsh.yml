@@ -1,6 +1,6 @@
 ---
 - name: Install zsh from Homebrew
-  hosts: local
+  hosts: localhost
   vars:
     user_home: "$HOME"
     zsh_dir: "{{ playbook_dir }}/../../zsh"

@@ -1,9 +1,43 @@
 ---
 - name: Symlinks to dotfiles
   hosts: localhost
+  gather_facts: false
+  vars:
+    user_home: "$HOME"
+    bash_dir: "{{ playbook_dir }}/../../bash"
+
   tasks:
-    - name: Link .hushlogin
+    - name: Create .hushlogin
       ansible.builtin.file:
         path: "$HOME/.hushlogin"
         state: touch
         mode: "0644"
+        modification_time: preserve
+        access_time: preserve
+
+    - name: Ensure .config directory exists
+      ansible.builtin.file:
+        path: "{{ user_home }}/.config"
+        state: directory
+        mode: "0755"
+
+    - name: Create local directory and copy template local.sh-file
+      block:
+        - name: Create local directory
+          ansible.builtin.file:
+            path: "{{ user_home }}/.config/local"
+            state: directory
+            mode: "0755"
+        - name: Copy local.sh template
+          ansible.builtin.copy:
+            src: "{{ playbook_dir }}/../../local/local.sh"
+            dest: "{{ user_home }}/.config/local/local.sh"
+            force: no # do not override if exists
+
+    - name: Symlink aliases.sh to .config directory
+      ansible.builtin.file:
+        src: "{{ bash_dir }}/aliases.sh"
+        dest: "{{ user_home }}/.config/aliases.sh"
+        state: link
+        follow: false
+        force: true

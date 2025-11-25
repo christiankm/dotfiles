@@ -15,7 +15,7 @@ kinds:
 loop_var_prefix: '^(__|{role}_)'
 max_block_depth: 20
 offline: true
-profile: 'production'
+profile: 'moderate'
 skip_action_validation: false
 skip_list: []
 task_name_prefix: '{stem} | '

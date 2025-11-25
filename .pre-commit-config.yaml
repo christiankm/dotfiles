@@ -38,3 +38,11 @@ repos:
     name: Lint YAML files
     description: Runs yamllint to check YAML files
     types: ["yaml"]
+- repo: local
+  hooks:
+  - id: shellcheck
+    name: Lint shell scripts
+    description: Runs shellcheck to check shell scripts
+    entry: shellcheck
+    language: system
+    types: [shell]

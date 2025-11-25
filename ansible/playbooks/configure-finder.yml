@@ -1,6 +1,6 @@
 ---
 - name: Configure Finder preferences and create folders
-  hosts: local
+  hosts: localhost
   tasks:
     - name: Create Developer directory
       ansible.builtin.file:
