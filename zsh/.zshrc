@@ -60,10 +60,13 @@ alias todos="todo.sh list"
 alias t="todo"
 alias did="todo.sh do"
 alias idea="todo.sh add"
+
 # Source any local resources, secret environment variables such as API keys,
 # and other things which should never be committed to version control
-if [[ -f "$HOME/.dotfiles/local/local.sh" ]]; then
-  source "$HOME/.dotfiles/local/local.sh"
+if [[ -f "$HOME/.config/local/local.sh" ]]; then
+  source "$HOME/.config/local/local.sh"
+  chmod +x "$HOME/.config/local/local.sh"
+  sh "$HOME/.config/local/local.sh"
 fi
 
 # Always source oh-my-zsh as the last thing
