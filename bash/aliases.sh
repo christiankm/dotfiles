@@ -19,4 +19,3 @@ alias grep="grep --color=auto"
 
 # iOS/Swift Development aliases
 alias fl="bundle exec fastlane"
-
