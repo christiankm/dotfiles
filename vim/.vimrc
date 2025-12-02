@@ -12,6 +12,12 @@ set number relativenumber
 syntax on
 set synmaxcol=200
 
+" Use comma as local leader key
+let mapleader = ","
+
+" Show command in bottom right
+set showcmd
+
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -37,30 +43,26 @@ filetype on
 " Highlight current line
 set cursorline
 
-" Set tab width
+" Use 4 spaces for indentation
+" instead of tabs
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-
-" Use spaces instead of tabs
 set expandtab
 
-" Disable line wrap
-set nowrap
-
-" Avoid wrap in the middle of words
+" Enable line wrapping (soft visual only)
+set number
+set textwidth=0
+set wrapmargin=0
+set wrap
 set linebreak
 set nolist
+set columns=90
+set colorcolumn=80
 
 " Show Status Bar
 set laststatus=2
-set statusline=%f\ %m%r%w\ %=\ [%{&filetype}]\ [%l/%L,%c]\ %p%%
-
-" Show vertical guide ruler
-set colorcolumn=80
-
-" Disable hard wrapping
-set textwidth=80
+set statusline=%f\ Filetype:\ %y\ %m%r%w\ %=\ [%{&filetype}]\ [Line\ %l/%L,\ %c]\ %p%%
 
 " Auto-wrap while typing
  set formatoptions+=t
@@ -68,11 +70,6 @@ set textwidth=80
 " Set cursor control keys
 set whichwrap+=<,>,h,l
 
-" Enable hard wrapping for markdown files
-augroup WrapMarkdown
-    autocmd!
-    autocmd FileType md setlocal wrap
-augroup END
 
 " Enable auto-indentation
 set autoindent
