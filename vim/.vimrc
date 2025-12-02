@@ -34,8 +34,26 @@ if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
   endif
 endif
 
-" Color scheme
+" Set Color scheme
+" auto-switch based on macOS appearance
 colorscheme gruvbox
+
+function! SetTheme()
+  if system("defaults read -g AppleInterfaceStyle 2>/dev/null") =~ '^Dark'
+    set background=dark
+    colorscheme gruvbox
+    highlight Normal guibg=#1d2021 ctermbg=235
+  else
+    set background=light
+    colorscheme gruvbox
+    highlight Normal guibg=#FFFFE5 ctermbg=230
+  endif
+endfunction
+
+call SetTheme()
+
+" Optional: Re-check theme when vim gains focus
+autocmd FocusGained * call SetTheme()
 
 " Enable file type detection
 filetype on
