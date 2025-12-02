@@ -11,14 +11,36 @@
         state: link
         force: true
 
-    - name: Create vim pack directory
+    - name: Create vim directories
       ansible.builtin.file:
-        path: "$HOME/.vim/pack/default/start"
+        path: "{{ item }}"
         state: directory
         mode: '0755'
+      loop:
+        - "$HOME/.vim/pack/default/start"
+        - "$HOME/.vim/plugin"
+        - "$HOME/.vim/after/syntax"
 
     - name: Clone gruvbox theme
       ansible.builtin.git:
         repo: https://github.com/morhetz/gruvbox.git
         dest: "$HOME/.vim/pack/default/start/gruvbox"
         force: true
+
+    - name: Link plugin files
+      ansible.builtin.file:
+        src: "{{ vim_dir }}/plugins/{{ item }}"
+        dest: "$HOME/.vim/plugin/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - checkbox.vim
+
+    - name: Link after/syntax files
+      ansible.builtin.file:
+        src: "{{ vim_dir }}/after/syntax/{{ item }}"
+        dest: "$HOME/.vim/after/syntax/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - markdown.vim
