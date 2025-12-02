@@ -3,6 +3,7 @@
   hosts: localhost
   vars:
     tmux_dir: "{{ playbook_dir }}/../../tmux"
+
   tasks:
     - name: Create tmux config directories
       ansible.builtin.file:
@@ -23,3 +24,8 @@
         dest: "$HOME/.tmux.conf"
         state: link
         force: true
+
+    - name: Install tmux plugins
+      ansible.builtin.shell:
+        cmd: "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+      changed_when: false
