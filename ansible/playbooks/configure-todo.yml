@@ -4,15 +4,15 @@
   vars:
     todo_dir: "{{ playbook_dir }}/../../todo"
   tasks:
-    - name: Create .todo directory
+    - name: Ensure .config directory exists
       ansible.builtin.file:
-        dest: "$HOME/.todo"
+        dest: "$HOME/.config"
         state: directory
         mode: "0755"
 
-    - name: Link .todo to Home directory
+    - name: Symlink .todo config
       ansible.builtin.file:
-        src: "{{ todo_dir }}/config"
-        dest: ~/.todo/config
+        src: "{{ todo_dir }}/.todo.cfg"
+        dest: ~/.config/.todo.cfg
         state: link
         force: true

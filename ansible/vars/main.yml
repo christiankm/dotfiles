@@ -31,7 +31,7 @@ homebrew_user_packages:
   #- node
   #- npm
   #- publish
-  #- todo-txt
+  - todo-txt
   #- vapor
   - xcodes
 

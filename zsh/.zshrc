@@ -7,16 +7,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Update $PATH
+# Update PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
+
+# Add scripts directory to PATH
+export PATH="$HOME/scripts:$PATH"
 
 # Environment
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 export COLORTERM=1
 export HOMEBREW_NO_ENV_HINTS=1
-
+export TODOTXT_DEFAULT_ACTION=ls
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
@@ -48,13 +50,14 @@ source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 #alias vi="nvim"
 #alias vim="nvim"
 
-# Source functions
 
-# Task and note management
+# Source functions
 source "$HOME/.dotfiles/bash/functions/task.sh"
+
 # Aliases
 source "$HOME/.config/aliases.sh"
 
+# Task and note management
 alias todo="todo.sh"
 alias todos="todo.sh list"
 alias t="todo"
