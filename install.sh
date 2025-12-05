@@ -21,11 +21,9 @@ esac
 # Set environment variables
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   HOME="/Users/$USER"
-  DOTFILES="$(pwd)"
 fi
 
 # Install Ansible prerequisites
-
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   # Install Homebrew, if macOS
   if [[ $(command -v brew) == "" ]]; then
@@ -40,6 +38,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Apple Sillicon Mac
     if ! grep -q '/opt/homebrew/bin' $HOME/.zprofile; then
       echo "Adding Homebrew to PATH..."
+      # shellcheck disable=SC2016
       (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
     fi
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -47,6 +46,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Intel Mac
     if ! grep -q '/opt/homebrew/bin' $HOME/.zprofile; then
       echo "Adding Homebrew to PATH..."
+      # shellcheck disable=SC2016
       (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
     fi
     eval "$(/usr/local/bin/brew shellenv)"

@@ -15,7 +15,7 @@ repos:
     exclude: '^terminal/.*\.json$'
   - id: trailing-whitespace
 - repo: https://github.com/ansible/ansible-lint
-  rev: v25.11.0
+  rev: v25.12.0
   hooks:
   - id: ansible-lint
     name: Lint Ansible files
@@ -46,3 +46,4 @@ repos:
     entry: shellcheck
     language: system
     types: [shell]
+    exclude: '^zsh/\.p10k\.zsh$'

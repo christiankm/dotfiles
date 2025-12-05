@@ -1,11 +1,8 @@
 # ShellCheck configuration file
 
-# Set shell dialect (bash, sh, dash, ksh)
 shell=bash
-
-# Enable all optional checks
 enable=all
+disable=SC1091,SC2250,SC2086,SC2139,SC2292,SC2155,SC2312,SC2034,SC2230
 
-# Exclude specific checks if needed
-
-disable=SC2250,SC1090,SC2086,SC2292,SC1091,SC2155,SC2312,SC2034,SC2230,SC1072,SC1073,SC2016,SC2296
+# Exclude auto-generated files
+exclude=zsh/.p10k.zsh
