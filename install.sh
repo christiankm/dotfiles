@@ -4,7 +4,8 @@
 set -e
 
 # Ask for administrator password
-sudo --askpass --bell --validate -u $(whoami) --prompt 'Enter sudo password for $(whoami): '
+USER=$(whoami)
+sudo --bell --validate -u $USER --prompt "Enter sudo password for $USER: "
 
 # Detect OS
 printf "Detected operating system: "
@@ -19,8 +20,8 @@ esac
 
 # Set environment variables
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-  HOME=/Users/$(whoami)
-  DOTFILES=$(pwd)
+  HOME="/Users/$USER"
+  DOTFILES="$(pwd)"
 fi
 
 # Install Ansible prerequisites
@@ -76,7 +77,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 fi
 
 # Run Ansible
-ANSIBLE_USER=$(whoami)
+ANSIBLE_USER="$USER"
 echo "Running Ansible playbooks as $ANSIBLE_USER..."
 sudo -u "$ANSIBLE_USER" ansible-playbook \
   ansible/playbooks/main.yml \

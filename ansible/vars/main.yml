@@ -5,12 +5,14 @@ homebrew_global_packages:
   - ansible
   - ansible-lint
   - asitop
+  - coreutils
   - htop
   - mas
   - neovim
   #- pyenv
   #- python3
   - rbenv
+  - shellcheck
   - swiftformat
   #- swiftlint # disabled by default, requires full Xcode installation
   - tmux
@@ -24,6 +26,7 @@ homebrew_global_packages:
 # Add or remove packages from this list as needed an run install.sh
 homebrew_user_packages:
   - aria2
+  - copilot-cli
   #- docker
   - dotnet@8
   #- nvm

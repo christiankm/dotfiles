@@ -50,19 +50,11 @@ source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
 #alias vi="nvim"
 #alias vim="nvim"
 
-
 # Source functions
 source "$HOME/.dotfiles/bash/functions/task.sh"
 
 # Aliases
 source "$HOME/.config/aliases.sh"
-
-# Task and note management
-alias todo="todo.sh"
-alias todos="todo.sh list"
-alias t="todo"
-alias did="todo.sh do"
-alias idea="todo.sh add"
 
 # Source any local resources, secret environment variables such as API keys,
 # and other things which should never be committed to version control
