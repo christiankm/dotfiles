@@ -6,6 +6,7 @@
       community.general.homebrew:
         state: present
         update_homebrew: true
+      when: ansible_distribution == 'MacOSX'
 
     - name: Install fonts
       community.general.homebrew_cask:
@@ -15,3 +16,21 @@
         - homebrew/cask-fonts/font-fira-code
         - homebrew/cask-fonts/font-hack-nerd-font
       failed_when: false
+      when: ansible_distribution == 'MacOSX'
+
+    - name: Get list of font files
+      ansible.builtin.find:
+        paths: "{{ playbook_dir }}/../../resources/fonts/"
+        patterns: "*.ttf"
+        recurse: true
+        file_type: file
+      register: font_files
+      delegate_to: localhost
+      become: false
+
+    - name: Import fonts using Font Book
+      ansible.builtin.shell:
+        cmd: "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/FontServices.framework/Versions/A/Resources/FontBook.app/Contents/MacOS/FontBook -add \"{{ item }}\""
+        loop: "{{ font_files.files }}"
+      become: yes
+      when: ansible_distribution == 'MacOSX' && font_files.matched > 0

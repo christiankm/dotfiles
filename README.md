@@ -1,6 +1,17 @@
 # dotfiles
 
 This is a collection of my personal dotfiles (configuration files and install scripts) used to setup my computers and servers.
+
+## Pre-install
+
+Copy over and install any resources that are required by the installer or your preferred configuration, such as ssh keys, fonts, and other files which are not inside the repository.
+
+For example, my Terminal and IDE themes use fonts that is not freely available or protected by a license, and would not be part of this repo. Other resources should be copied over and manually installed on the machine.
+
+My dotfiles are set up to install any fonts to the system places inside the `resources/fonts` directory.
+
+## Installation
+
 I keep this repo in `~/.dotfiles` and symlink the files and directories inside.
 This happens automatically when running the `install.sh` script, which will interactively configure everything.
 
