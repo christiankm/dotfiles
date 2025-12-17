@@ -48,7 +48,7 @@ if which nvm > /dev/null; then
 fi
 
 # Configure vim/neovim
-source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette_osx.sh"
+source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette.sh"
 
 # Remap vim to use neovim
 #alias vi="nvim"

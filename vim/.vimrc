@@ -36,6 +36,9 @@ endif
 
 " Set Color scheme
 " auto-switch based on macOS appearance
+let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_contrast_dark = 'medium'
+
 colorscheme gruvbox
 
 function! SetTheme()

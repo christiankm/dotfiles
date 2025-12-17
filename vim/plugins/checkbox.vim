@@ -44,8 +44,6 @@ endif
 
 
 if !exists('g:insert_checkbox')
-  "let g:insert_checkbox = '^'
-  "let g:insert_checkbox = '$'
   let g:insert_checkbox = '\<'
 endif
 
