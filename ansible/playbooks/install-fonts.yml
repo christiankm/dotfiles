@@ -23,13 +23,13 @@
       register: font_files
       become: false
 
-    # Disabled, does not work reliably as expected
-    # Prefer to install fonts via Homebrew Cask
-    # or manually via Font Book
-    # - name: Import fonts using Font Book
-    #   ansible.builtin.shell:
-    #     cmd: /System/Applications/Font\ Book.app/Contents/MacOS/Font\ Book -add "{{ item }}"
-    #   loop: "{{ font_files.files }}"
-    #   become: true
-    #   when: ansible_distribution == 'MacOSX' and font_files.matched > 0
-    #   failed_when: rc != 0
+# Disabled, does not work reliably as expected
+# Prefer to install fonts via Homebrew Cask
+# or manually via Font Book
+# - name: Import fonts using Font Book
+#   ansible.builtin.shell:
+#     cmd: /System/Applications/Font\ Book.app/Contents/MacOS/Font\ Book -add "{{ item }}"
+#   loop: "{{ font_files.files }}"
+#   become: true
+#   when: ansible_distribution == 'MacOSX' and font_files.matched > 0
+#   failed_when: rc != 0
