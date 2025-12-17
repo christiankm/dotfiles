@@ -3,9 +3,7 @@
 # Stop on first error
 set -e
 
-# Ask for administrator password
 USER=$(whoami)
-sudo --bell --validate -u $USER --prompt "Enter sudo password for $USER: "
 
 # Detect OS
 printf "Detected operating system: "
@@ -71,7 +69,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "Installing Ansible..."
     brew install ansible
 
-    export ANSIBLE_CONFIG=./ansible/ansible.cfg
+    export ANSIBLE_CONFIG=./ansible.cfg
     ansible-galaxy collection install community.general --force
   fi
 fi
@@ -79,6 +77,7 @@ fi
 # Run Ansible
 ANSIBLE_USER="$USER"
 echo "Running Ansible playbooks as $ANSIBLE_USER..."
+echo "You will be prompted for your password"
 sudo -u "$ANSIBLE_USER" ansible-playbook \
   ansible/playbooks/main.yml \
   --extra-vars "\

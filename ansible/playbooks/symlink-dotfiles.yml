@@ -28,6 +28,7 @@
             path: "{{ user_home }}/.config/local"
             state: directory
             mode: "0755"
+
         - name: Copy local.sh template
           ansible.builtin.copy:
             src: "{{ playbook_dir }}/../../local/local.sh"
