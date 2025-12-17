@@ -30,7 +30,10 @@ export BASH_SILENCE_DEPRECATION_WARNING=1;
 # Configure Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git macos ruby zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(dotnet fzf gh git git-lfs macos pre-commit swiftpm ruby tmux xcode zsh-syntax-highlighting zsh-autosuggestions)
+
+# Source oh-my-zsh early so plugins and completions are available
+source "$ZSH/oh-my-zsh.sh"
 
 # Load rbenv
 if which rbenv > /dev/null; then
@@ -61,12 +64,7 @@ source "$HOME/.config/aliases.sh"
 # and other things which should never be committed to version control
 if [[ -f "$HOME/.config/local/local.sh" ]]; then
   source "$HOME/.config/local/local.sh"
-  chmod +x "$HOME/.config/local/local.sh"
-  sh "$HOME/.config/local/local.sh"
 fi
-
-# Always source oh-my-zsh as the last thing
-source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
