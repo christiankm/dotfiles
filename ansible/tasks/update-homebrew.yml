@@ -1,0 +1,6 @@
+---
+- name: Ensure Homebrew is installed and updated
+  community.general.homebrew:
+    state: present
+    update_homebrew: true
+  when: ansible_distribution == 'MacOSX'

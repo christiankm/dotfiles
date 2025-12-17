@@ -2,9 +2,9 @@
 .vscode
 .DS_Store
 *.log
-ansible/*.log
 
-# SSH Keys
+# SSH keys
+local/ssh
 ssh/id_ed25519
 ssh/id_ed25519.pub
 

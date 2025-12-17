@@ -71,6 +71,13 @@ homebrew_cask_apps:
   #- vlc
   #- windows-app
 
+# Fonts to install via Homebrew
+# Discover available fonts by running `brew search font-`
+homebrew_cask_fonts:
+  - font-fira-code
+  - font-hack-nerd-font
+  - font-ibm-plex-mono
+
 # Mac apps via App Store (brew mas)
 # This assumes you have already purchased (or get as free) the apps with your Apple ID.
 # You will be prompted to log in to App Store with your Apple ID if not already.

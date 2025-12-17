@@ -5,9 +5,7 @@
     - ../vars/main.yml
   tasks:
     - name: Ensure Homebrew is installed and updated
-      community.general.homebrew:
-        state: present
-        update_homebrew: true
+      ansible.builtin.import_tasks: ../tasks/update-homebrew.yml
 
     - name: Install global Homebrew packages
       community.general.homebrew:
