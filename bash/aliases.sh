@@ -39,6 +39,7 @@ alias prs="gh pr list"
 
 # iOS/Swift Development aliases
 alias fl="bundle exec fastlane"
+alias delder="rm -rf ~/Library/Developer/Xcode/DerivedData/"
 
 # Task and note management
 alias today="cal && todo.sh list"
