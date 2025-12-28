@@ -11,8 +11,8 @@ fi
 # Update PATH
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-# Add scripts directory to PATH
-export PATH="$HOME/scripts:$PATH"
+# Add bin directory to PATH
+export PATH="$HOME/bin:$PATH"
 
 # Environment
 export LANG=en_US.UTF-8

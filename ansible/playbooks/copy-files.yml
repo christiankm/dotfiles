@@ -1,18 +1,18 @@
 ---
-- name: Copy binaries and scripts
+- name: Install binaries and scripts
   hosts: localhost
   vars:
-    scripts_dir: "{{ playbook_dir }}/../../scripts/"
+    bin_dir: "{{ playbook_dir }}/../../bin/"
   tasks:
-    - name: Create scripts directory
+    - name: Create bin directory
       ansible.builtin.file:
-        dest: "$HOME/scripts"
+        dest: "$HOME/bin"
         state: directory
         mode: "0755"
 
     - name: Find all scripts
       ansible.builtin.find:
-        paths: "{{ scripts_dir }}"
+        paths: "{{ bin_dir }}"
         recurse: true
         file_type: file
       register: scripts_to_link
@@ -20,7 +20,7 @@
     - name: Symlink scripts
       ansible.builtin.file:
         src: "{{ item.path }}"
-        dest: "$HOME/scripts/{{ item.path | basename }}"
+        dest: "$HOME/bin/{{ item.path | basename }}"
         state: link
       loop: "{{ scripts_to_link.files }}"
       when: scripts_to_link.matched > 0
