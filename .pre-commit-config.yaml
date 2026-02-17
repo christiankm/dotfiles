@@ -1,4 +1,6 @@
 ---
+ci:
+  skip: [ansible-lint]
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v6.0.0
@@ -20,10 +22,6 @@ repos:
   - id: ansible-lint
     name: Lint Ansible files
     description: Runs ansible-lint to check Ansible playbooks and roles
-    additional_dependencies:
-      - ansible-core
-    entry: bash -c 'ansible-galaxy collection install -r ansible/requirements.yml --force && ansible-lint'
-    pass_filenames: false
 - repo: https://github.com/rhysd/actionlint
   rev: v1.7.11
   hooks:
