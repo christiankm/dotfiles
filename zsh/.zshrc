@@ -9,7 +9,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Update PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # Add scripts directory to PATH
 export PATH="$HOME/scripts:$PATH"
@@ -22,10 +22,10 @@ export HOMEBREW_NO_ENV_HINTS=1
 export TODOTXT_DEFAULT_ACTION=ls
 
 # Don't clear the screen after quitting a manual page.
-export MANPAGER='less -X';
+export MANPAGER='less -X'
 
 # Hide the "default interactive shell is now zsh" warning on macOS.
-export BASH_SILENCE_DEPRECATION_WARNING=1;
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Configure Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"

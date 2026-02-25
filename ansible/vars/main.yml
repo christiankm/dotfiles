@@ -5,6 +5,7 @@ homebrew_global_packages:
   - ansible
   - ansible-lint
   - asitop
+  - clang-format
   - coreutils
   - htop
   - mas
@@ -26,14 +27,16 @@ homebrew_global_packages:
 # Add or remove packages from this list as needed an run install.sh
 homebrew_user_packages:
   - aria2
+  - claude-code
   - copilot-cli
   #- docker
   - dotnet@8
-  #- nvm
-  - dotnet@9
   #- node
   #- npm
+  - llvm
+  - nvm
   #- publish
+  - pyenv
   - todo-txt
   #- vapor
   - xcodes
@@ -51,8 +54,8 @@ homebrew_cask_apps:
   #- discord
   #- docker
   - figma
-  #- google-chrome
   #- google-drive
+  - firefox
   #- little-snitch # install manually, requires license to older version
   - keka
   - markedit
@@ -86,7 +89,6 @@ homebrew_mas_apps:
   - 1569813296 # 1Password for Safari Extension
   - 1440147259 # AdGuard for Safari Extension
   - 640199958  # Apple Developer
-  - 1462114288 # Grammarly Safari Extension
   - 1452453066 # Hidden Bar
   - 775737590  # iA Writer
   - 409183694  # Keynote
@@ -100,3 +102,4 @@ homebrew_mas_apps:
   - 899247664  # TestFlight
   #- 904280696  # Things 3
   - 1607635845 # Velja
+

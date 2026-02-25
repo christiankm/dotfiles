@@ -8,8 +8,6 @@ alias del="rm"
 # Filesystem and navigation aliases
 alias ls="ls -CGp"
 alias ll="ls -lAhtGtpc --color=auto"
-alias ..="cd ../"
-alias ...="cd ../.."
 
 # Override standard commands with default flags
 alias rm="rm -i"
