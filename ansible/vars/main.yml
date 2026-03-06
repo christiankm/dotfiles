@@ -29,8 +29,10 @@ homebrew_user_packages:
   - aria2
   - claude-code
   - copilot-cli
-  #- docker
-  - dotnet@8
+  - docker
+  - docker-credential-helper
+  - docker-compose
+  - dotnet
   #- node
   #- npm
   - llvm
@@ -56,9 +58,11 @@ homebrew_cask_apps:
   - figma
   #- google-drive
   - firefox
+  - gitify
   #- little-snitch # install manually, requires license to older version
   - keka
   - markedit
+  - meetingbar
   - microsoft-auto-update
   - microsoft-edge
   - microsoft-teams
