@@ -25,9 +25,9 @@
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>1 1 1 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
-	<string>0.0408148 0.374814 0.998368 1</string>
+	<string>0.0392157 0.376471 1 1</string>
 	<key>DVTConsoleTextSelectionColor</key>
-	<string>0.642038 0.802669 0.999195 1</string>
+	<string>0.643137 0.803922 1 1</string>
 	<key>DVTFontAndColorVersion</key>
 	<integer>1</integer>
 	<key>DVTLineSpacing</key>
@@ -83,7 +83,7 @@
 	<key>DVTScrollbarMarkerWarningColor</key>
 	<string>0.937255 0.717647 0.34902 1</string>
 	<key>DVTSourceTextBackground</key>
-	<string>1 1 1 1</string>
+	<string>0.988235 0.968627 0.882353 1</string>
 	<key>DVTSourceTextBlockDimBackgroundColor</key>
 	<string>0.424672 0.424672 0.424672 1</string>
 	<key>DVTSourceTextCurrentLineHighlightColor</key>
