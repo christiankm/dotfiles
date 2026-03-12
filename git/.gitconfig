@@ -31,14 +31,20 @@
 [branch]
     autosetupmerge = true
 
+[commit]
+	template = ~/.dotfiles/git/commit-template
+
+[fetch]
+    prune = true
+
 [push]
     default = current
 
 [pull]
     rebase = true
 
-[fetch]
-    prune = true
-
-[commit]
-	template = ~/.dotfiles/git/commit-template
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

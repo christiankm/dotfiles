@@ -85,13 +85,14 @@ Ansible symlinks files from `~/.dotfiles` into `$HOME`. Always use `force: true`
 
 - Indentation: 2 spaces, max line length 100
 - Use fully qualified module names: `ansible.builtin.*`, `community.general.*`
-- Task names prefixed with `{playbook-stem} | ` (e.g., `symlink-dotfiles | Symlink .zshrc`)
+- Task names prefixed with `{playbook-stem} |` (e.g., `symlink-dotfiles | Symlink .zshrc`)
 - Set `changed_when: false` for read-only commands; use `creates:`/`removes:` for idempotency
 - Variables: snake_case (`^[a-z_][a-z0-9_]*$`)
 
 ### Adding Packages
 
 Edit `ansible/vars/main.yml` and add to the appropriate list:
+
 - `homebrew_global_packages` — CLI tools for all machines
 - `homebrew_user_packages` — Machine-specific CLI tools
 - `homebrew_cask_apps` — GUI applications
