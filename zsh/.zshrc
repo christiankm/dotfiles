@@ -8,6 +8,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+### USER CONFIGURATION ###
+
 # Update PATH
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
@@ -51,8 +53,8 @@ fi
 source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette.sh"
 
 # Remap vim to use neovim
-#alias vi="nvim"
-#alias vim="nvim"
+alias vi="nvim"
+alias vim="nvim"
 
 # Source functions
 source "$HOME/.dotfiles/bash/functions/task.sh"
