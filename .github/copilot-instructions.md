@@ -50,6 +50,7 @@ This is a personal dotfiles repository for managing macOS system configuration, 
 ## Code Style and Standards
 
 ### Shell Scripts (.sh)
+
 - **Shell dialect:** bash
 - **Indentation:** 4 spaces
 - **Line endings:** LF (Unix)
@@ -63,6 +64,7 @@ This is a personal dotfiles repository for managing macOS system configuration, 
   - Add comments only for complex logic
 
 ### YAML Files (Ansible/Workflows)
+
 - **Indentation:** 2 spaces
 - **Line endings:** LF (Unix)
 - **Linters:** yamllint (default + custom rules), ansible-lint (moderate profile)
@@ -82,10 +84,12 @@ This is a personal dotfiles repository for managing macOS system configuration, 
   - Use `gather_facts: true` only when needed
 
 ### Markdown Files
+
 - **Line endings:** LF (Unix)
 - **Trailing whitespace:** Preserved (not trimmed)
 
 ### General
+
 - **Encoding:** UTF-8
 - **Final newline:** Always insert
 - **Trailing whitespace:** Trim (except Markdown)
@@ -93,6 +97,7 @@ This is a personal dotfiles repository for managing macOS system configuration, 
 ## Key Technologies
 
 ### Automation Stack
+
 - **Ansible:** Primary automation tool
   - Config: `ansible.cfg` (local connection, no cows, Python auto-detect)
   - Inventory: `inventory.ini` (localhost only)
@@ -101,6 +106,7 @@ This is a personal dotfiles repository for managing macOS system configuration, 
   - Logs: `ansible.log` (git-ignored)
 
 ### Package Management
+
 - **Homebrew:** CLI tools and GUI applications (casks)
   - Analytics disabled: `HOMEBREW_NO_ANALYTICS=1`
   - Paths: `/opt/homebrew` (Apple Silicon) or `/usr/local` (Intel)
@@ -109,6 +115,7 @@ This is a personal dotfiles repository for managing macOS system configuration, 
   - Managed via `homebrew_mas_apps` list in `ansible/vars/main.yml`
 
 ### Shell Environment
+
 - **zsh:** Default shell
 - **oh-my-zsh:** Framework with plugins:
   - dotnet, fzf, gh, git, git-lfs, macos, pre-commit, swiftpm, ruby, tmux, xcode
@@ -118,6 +125,7 @@ This is a personal dotfiles repository for managing macOS system configuration, 
 - **nvm:** Node.js version manager (optional)
 
 ### Development Tools
+
 - **Git:** Version control with custom configuration
   - Default branch: `main`
   - Pull strategy: `rebase = true`
@@ -132,33 +140,40 @@ This is a personal dotfiles repository for managing macOS system configuration, 
 - **todo.txt:** Task management CLI
 
 ### Installed Packages (Highlights)
+
 **Global packages:**
+
 - ansible, ansible-lint, actionlint
 - shellcheck, yamllint, swiftformat
 - vim, neovim, tmux, htop, coreutils, mas
 
 **User packages (machine-specific):**
+
 - copilot-cli, todo-txt, xcodes
 - dotnet@8, dotnet@9
 - aria2
 
 **Cask apps:**
+
 - Visual Studio Code, Tower (Git client), Postman
 - Microsoft Edge, Microsoft Teams, Slack
 - Figma, Miro, ChatGPT, DevUtils
 - Stats, Time Out, Hidden Bar, Bezel
 
 **Fonts:**
+
 - font-fira-code, font-hack-nerd-font, font-ibm-plex-mono
 
 ## Important Conventions
 
 ### File Organization
+
 - **Symlinks:** Configuration files are symlinked from `~/.dotfiles` to home directory
 - **Local overrides:** Use `*_local` files for machine-specific settings (e.g., `.gitconfig_local`)
 - **Sensitive data:** Never commit passwords, API keys, or personal identifiers
 
 ### Installation Flow
+
 1. Install Homebrew (if not present)
 2. Install Ansible
 3. Run Ansible playbooks via `install.sh`
@@ -167,19 +182,24 @@ This is a personal dotfiles repository for managing macOS system configuration, 
 6. Configure system preferences
 
 ### Symlinks Strategy
+
 Configuration files are symlinked from `~/.dotfiles` to their expected locations:
+
 - `~/.zshrc` → `~/.dotfiles/zsh/.zshrc`
 - `~/.gitconfig` → `~/.dotfiles/git/.gitconfig`
 - `~/.vimrc` → `~/.dotfiles/vim/.vimrc`
 - `~/.config/aliases.sh` → `~/.dotfiles/bash/aliases.sh`
 
 ### Local Overrides (Not Tracked)
+
 Use `*_local` files for machine-specific settings:
+
 - `~/.config/local/.gitconfig_local` - Git user name/email
 - `~/.config/local/local.sh` - Secret env vars, API keys
 - Template: `local/local.sh` (copied, not symlinked)
 
 ### Sensitive Data (Never Commit)
+
 - SSH private keys
 - Passwords, API keys, tokens
 - Personal email addresses
@@ -210,12 +230,14 @@ The main playbook (`ansible/playbooks/main.yml`) executes in this order:
 ## Installation & Update Workflow
 
 ### Installation Flow
+
 ```bash
 cd ~/.dotfiles
 ./install.sh
 ```
 
 **install.sh does:**
+
 1. Detect OS (Darwin/macOS)
 2. Install Homebrew (if not present)
 3. Add Homebrew to PATH in `.zprofile`
@@ -226,17 +248,22 @@ cd ~/.dotfiles
 8. Run `ansible-playbook ansible/playbooks/main.yml`
 
 ### Update Flow
+
 ```bash
 cd ~/.dotfiles
 ./update.sh
 ```
+
 **update.sh does:** `git pull` + `./install.sh`
 
 ### macOS Preferences Configuration
+
 ```bash
 ./configure-macos-preferences.sh
 ```
+
 Configures system preferences via `defaults` command for:
+
 - Dock, Finder, Keyboard, Trackpad, Screensaver
 - Transmission, Tower Git Client
 - Requires restart to apply all changes
@@ -244,7 +271,9 @@ Configures system preferences via `defaults` command for:
 ## Testing & Quality Assurance
 
 ### Pre-commit Hooks
+
 The repository uses pre-commit hooks to enforce quality standards:
+
 - **check-added-large-files:** Prevent large file commits
 - **check-merge-conflict:** Detect merge conflict markers
 - **check-yaml:** Validate YAML syntax
@@ -258,11 +287,13 @@ The repository uses pre-commit hooks to enforce quality standards:
 - **shellcheck:** Lint shell scripts
 
 ### CI/CD
+
 - **GitHub Actions:** Automated ansible-lint workflow (`.github/workflows/ansible-lint.yml`)
 
 ## Common Tasks & Workflows
 
 ### Adding New Configuration File
+
 1. Place file in appropriate directory (e.g., `vim/`, `zsh/`)
 2. Add symlink task in `ansible/playbooks/symlink-dotfiles.yml`:
    ```yaml
@@ -279,23 +310,28 @@ The repository uses pre-commit hooks to enforce quality standards:
 ### Adding New Software
 
 **Homebrew CLI tool:**
+
 - Add to `homebrew_global_packages` or `homebrew_user_packages` in `ansible/vars/main.yml`
 - Run: `./update.sh`
 
 **Homebrew cask app:**
+
 - Add to `homebrew_cask_apps` in `ansible/vars/main.yml`
 - Run: `./update.sh`
 
 **Mac App Store app:**
+
 - Find app ID: `mas search <app-name>`
 - Add ID to `homebrew_mas_apps` in `ansible/vars/main.yml`
 - Run: `./update.sh`
 
 **Font:**
+
 - Copy font files to `resources/fonts/`
 - Run: `./install.sh` (fonts task will install to system)
 
 ### Modifying Ansible Playbooks
+
 - Use fully qualified module names: `ansible.builtin.file`, `community.general.homebrew`
 - Set `changed_when: false` for read-only command tasks
 - Use `creates:` or `removes:` for command idempotency
@@ -303,14 +339,16 @@ The repository uses pre-commit hooks to enforce quality standards:
 - Lint before committing: `ansible-lint ansible/playbooks/<playbook>.yml`
 
 ### Adding Shell Aliases
-1. Edit `bash/aliases.sh`
+
+1. Edit `shell/aliases.sh`
 2. Follow pattern: `alias <name>="<command>"`
 3. Test: `source ~/.zshrc` or `reload` alias
 4. No need to run `install.sh` (file is symlinked)
 
 ### Adding Shell Functions
-1. Create function in `bash/functions/<name>.sh`
-2. Source in `.zshrc`: `source "$HOME/.dotfiles/bash/functions/<name>.sh"`
+
+1. Create function in `shell/functions/<name>.sh`
+2. Source in `.zshrc`: `source "$HOME/.dotfiles/shell/functions/<name>.sh"`
 3. Test: `source ~/.zshrc`
 
 ## Security Considerations
@@ -335,6 +373,7 @@ The repository uses pre-commit hooks to enforce quality standards:
 ### Common Issues
 
 **"couldn't resolve module/action 'community.general.homebrew'"**
+
 - **Cause:** Ansible collection not installed or not in path
 - **Solution:**
   ```bash
@@ -342,23 +381,28 @@ The repository uses pre-commit hooks to enforce quality standards:
   ```
 
 **"Permission denied" errors**
+
 - **Cause:** Terminal lacks App Management permission
 - **Solution:** System Preferences → Privacy & Security → App Management → Add Terminal
 
 **Homebrew not in PATH**
+
 - **Cause:** `.zprofile` not sourced
 - **Solution:** `source ~/.zprofile` or restart terminal
 
 **Symlink conflicts**
+
 - **Cause:** Existing file at symlink destination
 - **Solution:** Ansible playbooks use `force: true` to overwrite
 - **Manual:** `rm <existing-file>` then run `./install.sh`
 
 **zsh plugins not working**
+
 - **Cause:** oh-my-zsh not installed or plugins not cloned
 - **Solution:** Run `./install.sh` to reinstall oh-my-zsh
 
 **Git commit fails with "no user configured"**
+
 - **Cause:** Missing `~/.config/local/.gitconfig_local`
 - **Solution:** Create file with:
   ```ini
@@ -368,6 +412,7 @@ The repository uses pre-commit hooks to enforce quality standards:
   ```
 
 **Mac App Store app install fails**
+
 - **Cause:** App not purchased or not signed in to App Store
 - **Solution:** Purchase app or sign in, then retry
 
@@ -387,12 +432,14 @@ The repository uses pre-commit hooks to enforce quality standards:
 These cannot be automated and must be done manually:
 
 ### System Preferences
+
 - Enable FileVault (full disk encryption)
 - Enable macOS Firewall
 - Set up Time Machine backups
 - Allow Apple Watch to unlock Mac
 
 ### Application Installations
+
 - Install Little Snitch Network Filter (requires license)
 - Install Xcode via `xcodes install <version>`
 - Install SwiftLint: `brew install swiftlint` (requires Xcode)
@@ -400,6 +447,7 @@ These cannot be automated and must be done manually:
 - Install GarageBand, iMovie, Final Cut Pro, Logic Pro
 
 ### Account Setup
+
 - Log in to iCloud
 - Add Internet Accounts (Gmail, Microsoft, etc.)
 - Authorize Music app for Apple Music
@@ -407,6 +455,7 @@ These cannot be automated and must be done manually:
 - Activate licenses: Little Snitch, Tower, VMWare, CrossOver
 
 ### Application Configuration
+
 - Import Dark.terminal theme in Terminal → Settings → Profiles
 - Configure Safari profiles and extensions
 - Configure Xcode preferences and download simulators
@@ -416,6 +465,7 @@ These cannot be automated and must be done manually:
 ## Environment Variables
 
 Key environment variables set in `.zshrc`:
+
 ```bash
 LANG=en_US.UTF-8              # UTF-8 encoding
 EDITOR=vim                     # Default editor
@@ -429,22 +479,26 @@ MANPAGER='less -X'            # Don't clear screen after man pages
 ## Shell Aliases (Most Used)
 
 **System:**
+
 - `reload` - Reload .zshrc
 - `dotfiles` - cd to ~/.dotfiles
 
 **Git:**
+
 - `g`, `gs`, `gst` - git status
 - `gc`, `gcm`, `commit` - git commit
 - `push`, `pull` - git push/pull
 - `glog` - git log --graph --all
 
 **Navigation:**
+
 - `ll` - ls -lAh with colors
 - `..`, `...` - cd up one/two levels
 - `dev` - cd ~/Developer
 - `scripts` - cd ~/scripts
 
 **Tasks:**
+
 - `t`, `todo` - todo.sh
 - `task` - todo.sh add
 - `tasks`, `todos` - todo.sh list
@@ -453,7 +507,9 @@ MANPAGER='less -X'            # Don't clear screen after man pages
 ## Architecture & OS Compatibility
 
 ### macOS Architecture Detection
+
 The `install.sh` script detects Apple Silicon vs Intel:
+
 ```bash
 if [[ $(uname -m) == 'arm64' ]]; then
   # Apple Silicon - Homebrew at /opt/homebrew
@@ -463,6 +519,7 @@ fi
 ```
 
 ### PATH Configuration
+
 - **Apple Silicon:** `/opt/homebrew/bin` added to PATH in `.zprofile`
 - **Intel Mac:** `/usr/local/bin` added to PATH in `.zprofile`
 - **Custom scripts:** `$HOME/scripts` and `$HOME/bin` added to PATH
@@ -470,6 +527,7 @@ fi
 ## When Suggesting Changes
 
 ### Principles
+
 1. **Minimize modifications** - Only change what's necessary
 2. **Follow existing patterns** - Match surrounding code style
 3. **Test idempotency** - Ensure Ansible tasks can run multiple times safely
@@ -480,6 +538,7 @@ fi
 8. **Security first** - Never suggest committing sensitive data
 
 ### Code Review Checklist
+
 - [ ] Follows .editorconfig settings (spaces, line endings)
 - [ ] Passes shellcheck (for .sh files)
 - [ ] Passes yamllint and ansible-lint (for .yml files)
@@ -495,6 +554,7 @@ fi
 ### Common Patterns
 
 **Ansible symlink task:**
+
 ```yaml
 - name: Symlink <file> to <destination>
   ansible.builtin.file:
@@ -505,6 +565,7 @@ fi
 ```
 
 **Ansible command with idempotency:**
+
 ```yaml
 - name: Create directory if not exists
   ansible.builtin.command: mkdir -p /path/to/dir
@@ -514,6 +575,7 @@ fi
 ```
 
 **Homebrew installation:**
+
 ```yaml
 - name: Install <package>
   community.general.homebrew:
@@ -522,6 +584,7 @@ fi
 ```
 
 **Shell script header:**
+
 ```bash
 #!/bin/sh
 
