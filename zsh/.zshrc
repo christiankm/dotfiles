@@ -35,18 +35,6 @@ plugins=(dotnet fzf gh git git-lfs macos pre-commit swiftpm ruby tmux xcode zsh-
 # Source oh-my-zsh early so plugins and completions are available
 source "$ZSH/oh-my-zsh.sh"
 
-# Load rbenv
-if which rbenv > /dev/null; then
-  eval "$(rbenv init - zsh)"
-fi
-
-# Load nvm
-if which nvm > /dev/null; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-fi
-
 # Configure vim/neovim
 source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette.sh"
 
