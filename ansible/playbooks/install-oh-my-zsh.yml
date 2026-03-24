@@ -5,7 +5,13 @@
     zsh_dir: "{{ playbook_dir }}/../../zsh"
     ohmyzsh_dir: "$HOME/.oh-my-zsh"
     user_home: "$HOME"
+
   tasks:
+    - name: Backup current .zshrc
+      ansible.builtin.copy:
+        src: "{{ user_home }}/.zshrc"
+        dest: "{{ user_home }}/.zshrc.bak"
+
     - name: Check for oh-my-zsh installation
       ansible.builtin.stat:
         path: "{{ ohmyzsh_dir }}"
@@ -43,10 +49,10 @@
         state: link
         force: true
 
-    - name: Remove default .zshrc after installation
-      ansible.builtin.file:
-        path: "{{ user_home }}/.zshrc"
-        state: absent
+    - name: Backup current .zshrc
+      ansible.builtin.copy:
+        src: "{{ user_home }}/.zshrc"
+        dest: "{{ user_home }}/.zshrc.bak"
 
     - name: Remove .zshrc.pre-oh-my-zsh
       ansible.builtin.file:
