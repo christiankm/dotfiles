@@ -5,6 +5,9 @@ alias reload="source $HOME/.zshrc"
 alias see="cat"
 alias del="rm"
 
+# Editor
+alias vi="nvim"
+
 # Filesystem and navigation aliases
 alias ls="ls -CGp"
 alias ll="ls -lAhtGtpc --color=auto"

@@ -1,7 +1,4 @@
 vim.cmd([[
-    " Sets the default vim settings.
-source \$VIMRUNTIME/defaults.vim
-
 " Use UTF8 encoding
 set encoding=utf-8
 
