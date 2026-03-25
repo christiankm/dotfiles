@@ -32,29 +32,10 @@ if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
   endif
 endif
 
-" Set Color scheme
-" auto-switch based on macOS appearance
-let g:gruvbox_contrast_light = 'hard'
-let g:gruvbox_contrast_dark = 'medium'
-
-colorscheme gruvbox
-
-function! SetTheme()
-  if system("defaults read -g AppleInterfaceStyle 2>/dev/null") =~ '^Dark'
-    set background=dark
-    colorscheme gruvbox
-    highlight Normal guibg=#1d2021 ctermbg=235
-  else
-    set background=light
-    colorscheme gruvbox
-    highlight Normal guibg=#FFFFE5 ctermbg=230
-  endif
-endfunction
-
-call SetTheme()
-
-" Optional: Re-check theme when vim gains focus
-autocmd FocusGained * call SetTheme()
+" Set theme
+"set background=dark
+"colorscheme gruvbox
+"highlight Normal guibg=#1d2021 ctermbg=235
 
 " Enable file type detection
 filetype on
@@ -101,3 +82,12 @@ set conceallevel=2
 " Don't use swapfiles
 set noswapfile
 ]])
+
+-- Open netrw file explorer when nvim is launched with no file arguments
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 0 then
+      vim.cmd("Ex")
+    end
+  end,
+})

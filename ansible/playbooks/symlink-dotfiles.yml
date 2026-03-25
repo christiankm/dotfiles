@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     user_home: "$HOME"
-    bash_dir: "{{ playbook_dir }}/../../bash"
+    bash_dir: "{{ root_dir }}/bash"
 
   tasks:
     - name: Create .hushlogin
