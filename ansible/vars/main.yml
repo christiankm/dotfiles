@@ -5,14 +5,18 @@ homebrew_global_packages:
   - ansible
   - ansible-lint
   - asitop
+  - btop
   - clang-format
   - coreutils
+  - fzf
+  - git
+  - gh
   - htop
   - lazygit
+  - jq
   - mas
   - neovim
-  #- pyenv
-  #- python3
+  - pyenv
   - rbenv
   - shellcheck
   - swiftformat
@@ -38,8 +42,8 @@ homebrew_user_packages:
   #- npm
   - llvm
   - nvm
-  #- publish
   - pyenv
+  - swiftly
   - todo-txt
   #- vapor
   - xcodes
@@ -71,7 +75,6 @@ homebrew_cask_apps:
   - postman
   - proxyman
   - rocket
-  - slack
   - stats
   - time-out
   - tower
@@ -91,7 +94,6 @@ homebrew_cask_fonts:
 # You will be prompted to log in to App Store with your Apple ID if not already.
 # If you have not purchased the app, this will fail.
 homebrew_mas_apps:
-  - 1569813296 # 1Password for Safari Extension
   - 1440147259 # AdGuard for Safari Extension
   - 640199958 # Apple Developer
   - 1452453066 # Hidden Bar
