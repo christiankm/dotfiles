@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 # shellcheck disable=SC1090,SC2296
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -7,6 +8,8 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+### USER CONFIGURATION ###
 
 # Update PATH
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
@@ -38,10 +41,6 @@ source "$ZSH/oh-my-zsh.sh"
 # Configure vim/neovim
 source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette.sh"
 
-# Remap vim to use neovim
-#alias vi="nvim"
-#alias vim="nvim"
-
 # Source functions
 source "$HOME/.dotfiles/bash/functions/task.sh"
 
@@ -54,5 +53,5 @@ if [[ -f "$HOME/.config/local/local.sh" ]]; then
   source "$HOME/.config/local/local.sh"
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# Load p10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

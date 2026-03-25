@@ -1,8 +1,10 @@
 ---
-- name: Configure vim
+- name: Configure vim and neovim
   hosts: localhost
   vars:
-    vim_dir: "{{ playbook_dir }}/../../vim"
+    vim_dir: "{{ root_dir }}/vim"
+    nvim_dir: "{{ root_dir }}/nvim"
+
   tasks:
     - name: Link .vimrc to Home
       ansible.builtin.file:
@@ -44,3 +46,9 @@
         force: true
       loop:
         - markdown.vim
+
+    - name: Link nvim to config
+      ansible.builtin.file:
+        src: "{{ nvim_dir }}"
+        dest: "$HOME/.config/nvim"
+        state: link

@@ -1,6 +1,4 @@
-" Sets the default vim settings.
-source \$VIMRUNTIME/defaults.vim
-
+vim.cmd([[
 " Use UTF8 encoding
 set encoding=utf-8
 
@@ -102,3 +100,4 @@ set conceallevel=2
 
 " Don't use swapfiles
 set noswapfile
+]])
