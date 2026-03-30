@@ -13,7 +13,10 @@
 - [ ] set up/restore Betwell windows workspace VM on Blackbird, develop inside vm over remote desktop
 - [x] simplify and eliminate unnessary vs code plugins
 
-## mac config
+## macOS configuration
+
+- [x] remove animation when switching between spaces
+    NOTE: trialing 'Reduce Motion' to use a fade animation instead, though also affects Stage Manager and other things
 
 ## magnet/window manager config
 
@@ -26,3 +29,8 @@
 - [ ] auto-rename windows/panes based on repo-name if inside git repo, otherwise
   use current folder name
 - [ ] new panels (when splitting) opens in the same directory as current
+
+## tools to try
+
+- [ ] yabai window tiling manager (https://github.com/asmvik/yabai)
+- [ ] Karabiner elements (https://karabiner-elements.pqrs.org)
