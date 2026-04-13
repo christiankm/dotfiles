@@ -42,7 +42,7 @@ tooling, so correctness and idempotency matter.
 
 ### Shell Script Standards
 
-- Dialect: `bash` (shebang `#!/bin/bash` or `#!/bin/sh`), `set -e` required.
+- Dialect: `sh` (shebang `#!/bin/sh`), `set -e` required.
 - Indentation: 4 spaces; no tabs.
 - Use `[[ ]]` for conditionals, `$(...)` for command substitution.
 - Quote all variable references to prevent word-splitting.
