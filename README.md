@@ -120,9 +120,10 @@ If you have a need to use different name and/or e-mail addresses on a specifc re
   2. Configure Preferences
   3. Log in and configure Extensions
 - Configure Xcode preferences and install Simulator versions
-  1. Open Xcode to import and select your preferred theme
+  1. Open Xcode to select your preferred theme
   2. Login to GitHub and Apple Accounts in Xcode
-  3. Enable Check spelling in Xcode, going to Edit
+  3. If needed, enable the Claude Agent and log in to Claude
+  4. Enable Check spelling in Xcode, going to Edit
 - Log in to various account in Xcode, vscode to synchrise other settings/extensions
 - Log in to applications, and activate Licenses
   - Slack, Microsoft Teams, Little Snitch, VMWare Fusion, CrossOver, Tower Git, Postman, Figma, etc.
