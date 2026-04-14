@@ -42,8 +42,12 @@
 - name: Configure and symlink SSH config and keys
   ansible.builtin.import_playbook: configure-ssh.yml
 
-- name: Configure vim
+- name: Configure vim and neovim
   ansible.builtin.import_playbook: configure-vim.yml
+
+- name: Configure Xcode
+  ansible.builtin.import_playbook: configure-xcode.yml
+  when: ansible_facts['distribution'] == "MacOSX"
 
 - name: Configure tmux
   ansible.builtin.import_playbook: configure-tmux.yml

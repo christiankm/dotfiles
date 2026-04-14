@@ -1,0 +1,45 @@
+---
+- name: Configure Xcode
+  hosts: localhost
+  gather_facts: false
+  vars:
+    xcode_dir: "{{ root_dir }}/xcode"
+    xcode_developer_dir: "$HOME/Library/Developer/Xcode"
+
+  tasks:
+    - name: Find Xcode directories
+      ansible.builtin.find:
+        paths: "{{ xcode_dir }}"
+        recurse: true
+        file_type: directory
+      register: xcode_directories
+
+    - name: Check Xcode directories
+      ansible.builtin.stat:
+        path: "{{ xcode_developer_dir }}/{{ item.path | relpath(xcode_dir) }}"
+      loop: "{{ xcode_directories.files }}"
+      register: xcode_directory_stats
+
+    - name: Create Xcode directories
+      ansible.builtin.file:
+        path: "{{ xcode_developer_dir }}/{{ item.item.path | relpath(xcode_dir) }}"
+        state: directory
+        mode: "0755"
+      loop: "{{ xcode_directory_stats.results }}"
+      when: not item.stat.exists
+
+    - name: Find Xcode files
+      ansible.builtin.find:
+        paths: "{{ xcode_dir }}"
+        recurse: true
+        file_type: file
+      register: xcode_files
+
+    - name: Copy Xcode files
+      ansible.builtin.copy:
+        src: "{{ item.path }}"
+        dest: "{{ xcode_developer_dir }}/{{ item.path | relpath(xcode_dir) }}"
+        force: true
+        mode: "0644"
+      loop: "{{ xcode_files.files }}"
+      when: xcode_files.matched > 0
