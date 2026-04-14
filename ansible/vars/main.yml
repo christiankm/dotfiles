@@ -8,20 +8,27 @@ homebrew_global_packages:
   - btop
   - clang-format
   - coreutils
+  - fd
   - fzf
+  - gcc
   - git
   - gh
   - htop
   - lazygit
   - jq
+  - make
   - mas
   - neovim
   - pyenv
   - rbenv
+  - ripgrep
   - shellcheck
+  - shfmt
   - swiftformat
   #- swiftlint # disabled by default, requires full Xcode installation
   - tmux
+  - tree-sitter-cli
+  - unzip
   - vim
   - yamllint
   #- yt-dlp
