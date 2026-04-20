@@ -8,12 +8,14 @@ return {
 	config = function()
 		local lint = require("lint")
 		lint.linters_by_ft = {
-			ansible = { "ansible-lint" },
+			["yaml.ansible"] = { "ansible-lint" },
+			bash = { "shellcheck" },
 			json = { "jsonlint" },
 			markdown = { "markdownlint-cli2" },
-			shell = { "shellcheck" },
+			sh = { "shellcheck" },
 			swift = { "swiftlint" },
 			typescript = { "eslint" },
+			zsh = { "shellcheck" },
 		}
 
 		-- Create autocommand which carries out the actual linting
