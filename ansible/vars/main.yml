@@ -8,6 +8,7 @@ homebrew_global_packages:
   - btop
   - clang-format
   - coreutils
+  - eza
   - fd
   - fzf
   - gcc
