@@ -1,5 +1,5 @@
 [user]
-    # Configure in local/local.sh
+    # Configure in ~/.config/local/local.sh
 
 [include]
     path = ~/.config/local/.gitconfig_local
@@ -21,30 +21,36 @@
     b = branch
     branches = branch -l
     co = checkout
+    cm = commit --message
     sw = switch
-    c = commit
+    ca = "!git add -A && git commit -m "
     cn = commit --no-verify
+    f = !git fetch
     s = status
     a = add
+    pl = !git pull
+    ps = !git push
     pushnew = push -u origin HEAD
+    prune-local = "!git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
 
 [branch]
     autosetupmerge = true
 
 [commit]
-	template = ~/.dotfiles/git/commit-template
+    template = ~/.dotfiles/git/commit-template
 
 [fetch]
     prune = true
 
 [push]
     default = current
+    autoSetupRemote = true
 
 [pull]
     rebase = true
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
