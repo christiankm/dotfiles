@@ -11,5 +11,9 @@ ssh/id_ed25519.pub
 # Ignore resources that may require a license
 resources/fonts/MonoLisa
 
+# Neovim generated files
+nvim/doc/
+nvim/lazy-lock.json
+
 # Other
 .claude/settings.local.json

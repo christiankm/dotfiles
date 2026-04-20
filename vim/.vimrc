@@ -61,11 +61,13 @@ autocmd FocusGained * call SetTheme()
 " Enable file type detection
 filetype on
 
+" Show filetype
+set filetype
+
 " Highlight current line
 set cursorline
 
-" Use 4 spaces for indentation
-" instead of tabs
+" Use 4 spaces for indentation instead of tabs
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -76,10 +78,26 @@ set number
 set textwidth=0
 set wrapmargin=0
 set wrap
-set linebreak
-set nolist
 set columns=140
 set colorcolumn=100
+
+" Avoid wrapping in the middle of words
+set linebreak
+set nolist
+
+" Disable hard wrapping
+set textwidth=0
+
+" Enable hard wrapping for markdown files
+augroup WrapMarkdown
+  autocmd!
+  autocmd FileType md setlocal wrap
+augroup END
+
+" Show character column limit
+set colorcolumn=80,100
+highlight ColorColumn guibg=Black
+highlight ColorColumn ctermbg=0
 
 " Show Status Bar
 set laststatus=2

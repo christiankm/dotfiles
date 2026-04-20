@@ -12,6 +12,12 @@ alias vi="nvim"
 alias ls="ls -CGp"
 alias ll="ls -lAhtGtpc --color=auto"
 
+# Prefer eza over ls if installed
+if [ -x "$(command -v eza)" ]; then
+    alias ls="eza"
+    alias la="eza --long --all --group"
+fi
+
 # Override standard commands with default flags
 alias rm="rm -i"
 alias cp="cp -i"

@@ -245,6 +245,7 @@ One session per project/repo. Each session follows the same window layout — se
 | `Ctrl+b + %` | Split pane vertically |
 | `Ctrl+b + "` | Split pane horizontally |
 | `Ctrl+b + [` | Enter copy mode (vi keys) |
+| `Ctrl+b + Ctrl+z` | Open floating shell over current window |
 
 ### Plugins
 
