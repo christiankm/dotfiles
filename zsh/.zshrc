@@ -14,15 +14,13 @@ fi
 # Update PATH
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-# Add bin directory to PATH
-export PATH="$HOME/bin:$PATH"
-
 # Environment
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 export COLORTERM=1
 export HOMEBREW_NO_ENV_HINTS=1
 export TODOTXT_DEFAULT_ACTION=ls
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X'
@@ -30,13 +28,13 @@ export MANPAGER='less -X'
 # Hide the "default interactive shell is now zsh" warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
+
 # Configure Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
