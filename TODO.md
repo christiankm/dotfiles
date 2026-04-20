@@ -19,20 +19,35 @@
 - [ ] set up/restore Betwell windows workspace VM on Blackbird, develop inside vm over remote desktop
 - [x] simplify and eliminate unnessary vs code plugins
 
+## desktop and configuration
+
+- [ ] install `dockutil` to configure macOS Dock items
+- [ ] install `mysides` to configure macOS Finder items
+
 ## macOS configuration
 
+- configure system preferences from playbook/script:
+  - Dock: 
+    - [ ]minimize windows to app icon
+  - Display:
+    - [ ] enable Stage Manager
+    - [ ] disable 'show recent apps in Stage Manager'
+    - [ ] enable true tone
+    - [ ] enable night shift, sunset to sunrise
 - [x] remove animation when switching between spaces
     NOTE: trialing 'Reduce Motion' to use a fade animation instead, though also affects Stage Manager and other things
 
 ## magnet/window manager config
 
-## (neo)vim config
+## neovim
 
+- [ ] brug rose pine theme
 - [x] find plugin for vim md todo lists to check off, auto-add checkbox on new line, etc.
 - [x] lower line length so wrapping happens before line 80
 
-## tmux config
+## tmux
 
+- [ ] brug rose pine theme
 - [x] restore previous session and layout on reboots/quit
   use current folder name
 - [x] new panels (when splitting) opens in the same directory as current

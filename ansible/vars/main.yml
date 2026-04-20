@@ -15,15 +15,18 @@ homebrew_global_packages:
   - gh
   - htop
   - lazygit
+  - lua
   - jq
   - make
   - mas
   - neovim
+  - pre-commit
   - pyenv
   - rbenv
   - ripgrep
   - shellcheck
   - shfmt
+  - swiftly
   - swiftformat
   #- swiftlint # disabled by default, requires full Xcode installation
   - tmux
@@ -53,6 +56,7 @@ homebrew_user_packages:
   - swiftly
   - todo-txt
   #- vapor
+  - xcbeautify
   - xcodes
 
 # Mac apps via cask
@@ -60,15 +64,14 @@ homebrew_user_packages:
 # Cask apps will be installed with --force, overwriting any existing
 # application in `/Applications`
 homebrew_cask_apps:
+  - betterdisplay
   - bezel
   - chatgpt
   - coteditor
   #- crossover
   - devutils
   #- discord
-  #- docker
   - figma
-  #- google-drive
   - firefox
   - gitify
   #- little-snitch # install manually, requires license to older version
