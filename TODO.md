@@ -27,7 +27,7 @@
 ## macOS configuration
 
 - configure system preferences from playbook/script:
-  - Dock: 
+  - Dock:
     - [ ]minimize windows to app icon
   - Display:
     - [ ] enable Stage Manager
@@ -41,7 +41,7 @@
 
 ## neovim
 
-- [ ] brug rose pine theme
+- [x] brug rose pine theme
 - [x] find plugin for vim md todo lists to check off, auto-add checkbox on new line, etc.
 - [x] lower line length so wrapping happens before line 80
 

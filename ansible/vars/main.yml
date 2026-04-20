@@ -19,6 +19,7 @@ homebrew_global_packages:
   - lua
   - jq
   - make
+  - markdownlint-cli2
   - mas
   - neovim
   - pre-commit
