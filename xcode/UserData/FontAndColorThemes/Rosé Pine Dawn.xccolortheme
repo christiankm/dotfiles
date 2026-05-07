@@ -164,55 +164,55 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.character</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>HelveticaNeue - 13.0</string>
+		<string>HelveticaNeue - 12.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>MonoLisa-Bold - 13.0</string>
+		<string>MonoLisa-Bold - 12.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>MonoLisa-Bold - 13.0</string>
+		<string>MonoLisa-Bold - 12.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.number</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.plain</key>
 		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.regex</key>
 		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.regex.capturename</key>
@@ -224,9 +224,9 @@
 		<key>xcode.syntax.regex.other</key>
 		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.string</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 		<key>xcode.syntax.url</key>
-		<string>MonoLisa-Regular - 13.0</string>
+		<string>MonoLisa-Regular - 12.0</string>
 	</dict>
 </dict>
 </plist>
