@@ -1,0 +1,37 @@
+---
+- name: Configure lazygit
+  hosts: localhost
+  vars:
+    lazygit_dir: "{{ root_dir }}/lazygit"
+    lazygit_config_dir: "$HOME/.config/lazygit"
+
+  tasks:
+    - name: configure-lazygit | Create lazygit config directory
+      ansible.builtin.file:
+        path: "{{ lazygit_config_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: configure-lazygit | Create lazygit themes directory
+      ansible.builtin.file:
+        path: "{{ lazygit_config_dir }}/themes"
+        state: directory
+        mode: "0755"
+
+    - name: configure-lazygit | Symlink config.yml
+      ansible.builtin.file:
+        src: "{{ lazygit_dir }}/config.yml"
+        dest: "{{ lazygit_config_dir }}/config.yml"
+        state: link
+        force: true
+
+    - name: configure-lazygit | Symlink theme files
+      ansible.builtin.file:
+        src: "{{ lazygit_dir }}/themes/{{ item }}"
+        dest: "{{ lazygit_config_dir }}/themes/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - rose-pine.yml
+        - rose-pine-dawn.yml
+        - rose-pine-moon.yml

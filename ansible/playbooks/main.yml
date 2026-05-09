@@ -52,6 +52,9 @@
 - name: Configure tmux
   ansible.builtin.import_playbook: configure-tmux.yml
 
+- name: Configure lazygit
+  ansible.builtin.import_playbook: configure-lazygit.yml
+
 - name: Configure todo.txt
   ansible.builtin.import_playbook: configure-todo.yml
 
