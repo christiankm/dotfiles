@@ -26,7 +26,7 @@ rules:
     # Disabling to allow for code comment blocks and #!/usr/bin/ansible-playbook
     require-starting-space: false
 
-  comments-indentation: enable
+  comments-indentation: false
 
   indentation:
     # Requiring 2 space indentation

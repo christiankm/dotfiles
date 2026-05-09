@@ -2,6 +2,7 @@
 exclude_paths:
   - '.git/'
   - 'files/'
+  - 'lazygit/'
 
 kinds:
   - tasks: 'ansible/tasks/*.{yml,yaml}'
