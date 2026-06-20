@@ -1,0 +1,38 @@
+---
+- name: Configure iCloud → Samba sync
+  hosts: localhost
+  gather_facts: true
+  vars:
+    launchd_label: dk.mitteldorf.icloud-samba-sync
+    launchd_agents_dir: "{{ ansible_env.HOME }}/Library/LaunchAgents"
+    plist_src: "{{ playbook_dir }}/../../launchd/{{ launchd_label }}.plist"
+    plist_dest: "{{ launchd_agents_dir }}/{{ launchd_label }}.plist"
+    conf_template: "{{ playbook_dir }}/../../local/icloud-samba-sync.conf.template"
+    conf_dest: "{{ ansible_env.HOME }}/.config/local/icloud-samba-sync.conf"
+
+  tasks:
+    - name: configure-icloud-samba-sync | Ensure LaunchAgents directory exists
+      ansible.builtin.file:
+        path: "{{ launchd_agents_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: configure-icloud-samba-sync | Copy config template (skip if already customised)
+      ansible.builtin.copy:
+        src: "{{ conf_template }}"
+        dest: "{{ conf_dest }}"
+        force: false
+        mode: "0600"
+
+    - name: configure-icloud-samba-sync | Template and install launchd plist
+      ansible.builtin.template:
+        src: "{{ plist_src }}"
+        dest: "{{ plist_dest }}"
+        mode: "0644"
+
+    - name: configure-icloud-samba-sync | Load (or reload) launchd agent
+      ansible.builtin.command:
+        cmd: launchctl load -w "{{ plist_dest }}"
+      register: launchctl_load
+      changed_when: launchctl_load.rc == 0
+      failed_when: launchctl_load.rc != 0

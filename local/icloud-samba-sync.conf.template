@@ -1,0 +1,39 @@
+# iCloud → Samba sync configuration
+# Copy this file to ~/.config/local/icloud-samba-sync.conf and fill in your values.
+# This file is NOT committed (it lives in local/ which is copied, not symlinked).
+
+# ── Samba server ──────────────────────────────────────────────────────────────
+
+# Hostname or IP address of the Samba server
+SAMBA_HOST="192.168.1.100"
+
+# Share name (the top-level share, not a subdirectory)
+SAMBA_SHARE="Backup"
+
+# Username for the Samba share
+SAMBA_USER="your-username"
+
+# Password — leave empty to read from the macOS Keychain (recommended).
+# To store in Keychain:
+#   security add-internet-password -s '192.168.1.100' -a 'your-username' -w
+SAMBA_PASSWORD=""
+
+# ── Paths ─────────────────────────────────────────────────────────────────────
+
+# Local iCloud folder to sync FROM.
+# Use ~ for home directory. Examples:
+#   ~/iCloud Drive/Documents        (user-visible name via Finder)
+#   ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents  (actual path)
+SOURCE_DIR="~/Library/Mobile Documents/com~apple~CloudDocs"
+
+# Where to mount the Samba share locally.
+# The directory is created automatically if it doesn't exist.
+SAMBA_MOUNT_POINT="/Volumes/icloud-backup"
+
+# Subdirectory within the share to sync INTO (leave empty for the share root).
+# Example: "icloud-backup" → files land in //<server>/<share>/icloud-backup/
+DEST_SUBDIR="icloud-backup"
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+
+LOG_FILE="$HOME/Library/Logs/icloud-samba-sync.log"

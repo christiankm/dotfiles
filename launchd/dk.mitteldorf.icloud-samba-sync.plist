@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Unique reverse-DNS label for this agent -->
+    <key>Label</key>
+    <string>dk.mitteldorf.icloud-samba-sync</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/sh</string>
+        <!-- Symlinked by Ansible via copy-files.yml into ~/bin/ -->
+        <string>{{ ansible_env.HOME }}/bin/icloud-samba-sync.sh</string>
+        <!-- Add --unmount if you want the share unmounted after each run -->
+        <!-- <string>--unmount</string> -->
+    </array>
+
+    <!-- Run every 6 hours. Adjust StartInterval (seconds) as needed:
+         3600  = every hour
+         21600 = every 6 hours (default)
+         86400 = once a day  -->
+    <key>StartInterval</key>
+    <integer>21600</integer>
+
+    <!-- Also run once immediately after the agent is loaded -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Retry if the job exits with a non-zero status -->
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/icloud-samba-sync.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/icloud-samba-sync.stderr.log</string>
+
+    <!-- Throttle rapid restarts after repeated failures -->
+    <key>ThrottleInterval</key>
+    <integer>300</integer>
+</dict>
+</plist>
