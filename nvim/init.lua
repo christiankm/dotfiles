@@ -2,7 +2,6 @@
 -- to suit my personal preferences
 
 -- Set <space> as the leader key
--- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -10,12 +9,15 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- [[ Setting options ]]
--- See `:help vim.o`
+-- Use UTF8 encoding
+vim.o.encoding = "utf-8"
 
 -- Use relative line numbers
 vim.o.number = true
 vim.o.relativenumber = true
+
+-- Enable file type detection
+--vim.o.filetype = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
@@ -66,6 +68,41 @@ vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
+
+-- Enable syntax highlighting
+--vim.o.syntax = true
+vim.o.synmaxcol = 200
+
+-- Show command in bottom right
+vim.o.showcmd = true
+
+-- Use 4 spaces for indentation instead of tabs
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = true
+
+-- Enable line wrapping (soft visual only)
+vim.o.textwidth = 0
+vim.o.wrapmargin = 0
+vim.o.wrap = true
+vim.o.colorcolumn = "80,100"
+
+-- Avoid wrapping in the middle of words
+vim.o.linebreak = true
+--vim.o.nolist = true
+
+-- Auto-format while typing
+--vim.o.formatoptions += t
+
+-- Enable auto-indentation
+vim.o.autoindent = true
+
+-- Ignore case-sensitivity for search
+vim.o.ignorecase = true
+
+-- Hide formatting in Markdown
+--vim.o.conceallevel = 2
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)

@@ -13,7 +13,7 @@ syntax on
 set synmaxcol=200
 
 " Use comma as local leader key
-let mapleader = ","
+let mapleader = " "
 
 " Show command in bottom right
 set showcmd
@@ -78,7 +78,6 @@ set number
 set textwidth=0
 set wrapmargin=0
 set wrap
-set columns=140
 set colorcolumn=100
 
 " Avoid wrapping in the middle of words
