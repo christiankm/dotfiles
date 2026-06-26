@@ -21,7 +21,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 export COLORTERM=1
+
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
+
+export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_NO_ENV_HINTS=1
+
 export TODOTXT_DEFAULT_ACTION=ls
 export DOTFILES_DIR="$HOME/.dotfiles"
 
@@ -63,3 +68,4 @@ fi
 
 # Load p10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

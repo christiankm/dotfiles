@@ -40,7 +40,7 @@
     template = ~/.dotfiles/git/commit-template
 
 [fetch]
-    prune = true
+    prune = false
 
 [push]
     default = current

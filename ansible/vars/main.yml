@@ -75,13 +75,11 @@ homebrew_cask_apps:
   #- discord
   - figma
   - firefox
-  - gitify
   #- little-snitch # install manually, requires license to older version
   - keka
   - markedit
   - meetingbar
   - microsoft-auto-update
-  - microsoft-edge
   - microsoft-teams
   - miro
   - postman
