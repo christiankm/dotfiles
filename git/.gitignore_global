@@ -2,6 +2,7 @@
 todo.*
 tasks.*
 *.secret
+**.local.json
 
 # Compiled source #
 ###################

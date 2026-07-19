@@ -4,19 +4,6 @@
 [include]
     path = ~/.config/local/.gitconfig_local
 
-[init]
-    defaultBranch = main
-
-[core]
-    excludesfile = ~/.config/.gitignore_global
-    ignorecase = false
-
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-    branch = magenta
-
 [alias]
     b = branch
     branches = branch -l
@@ -33,14 +20,43 @@
     pushnew = push -u origin HEAD
     prune-local = "!git fetch -p && git branch -vv | grep ': gone]' | sed 's/^[* ]*//; s/[[:space:]].*$//' | while IFS= read -r branch; do git branch -D -- \"$branch\"; done"
 
+[apply]
+    whitespace = fix
+
 [branch]
     autosetupmerge = true
+
+[color]
+    ui = true
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+    branch = magenta
 
 [commit]
     template = ~/.dotfiles/git/commit-template
 
+[core]
+    excludesfile = ~/.config/.gitignore_global
+    ignorecase = false
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
 [fetch]
     prune = false
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[help]
+    autocorrect = 1
+
+[init]
+    defaultBranch = main
 
 [push]
     default = current
@@ -48,9 +64,6 @@
 
 [pull]
     rebase = true
+[status]
+    showUntrackedFiles = all
 
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
