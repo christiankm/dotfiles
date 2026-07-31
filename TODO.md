@@ -15,8 +15,6 @@
 
 ## development
 
-- [ ] set up fedora C/swift dev workspace on Blackbird
-- [ ] set up/restore Betwell windows workspace VM on Blackbird, develop inside vm over remote desktop
 - [x] simplify and eliminate unnessary vs code plugins
 
 ## desktop and configuration
@@ -28,7 +26,7 @@
 
 - configure system preferences from playbook/script:
   - Dock:
-    - [ ]minimize windows to app icon
+    - [ ] minimize windows to app icon
   - Display:
     - [ ] enable Stage Manager
     - [ ] disable 'show recent apps in Stage Manager'
@@ -47,12 +45,12 @@
 
 ## tmux
 
-- [ ] brug rose pine theme
+- [x] brug rose pine theme
 - [x] restore previous session and layout on reboots/quit
   use current folder name
 - [x] new panels (when splitting) opens in the same directory as current
 
 ## tools to try
 
-- [ ] yabai window tiling manager (https://github.com/asmvik/yabai)
-- [ ] Karabiner elements (https://karabiner-elements.pqrs.org)
+- [ ] yabai window tiling manager (<https://github.com/asmvik/yabai>)
+- [ ] Karabiner elements (<https://karabiner-elements.pqrs.org>)

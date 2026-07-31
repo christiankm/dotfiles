@@ -3,6 +3,8 @@ todo.*
 tasks.*
 *.secret
 **.local.json
+.worktrees/
+.swiftlint/
 
 # Compiled source #
 ###################
@@ -42,10 +44,6 @@ tasks.*
 *.log
 *.sqlite
 
-# OS generated files #
-######################
-.DS_Store
-
 # Thumbnails
 ._*
 
@@ -64,9 +62,6 @@ Desktop.ini
 .swo
 .*.swp
 .*.swo
-
-# VS Code
-.vscode
 
 # Compiled source
 *.pyc
@@ -107,11 +102,9 @@ svn-commit.*
 tags
 TAGS
 
-# Caches
-.swiftlint/RemoteConfigCache
-
 # Dependencies
-.bundle
-node_modules
+.build/
+.bundle/
+node_modules/
 vendor/bundle
 .jira-url
