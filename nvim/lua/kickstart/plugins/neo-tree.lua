@@ -18,6 +18,17 @@ return {
 	---@type neotree.Config
 	opts = {
 		filesystem = {
+			filtered_items = {
+				visible = true,
+				hide_by_name = {
+					-- ".git",
+					-- ".build",
+					-- "node_modules",
+					-- "bin",
+					-- "build",
+					-- "obj"
+				},
+			},
 			window = {
 				mappings = {
 					["\\"] = "close_window",
