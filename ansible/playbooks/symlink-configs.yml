@@ -1,10 +1,12 @@
 ---
-- name: Symlinks to dotfiles
+- name: Symlinks config files
   hosts: localhost
   gather_facts: false
   vars:
     user_home: "$HOME"
+    config_dir: "{{ user_home}}/.config"
     bash_dir: "{{ root_dir }}/bash"
+    aerospace_dir: "{{ root_dir }}/aerospace"
 
   tasks:
     - name: Create .hushlogin
@@ -39,6 +41,14 @@
       ansible.builtin.file:
         src: "{{ bash_dir }}/aliases.sh"
         dest: "{{ user_home }}/.config/aliases.sh"
+        state: link
+        follow: false
+        force: true
+
+    - name: Symlink aerospace.toml to .config directory
+      ansible.builtin.file:
+        src: "{{ aerospace_dir }}/aerospace.toml"
+        dest: "{{ user_home }}/.aerospace.toml"
         state: link
         follow: false
         force: true

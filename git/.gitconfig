@@ -64,5 +64,6 @@
 
 [pull]
     rebase = true
+
 [status]
     showUntrackedFiles = all

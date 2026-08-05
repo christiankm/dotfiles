@@ -10,8 +10,8 @@
         echo: true
       delegate_to: localhost
 
-- name: Symlink other dotfiles
-  ansible.builtin.import_playbook: symlink-dotfiles.yml
+- name: Symlink configs
+  ansible.builtin.import_playbook: symlink-configs.yml
 
 # Install programs
 - name: Install and configure git

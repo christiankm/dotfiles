@@ -211,7 +211,7 @@ Use `*_local` files for machine-specific settings:
 The main playbook (`ansible/playbooks/main.yml`) executes in this order:
 
 1. **Prompt user to continue** (with pause)
-2. **symlink-dotfiles.yml** - Create symlinks for config files
+2. **symlink-configs.yml** - Create symlinks for config files
 3. **install-git.yml** - Install git and link config
 4. **install-zsh.yml** - Install zsh and link .zshrc/.zprofile
 5. **install-oh-my-zsh.yml** - Install oh-my-zsh framework
@@ -295,7 +295,7 @@ The repository uses pre-commit hooks to enforce quality standards:
 ### Adding New Configuration File
 
 1. Place file in appropriate directory (e.g., `vim/`, `zsh/`)
-2. Add symlink task in `ansible/playbooks/symlink-dotfiles.yml`:
+2. Add symlink task in `ansible/playbooks/symlink-configs.yml`:
    ```yaml
    - name: Symlink <filename> to home directory
      ansible.builtin.file:

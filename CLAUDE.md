@@ -48,7 +48,7 @@ yamllint <file.yml>
 
 ### Playbook Execution Order (`main.yml`)
 
-1. symlink-dotfiles → install-git → install-zsh → install-oh-my-zsh → install-powerlevel10k
+1. symlink-configs → install-git → install-zsh → install-oh-my-zsh → install-powerlevel10k
 2. install-homebrew-packages → install-mac-app-store-apps → install-fonts
 3. configure-ssh → configure-vim → configure-tmux → configure-todo → configure-finder
 4. copy-files
@@ -58,7 +58,7 @@ yamllint <file.yml>
 Ansible symlinks files from `~/.dotfiles` into `$HOME`. Always use `force: true` and fully qualified module names:
 
 ```yaml
-- name: symlink-dotfiles | Symlink <file>
+- name: symlink-configs | Symlink <file>
   ansible.builtin.file:
     src: "{{ playbook_dir }}/../../<dir>/<file>"
     dest: "$HOME/<destination>"
@@ -85,7 +85,7 @@ Ansible symlinks files from `~/.dotfiles` into `$HOME`. Always use `force: true`
 
 - Indentation: 2 spaces, max line length 100
 - Use fully qualified module names: `ansible.builtin.*`, `community.general.*`
-- Task names prefixed with `{playbook-stem} |` (e.g., `symlink-dotfiles | Symlink .zshrc`)
+- Task names prefixed with `{playbook-stem} |` (e.g., `symlink-configs | Symlink .zshrc`)
 - Set `changed_when: false` for read-only commands; use `creates:`/`removes:` for idempotency
 - Variables: snake_case (`^[a-z_][a-z0-9_]*$`)
 

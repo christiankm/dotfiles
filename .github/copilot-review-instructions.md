@@ -36,7 +36,7 @@ tooling, so correctness and idempotency matter.
 - Ansible playbooks must use **fully qualified collection names** (e.g.
   `ansible.builtin.file`, `community.general.homebrew`).
 - Task names must be prefixed with the playbook stem followed by ` | ` (e.g.
-  `symlink-dotfiles | Symlink .zshrc`).
+  `symlink-configs | Symlink .zshrc`).
 - Loop variables must start with `__` or the role name per `.ansible-lint.yml`.
 - Variable names must match `^[a-z_][a-z0-9_]*$` (snake_case only).
 
@@ -63,10 +63,10 @@ tooling, so correctness and idempotency matter.
 
 ### Symlink Tasks
 
-New symlink tasks in `ansible/playbooks/symlink-dotfiles.yml` must use:
+New symlink tasks in `ansible/playbooks/symlink-configs.yml` must use:
 
 ```yaml
-- name: symlink-dotfiles | Symlink <file>
+- name: symlink-configs | Symlink <file>
   ansible.builtin.file:
     src: "{{ playbook_dir }}/../../<dir>/<file>"
     dest: "$HOME/<destination>"
