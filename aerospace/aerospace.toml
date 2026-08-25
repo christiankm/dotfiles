@@ -19,7 +19,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 64
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -50,6 +50,52 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 on-mode-changed = []
 
+# A callback to always keep certain windows floating
+# or assign to a specific workspace
+on-window-detected = [
+    {
+        if = 'test %{app-bundle-id} = com.1password.1password',
+        run = 'layout floating'
+    },
+    {
+        if = 'test %{app-bundle-id} = com.apple.iCal',
+        run = 'layout floating'
+    },
+    {
+        if = 'test %{app-bundle-id} = com.apple.ActivityMonitor',
+        run = 'layout floating'
+    },
+    {
+        # Assign Things to workspace 1
+        if = 'test %{app-bundle-id} = com.culturedcode.ThingsMac',
+        run = 'move-node-to-workspace 1'
+    },
+    {
+        # Assign Safari to workspace 2
+        if = 'test %{app-bundle-id} = com.apple.Safari',
+        run = ['move-node-to-workspace 2']
+    },
+    {
+        # Assign Terminal to workspace 3
+        if = 'test %{app-bundle-id} = com.apple.Terminal',
+        run = ['move-node-to-workspace 3']
+    },
+    {
+        # Assign Slack to workspace 4, accordion
+        if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap',
+        run = ['layout accordion', 'move-node-to-workspace 4']
+    },
+    {
+        # Assign Mail to workspace 4, accordion
+        if = 'test %{app-bundle-id} = com.apple.mail',
+        run = ['layout accordion', 'move-node-to-workspace 4']
+    },
+    {
+        if = 'test %{app-bundle-id} = com.microsoft.teams2',
+        run = ['move-node-to-workspace 5']
+    }
+]
+
 focus-follows-mouse.enabled = false
 
 # Possible values: (qwerty|dvorak|colemak)
@@ -64,12 +110,12 @@ key-mapping.preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-gaps.inner.horizontal = 12
-gaps.inner.vertical = 12
-gaps.outer.left = 12
-gaps.outer.bottom = 12
-gaps.outer.top = 12
-gaps.outer.right = 12
+gaps.inner.horizontal = 8
+gaps.inner.vertical = 8
+gaps.outer.left = 0
+gaps.outer.bottom = 0
+gaps.outer.top = 0
+gaps.outer.right = 0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -89,7 +135,7 @@ gaps.outer.right = 12
     #                   keypadMinus, keypadMultiply, keypadPlus
     # - Arrows.         left, down, up, right
 
-    # All possible modifiers: cmd, alt, ctrl, shift
+    # All possible modifiers: cmd, alt (option on Mac), ctrl, shift
 
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
@@ -161,26 +207,7 @@ gaps.outer.right = 12
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
 
-    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-    #s = ['layout sticky tiling', 'mode main']
     alt-shift-h = ['join-with left', 'mode main']
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
-
-# Event handlers to always keep certain windows Floating
-[[on-window-detected]]
-    if.app-id = 'com.1password.1password'
-    run = 'layout floating'
-
-# Always place certain windows in specific workspace
-[[on-window-detected]]
-    if.app-id = "com.microsoft.Teams"
-    run = [
-        "move-node-to-workspace 5"
-    ]
-[[on-window-detected]]
-    if.app-id = "com.apple.Terminal"
-    run = [
-        "move-node-to-workspace 3"
-    ]
