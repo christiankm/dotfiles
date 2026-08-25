@@ -66,6 +66,7 @@ homebrew_user_packages:
 # Cask apps will be installed with --force, overwriting any existing
 # application in `/Applications`
 homebrew_cask_apps:
+  - aerospace
   - betterdisplay
   - bezel
   - chatgpt
