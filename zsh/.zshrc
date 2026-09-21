@@ -48,6 +48,10 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(dotnet fzf gh git git-lfs macos pre-commit swiftpm ruby tmux xcode zsh-syntax-highlighting zsh-autosuggestions)
 
+# Configure tmux plugin
+export ZSH_TMUX_CONFIG="$HOME/.tmux.conf"
+export ZSH_TMUX_AUTONAME_SESSION=true
+
 # Source oh-my-zsh early so plugins and completions are available
 source "$ZSH/oh-my-zsh.sh"
 
