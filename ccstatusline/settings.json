@@ -1,0 +1,105 @@
+{
+  "colorLevel": 2,
+  "compactThreshold": 60,
+  "flexMode": "full-minus-40",
+  "globalBold": false,
+  "inheritSeparatorColors": false,
+  "lines": [
+    [
+      {
+        "color": "brightBlue",
+        "id": "session-usage",
+        "type": "session-usage"
+      },
+      {
+        "id": "sep1",
+        "type": "separator"
+      },
+      {
+        "color": "brightBlue",
+        "id": "weekly-usage",
+        "type": "weekly-usage"
+      },
+      {
+        "id": "sep2",
+        "type": "separator"
+      },
+      {
+        "color": "brightBlue",
+        "id": "reset-timer",
+        "type": "reset-timer"
+      },
+      {
+        "id": "sep-battery",
+        "type": "separator"
+      },
+      {
+        "color": "yellow",
+        "id": "battery",
+        "type": "battery"
+      },
+      {
+        "id": "sep3",
+        "type": "separator"
+      },
+      {
+        "color": "magenta",
+        "id": "model",
+        "type": "model"
+      },
+      {
+        "id": "sep4",
+        "type": "separator"
+      },
+      {
+        "color": "cyan",
+        "id": "session-id",
+        "type": "claude-session-id"
+      }
+    ],
+    [
+      {
+        "color": "blue",
+        "id": "context-bar",
+        "type": "context-bar"
+      },
+      {
+        "id": "sep-weekly-pace",
+        "type": "separator"
+      },
+      {
+        "color": "brightBlue",
+        "id": "weekly-pace",
+        "metadata": {
+          "display": "pendulum"
+        },
+        "type": "weekly-pace"
+      },
+      {
+        "id": "sep-off-peak",
+        "type": "separator"
+      },
+      {
+        "color": "green",
+        "id": "off-peak",
+        "type": "off-peak"
+      }
+    ],
+    []
+  ],
+  "minimalistMode": false,
+  "powerline": {
+    "autoAlign": false,
+    "continueThemeAcrossLines": false,
+    "enabled": false,
+    "endCaps": [],
+    "separatorInvertBackground": [
+      false
+    ],
+    "separators": [
+      "\ue0b0"
+    ],
+    "startCaps": []
+  },
+  "version": 4
+}
