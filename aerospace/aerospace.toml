@@ -81,7 +81,12 @@ on-window-detected = [
     {
         # Assign Things to workspace 1
         if = 'test %{app-bundle-id} = com.culturedcode.ThingsMac',
-        run = 'move-node-to-workspace 1'
+        run = ['layout tiles', 'move-node-to-workspace 1']
+    },
+    {
+        # Assign Claude to workspace 1
+        if = 'test %{app-bundle-id} = com.anthropic.claudefordesktop',
+        run = ['layout tiles', 'move-node-to-workspace 1']
     },
     {
         # Assign Safari to workspace 2
@@ -91,21 +96,27 @@ on-window-detected = [
     {
         # Assign Terminal to workspace 3
         if = 'test %{app-bundle-id} = com.apple.Terminal',
-        run = ['move-node-to-workspace 3']
+        run = ['layout tiles', 'move-node-to-workspace 3']
     },
     {
-        # Assign Slack to workspace 4, accordion
+        # Assign Xcode to workspace 4
+        if = 'test %{app-bundle-id} = com.apple.dt.Xcode',
+        run = ['layout tiles', 'move-node-to-workspace 4']
+    },
+    {
+        # Assign Slack to workspace 5, accordion
         if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap',
-        run = ['layout accordion', 'move-node-to-workspace 4']
+        run = ['layout accordion', 'move-node-to-workspace 5']
     },
     {
-        # Assign Mail to workspace 4, accordion
+        # Assign Mail to workspace 5, accordion
         if = 'test %{app-bundle-id} = com.apple.mail',
-        run = ['layout accordion', 'move-node-to-workspace 4']
+        run = ['layout accordion', 'move-node-to-workspace 5']
     },
     {
+        # Assign Teams to workspace 5, accordion
         if = 'test %{app-bundle-id} = com.microsoft.teams2',
-        run = ['move-node-to-workspace 5']
+        run = ['layout accordion', 'move-node-to-workspace 5']
     }
 ]
 
