@@ -21,6 +21,11 @@
     prune-local = "!git fetch -p && git branch -vv | grep ': gone]' | sed 's/^[* ]*//; s/[[:space:]].*$//' | while IFS= read -r branch; do git branch -D -- \"$branch\"; done"
 
 [apply]
+    # When applying a patch (git apply / git am), silently correct any of
+    # the whitespace problems listed under core.whitespace below instead
+    # of just warning about them or rejecting the patch. Does not affect
+    # git commit, git merge, or git pull --rebase (git 2.35+ uses the
+    # merge-based rebase backend, not this apply path).
     whitespace = fix
 
 [branch]
@@ -41,7 +46,25 @@
 [core]
     excludesfile = ~/.config/.gitignore_global
     ignorecase = false
-    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    # A comma-separated list of whitespace problems for `git diff` to
+    # highlight (red) and `git apply --whitespace=error` to reject.
+    #   blank-at-eol         flag trailing whitespace at the end of a line
+    #                        (enabled by default)
+    #   space-before-tab     flag a space immediately before a tab in a
+    #                        line's leading indentation (enabled by default)
+    #   -indent-with-non-tab do NOT flag a line indented with spaces
+    #                        instead of tabs (disabled by default)
+    #   tab-in-indent        flag a stray tab inside otherwise
+    #                        space-indented code (disabled by default)
+    #   blank-at-eof         flag a blank line added at the end of a file
+    #                        (enabled by default)
+    #   cr-at-eol            treat a trailing \r as part of a normal CRLF
+    #                        line ending, not an error - avoids false
+    #                        positives on CRLF files like .sln
+    #                        (disabled by default)
+    #   -incomplete-line     do NOT flag a file whose last line is missing
+    #                        its trailing newline (disabled by default)
+    whitespace = blank-at-eol,space-before-tab,-indent-with-non-tab,tab-in-indent,blank-at-eof,cr-at-eol,-incomplete-line
 
 [fetch]
     prune = false
