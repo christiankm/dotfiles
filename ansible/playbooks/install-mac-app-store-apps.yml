@@ -14,8 +14,18 @@
       register: mas_list
       changed_when: false
 
+    - name: Check for local machine overrides
+      ansible.builtin.stat:
+        path: "$HOME/.config/local/ansible-vars.yml"
+      register: local_vars_file
+
+    - name: Load local machine overrides
+      ansible.builtin.include_vars:
+        file: "$HOME/.config/local/ansible-vars.yml"
+      when: local_vars_file.stat.exists
+
     - name: Install Mac App Store apps
       community.general.mas:
         id: "{{ item }}"
         state: present
-      with_items: "{{ homebrew_mas_apps }}"
+      with_items: "{{ homebrew_mas_apps + homebrew_local_mas_apps }}"

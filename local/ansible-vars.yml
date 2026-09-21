@@ -1,0 +1,19 @@
+---
+# Homebrew packages, casks and Mac App Store apps specific to this machine
+# only (not tracked in git). This file is copied to
+# ~/.config/local/ansible-vars.yml on install and is never symlinked back
+# into the repo, so edits here are safe from `git status` noise across
+# machines. See ../local/README.txt.
+#
+# Uncomment and edit the lists below as needed, then re-run ./install.sh or:
+#   ansible-playbook ansible/playbooks/install-homebrew-packages.yml
+#   ansible-playbook ansible/playbooks/install-mac-app-store-apps.yml
+
+#homebrew_local_packages:
+#  - some-cli-tool
+
+#homebrew_local_cask_apps:
+#  - some-cask-app
+
+#homebrew_local_mas_apps:
+#  - 123456789 # App Name

@@ -7,21 +7,25 @@
     - name: Ensure Homebrew is installed and updated
       ansible.builtin.import_tasks: ../tasks/update-homebrew.yml
 
-    - name: Install global Homebrew packages
-      community.general.homebrew:
-        name: "{{ item }}"
-        state: present
-      loop: "{{ homebrew_global_packages }}"
+    - name: Check for local machine overrides
+      ansible.builtin.stat:
+        path: "$HOME/.config/local/ansible-vars.yml"
+      register: local_vars_file
 
-    - name: Install machine-specific Homebrew packages
+    - name: Load local machine overrides
+      ansible.builtin.include_vars:
+        file: "$HOME/.config/local/ansible-vars.yml"
+      when: local_vars_file.stat.exists
+
+    - name: Install Homebrew packages
       community.general.homebrew:
         name: "{{ item }}"
         state: present
-      loop: "{{ homebrew_user_packages }}"
+      loop: "{{ homebrew_packages + homebrew_local_packages }}"
 
     - name: Install Homebrew cask apps
       community.general.homebrew_cask:
         name: "{{ item }}"
         state: present
         install_options: "force"
-      loop: "{{ homebrew_cask_apps }}"
+      loop: "{{ homebrew_cask_apps + homebrew_local_cask_apps }}"

@@ -37,6 +37,12 @@
             dest: "{{ user_home }}/.config/local/local.sh"
             force: no # do not override if exists
 
+        - name: Copy ansible-vars.yml template
+          ansible.builtin.copy:
+            src: "{{ playbook_dir }}/../../local/ansible-vars.yml"
+            dest: "{{ user_home }}/.config/local/ansible-vars.yml"
+            force: no # do not override if exists
+
     - name: Symlink aliases.sh to .config directory
       ansible.builtin.file:
         src: "{{ bash_dir }}/aliases.sh"
