@@ -78,9 +78,16 @@ vim.o.showcmd = true
 
 -- Use 4 spaces for indentation instead of tabs
 vim.o.shiftwidth = 4
+
+-- Number of spaces that a <Tab> counts for
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
+
+-- Convert tabs to spaces
 vim.o.expandtab = true
+
+-- Enable auto-indentation, copy indent from current line onto new line
+vim.o.autoindent = true
 
 -- Enable line wrapping (soft visual only)
 vim.o.textwidth = 0
@@ -94,9 +101,6 @@ vim.o.linebreak = true
 
 -- Auto-format while typing
 --vim.o.formatoptions += t
-
--- Enable auto-indentation
-vim.o.autoindent = true
 
 -- Ignore case-sensitivity for search
 vim.o.ignorecase = true
@@ -842,7 +846,8 @@ require("lazy").setup({
 	require("kickstart.plugins.neo-tree"),
 	require("kickstart.plugins.gitsigns"),
 
-	{ import = "custom.plugins" },
+        -- Import other configs and plugins
+        { import = "config.plugins" },
 
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!

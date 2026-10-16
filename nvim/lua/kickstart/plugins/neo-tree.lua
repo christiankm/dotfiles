@@ -19,14 +19,17 @@ return {
 	opts = {
 		filesystem = {
 			filtered_items = {
-				visible = true,
-				hide_by_name = {
+				visible = false,
+				hide_dotfiles = false,
+				hide_gitignored = true,
+				never_show = {
 					-- ".git",
 					-- ".build",
 					-- "node_modules",
 					-- "bin",
 					-- "build",
-					-- "obj"
+					-- "obj",
+					-- ".DS_Store"
 				},
 			},
 			window = {
