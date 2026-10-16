@@ -8,13 +8,11 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 # Set height of bar to match MacBook Notch
 bar=(
-  --bar
-  blur_radius=30
-  color=0x40000000
-  height=32
+  color=0x00000000
+  height=32 # matches Menu Bar and Notch
   position=top
-  padding_left=6
-  padding_right=6
+  padding_left=12
+  padding_right=12
 )
 sketchybar --bar "${bar[@]}"
 
@@ -24,11 +22,11 @@ sketchybar --bar "${bar[@]}"
 # https://felixkratz.github.io/SketchyBar/config/items
 default=(
   icon.color=0xffffffff
-  icon.font="Hack Nerd Font:Bold:15.0"
+  icon.font="SF Pro:Medium:13.0"
   icon.padding_left=4
   icon.padding_right=4
   label.color=0xffffffff
-  label.font="Hack Nerd Font:Bold:13.0"
+  label.font="SF Pro:Medium:13.0"
   label.padding_left=4
   label.padding_right=4
   padding_left=5
@@ -50,15 +48,15 @@ for i in {1..6}; do
              --subscribe space.$i mouse.clicked \
              --subscribe space.$i aerospace_workspace_change
 done
-sketchybar --set space.1 icon=A label=Molly
-sketchybar --set space.2 icon=B label=Browser
-sketchybar --set space.3 icon=C label=Terminal
-sketchybar --set space.4 icon=D label=Xcode
-sketchybar --set space.5 icon=E label=Communications
-sketchybar --set space.6 icon=F label=Other
+sketchybar --set space.1 icon=􃌦 label=Things
+sketchybar --set space.2 icon=􃌧 label=Safari
+sketchybar --set space.3 icon=􃌨 label=Terminal
+sketchybar --set space.4 icon=􃌩 label=Code
+sketchybar --set space.5 icon=􃌪 label=Comms
+sketchybar --set space.6 icon=􃌫 label=Other
 
 sketchybar --add bracket spaces '/space\..*/' \
-           --set spaces background.color=0x26000000 \
+           --set spaces \
                         background.corner_radius=4 \
                         background.height=20 \
                         background.border_width=1 \
@@ -66,7 +64,7 @@ sketchybar --add bracket spaces '/space\..*/' \
 
 #### Adding Other Left Items
 sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off
+           --set chevron icon=􀯻 label.drawing=off
 
 sketchybar --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
@@ -83,7 +81,7 @@ sketchybar --add item front_app left \
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh"
+           --set clock update_freq=10 icon=􀐫 script="$PLUGIN_DIR/clock.sh"
 
 sketchybar --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
