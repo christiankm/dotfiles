@@ -423,7 +423,7 @@ require("lazy").setup({
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
-		config = function()
+		config = function(_, opts)
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -548,6 +548,10 @@ require("lazy").setup({
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+			-- Merge in servers declared by custom.plugins files (e.g. sourcekit),
+			-- which aren't managed by Mason and so are kept out of ensure_installed above.
+			servers = vim.tbl_deep_extend("force", servers, opts.servers or {})
 
 			for name, server in pairs(servers) do
 				vim.lsp.config(name, server)
