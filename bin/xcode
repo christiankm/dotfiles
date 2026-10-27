@@ -1,0 +1,36 @@
+#!/bin/zsh
+# Opens the Xcode workspace, project or Swift package in a directory (default: the current one).
+# Looks for a .xcworkspace first, then a .xcodeproj, then Package.swift, and opens the first match
+# in the Xcode selected with xcode-select, using xed when it's available.
+
+setopt null_glob
+
+dir="${1:-.}"
+if [[ ! -d "$dir" ]]; then
+  echo "xcode: not a directory: $dir" >&2
+  exit 1
+fi
+
+target=""
+for candidate in "$dir"/*.xcworkspace "$dir"/*.xcodeproj "$dir"/Package.swift; do
+  [[ -e "$candidate" ]] || continue
+  target="$candidate"
+  break
+done
+
+if [[ -z "$target" ]]; then
+  echo "xcode: no .xcworkspace, .xcodeproj or Package.swift in $dir" >&2
+  exit 1
+fi
+
+echo "Opening ${target#./}"
+if xcrun --find xed >/dev/null 2>&1; then
+  xed "$target" && exit 0
+fi
+
+xcode_app="$(xcode-select -p 2>/dev/null)"
+xcode_app="${xcode_app%/Contents/Developer}"
+if [[ "$xcode_app" != *.app ]]; then
+  xcode_app="Xcode"
+fi
+open -a "$xcode_app" "$target"

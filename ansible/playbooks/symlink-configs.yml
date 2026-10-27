@@ -51,6 +51,22 @@
         follow: false
         force: true
 
+    - name: Ensure .local/bin directory exists
+      ansible.builtin.file:
+        path: "{{ user_home }}/.local/bin"
+        state: directory
+        mode: "0755"
+
+    - name: Symlink bin scripts to .local/bin directory
+      ansible.builtin.file:
+        src: "{{ item }}"
+        dest: "{{ user_home }}/.local/bin/{{ item | basename }}"
+        state: link
+        follow: false
+        force: true
+      with_fileglob:
+        - "{{ root_dir }}/bin/*"
+
     - name: Symlink aerospace.toml to .config directory
       ansible.builtin.file:
         src: "{{ aerospace_dir }}/aerospace.toml"
