@@ -13,7 +13,6 @@ resources/fonts/MonoLisa
 
 # Neovim generated files
 nvim/doc/
-nvim/lazy-lock.json
 
 # Other
 .claude/settings.local.json
