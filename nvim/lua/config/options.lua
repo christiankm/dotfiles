@@ -57,6 +57,10 @@ vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 8
+
+-- Enable syntax highlighting
+vim.o.synmaxcol = 200
+
 -- Show command in bottom right
 vim.o.showcmd = true
 
