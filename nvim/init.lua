@@ -1,10 +1,8 @@
 -- neovim config based on kickstart.nvim and modified
 -- to suit my personal preferences
 
--- Set <space> as the leader key
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- Require remaps file which sets all keybindings
+require("lua.config.remap")
 
 -- Require options file which sets all global options
 require("lua.config.options")
