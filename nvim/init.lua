@@ -2,10 +2,10 @@
 -- to suit my personal preferences
 
 -- Require remaps file which sets all keybindings
-require("lua.config.remap")
+require("config.remap")
 
 -- Require options file which sets all global options
-require("lua.config.options")
+require("config.options")
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -86,10 +86,7 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
-require("lazy").setup("plugins", {
-        -- auto-imports all plugins in lua/plugins
-
-}, { ---@diagnostic disable-line: missing-fields
+require("lazy").setup("plugins", { ---@diagnostic disable-line: missing-fields
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
 		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
