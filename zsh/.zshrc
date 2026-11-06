@@ -55,6 +55,9 @@ export ZSH_TMUX_AUTONAME_SESSION=true
 # Source oh-my-zsh early so plugins and completions are available
 source "$ZSH/oh-my-zsh.sh"
 
+# Free `gcd` for Grand Central Dispatch (the git and git-flow plugins alias it)
+unalias gcd 2>/dev/null
+
 # Configure vim/neovim
 source "$HOME/.vim/pack/default/start/gruvbox/gruvbox_256palette.sh"
 
