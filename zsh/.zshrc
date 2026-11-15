@@ -19,7 +19,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # Environment
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+export EDITOR='nvim'
 export COLORTERM=1
 
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
@@ -46,8 +46,15 @@ fi
 # Configure Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(dotnet fzf gh git git-lfs macos pre-commit swiftpm ruby tmux xcode zsh-syntax-highlighting zsh-autosuggestions)
 
+# Load plugins
+plugins=(ansible docker docker-compose dotnet fzf gh git git-lfs macos pre-commit ruby swiftpm tmux xcode zsh-autosuggestions zsh-syntax-highlighting)
+
+# Enable command auto-correction
+ENABLE_CORRECTION="true"
+
+# Display red dots whilst waiting for completion
+COMPLETION_WAITING_DOTS="true"
 # Configure tmux plugin
 export ZSH_TMUX_CONFIG="$HOME/.tmux.conf"
 export ZSH_TMUX_AUTONAME_SESSION=true
