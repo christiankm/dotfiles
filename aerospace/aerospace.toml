@@ -75,18 +75,32 @@ on-window-detected = [
     },
     {
         # Assign Things to workspace 1
+        # Move to left third
         if = 'test %{app-bundle-id} = com.culturedcode.ThingsMac',
-        run = ['layout tiles', 'move-node-to-workspace 1']
+        run = [
+        	'layout tiles',
+        	'move-node-to-workspace 1',
+        	'move left',
+        	'resize smart -200'
+        ]
     },
     {
         # Assign Claude to workspace 1
+        # Move to right third
         if = 'test %{app-bundle-id} = com.anthropic.claudefordesktop',
-        run = ['layout tiles', 'move-node-to-workspace 1']
+        run = [
+        	'layout tiles',
+        	'move-node-to-workspace 1'
+        ]
     },
     {
         # Assign Safari to workspace 2
         if = 'test %{app-bundle-id} = com.apple.Safari',
-        run = ['move-node-to-workspace 2']
+        run = [
+            'layout tiles',
+        	'move-node-to-workspace 2',
+        	'move-workspace-to-monitor secondary',
+        ]
     },
     {
         # Assign Terminal to workspace 3
