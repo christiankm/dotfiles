@@ -46,12 +46,9 @@ homebrew_packages:
 homebrew_cask_apps:
   - aerospace
   - betterdisplay
-  - bezel
   - chatgpt
   - coteditor
-  #- crossover
   - devutils
-  #- discord
   - figma
   - firefox
   #- little-snitch # install manually, requires license to older version
@@ -63,12 +60,8 @@ homebrew_cask_apps:
   - miro
   - proxyman
   - rocket
-  - stats
-  - time-out
   - tower
   - visual-studio-code
-  #- vlc
-  #- windows-app
 
 # Fonts to install via Homebrew
 # Discover available fonts by running `brew search font-`
@@ -89,18 +82,15 @@ homebrew_mas_apps:
   - 775737590 # iA Writer
   - 409183694 # Keynote
   - 441258766 # Magnet
-  #- 823766827  # Microsoft OneDrive
-  #- 784801555  # Microsoft OneNote
   - 409203825 # Numbers
   - 409201541 # Pages
   - 899247664 # TestFlight
-  - 904280696  # Things 3
+  - 904280696 # Things 3
   - 1607635845 # Velja
 
-# Packages, casks and mas apps specific to this machine only. Defaults are
-# empty here; a machine can populate them via an untracked
-# ~/.config/local/ansible-vars.yml (see local/ansible-vars.yml for the
-# template and local/README.txt for details).
+# Packages, casks and mas apps specific to this machine only.
+# These are empty by default. Add your desired packages to the local
+# ansible-vars.yml file in ~/.config/local
 homebrew_local_packages: []
 homebrew_local_cask_apps: []
 homebrew_local_mas_apps: []
