@@ -165,8 +165,28 @@ return {
 				root_dir = function(bufnr, on_dir)
 					-- Prefers the folder with buildServer.json (xcode-build-server), then the nearest
 					-- Package.swift or .git
-					on_dir(vim.fs.root(bufnr, "buildServer.json") or vim.fs.root(bufnr, { "Package.swift", ".git" }))
+					on_dir(
+						vim.fs.root(bufnr, "buildServer.json")
+							or vim.fs.root(
+								bufnr,
+								{ "Package.swift", ".git", "compile_commands.json", ".sourcekit-lsp" }
+							)
+					)
 				end,
+				get_language_id = function(_, filetype)
+					return filetype
+				end,
+				capabilities = {
+					workspace = {
+						didChangeWatchedFiles = { dynamicRegistration = true },
+					},
+					textDocument = {
+						diagnostic = {
+							dynamicRegistration = true,
+							relatedDocumentSupport = true,
+						},
+					},
+				},
 			},
 		},
 	},

@@ -26,23 +26,4 @@ return {
 			vim.keymap.set("n", "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", { desc = "Select Device/Simulator" })
 		end,
 	},
-
-	-- Debugger integration (requires lldb-dap)
-	{
-		"mfussenegger/nvim-dap",
-		dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
-		config = function()
-			local dap = require("dap")
-
-			-- Connect dap to the system's lldb-dap tool executable
-			dap.adapters.lldb = {
-				type = "server",
-				port = "${port}",
-				executable = {
-					command = "xcrun",
-					args = { "lldb-dap", "--port", "${port}" },
-				},
-			}
-		end,
-	},
 }
