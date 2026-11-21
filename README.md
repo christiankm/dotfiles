@@ -108,6 +108,8 @@ If you have a need to use different name and/or e-mail addresses on a specifc re
 
 ### Configure application preferences
 
+#### Terminal
+
 - Import Dark terminal theme in Terminal to use as default
   1. Open Terminal → Settings → Profiles
   2. Click the … icon and choose Import…
@@ -115,6 +117,9 @@ If you have a need to use different name and/or e-mail addresses on a specifc re
   4. Click the new Dark theme when it appears in the list
   5. Click the Default button to use this theme as the default
   6. Open a new Terminal window to use the new theme
+
+#### Safari
+
 - Configure Safari
   1. Set up desired Profiles
   2. Configure Preferences
@@ -124,12 +129,25 @@ If you have a need to use different name and/or e-mail addresses on a specifc re
   2. Login to GitHub and Apple Accounts in Xcode
   3. If needed, enable the Claude Agent and log in to Claude
   4. Enable Check spelling in Xcode, going to Edit
-- Log in to various account in Xcode, vscode to synchrise other settings/extensions
-- Log in to applications, and activate Licenses
-  - Slack, Microsoft Teams, Little Snitch, VMWare Fusion, CrossOver, Tower Git, Postman, Figma, etc.
+
+#### Xcode
+
+- Log in to various account in Xcode, vscode to synchronise other settings/extensions
+
+#### VS Code
+
 - Log in to and configure Visual Studio Code
   1. Sign In with GitHub account to Backup and Sync Settings and Extensions
   2. Sign In with GitHub account to clone repositories, manage Pull Requests, manage GitHub Actions and GitHub Copilot access (might have to do this a few times for each service)
+
+#### Other
+
+- Log in to applications, and activate Licenses
+  - Slack, Microsoft Teams, Little Snitch, VMWare Fusion, CrossOver, Tower Git, Postman, Figma, etc.
+
+### Arrange Dock items
+
+See dockutil.md for instructions on apps and position.
 
 ## Troubleshooting
 
