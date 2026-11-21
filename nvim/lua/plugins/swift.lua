@@ -5,7 +5,7 @@ return {
 		ft = "swift",
 	},
 
-	-- 1. Main plugin to manage iOS targets, simulators, and builds
+	-- Manage iOS targets, simulators, and builds
 	{
 		"wojciech-kulik/xcodebuild.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "MunifTanjim/nui.nvim" },
@@ -27,7 +27,7 @@ return {
 		end,
 	},
 
-	-- 2. Debugger integration (requires lldb-dap)
+	-- Debugger integration (requires lldb-dap)
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },

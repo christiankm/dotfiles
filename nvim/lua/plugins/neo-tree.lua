@@ -23,14 +23,14 @@ return {
 				hide_dotfiles = false,
 				hide_gitignored = true,
 				never_show = {
-					-- ".git",
-					-- ".build",
-					-- "node_modules",
-					-- "bin",
-					-- "build",
-					-- "obj",
-					-- ".DS_Store"
+					".git",
+					".build",
+					"node_modules",
+					"build",
+					"obj",
+					".DS_Store",
 				},
+				show_hidden_count = false,
 			},
 			window = {
 				mappings = {
