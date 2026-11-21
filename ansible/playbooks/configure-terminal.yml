@@ -1,0 +1,37 @@
+---
+- name: Configure Terminal profile
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure-terminal | Read installed profiles
+      ansible.builtin.command:
+        argv:
+          - defaults
+          - read
+          - com.apple.terminal
+          - Window Settings
+      register: terminal_profiles
+      changed_when: false
+      check_mode: false
+
+    - name: Configure-terminal | Import Rose Pine profile
+      ansible.builtin.command:
+        argv:
+          - open
+          - "{{ playbook_dir }}/../../terminal/Rose Pine.terminal"
+      when: "'Rose Pine' not in terminal_profiles.stdout"
+      changed_when: false
+
+    - name: Configure-terminal | Set default and startup profile
+      ansible.builtin.command:
+        argv:
+          - defaults
+          - write
+          - com.apple.terminal
+          - "{{ item }}"
+          - "-string"
+          - Rose Pine
+      loop:
+        - "Default Window Settings"
+        - "Startup Window Settings"
+      changed_when: false

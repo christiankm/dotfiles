@@ -63,6 +63,10 @@
   ansible.builtin.import_playbook: configure-finder.yml
   when: ansible_facts['distribution'] == "MacOSX"
 
+- name: Configure Terminal.app
+  ansible.builtin.import_playbook: configure-terminal.yml
+  when: ansible_facts['distribution'] == "MacOSX"
+
 # Copy or link files
 - name: Copy programs, scripts and files
   ansible.builtin.import_playbook: copy-files.yml
