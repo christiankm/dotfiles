@@ -1,64 +1,105 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
+COLOR_BACKGROUND=0xffffffff
+COLOR_BORDER=0xff000000
+COLOR_ICON=0xff000000
+COLOR_TEXT=0xff000000
+COLOR_WORKSPACE_BACKGROUND_ACTIVE=0xff000000
+COLOR_WORKSPACE_BORDER_ACTIVE=0xff000000
+COLOR_WORKSPACE_TEXT_ACTIVE=0xffffffff
+COLOR_WORKSPACE_ICON_ACTIVE=0xffffffff
+FONT_ICON="SF Pro:Medium:17.0"
+FONT_LABEL="ChicagoFLF:Regular:14.0"
+NERD_FONT="Hack Nerd Font:Regular:15.0"
+
+# Configuring the general appearance of the bar
 bar=(
-  color=0x00000000
-  height=32 # matches Menu Bar and Notch
+  height=36 # matches the notch
   position=top
   padding_left=12
   padding_right=12
+  color=$COLOR_BACKGROUND
+  corner_radius=0
+  border_width=2
+  border_color=$COLOR_BORDER
+  # Offset slightly to "hide" border on sides and top
+  margin=-2
+  y_offset=-2
 )
 sketchybar --bar "${bar[@]}"
 
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
+# Set default values, which are applied to all further items unless excepted
 default=(
-  icon.color=0xffffffff
-  icon.font="SF Pro:Medium:13.0"
+  icon.color=$COLOR_ICON
+  icon.font="$FONT_ICON"
   icon.padding_left=4
   icon.padding_right=4
-  label.color=0xffffffff
-  label.font="SF Pro:Medium:13.0"
+  label.color=$COLOR_TEXT
+  label.font="$FONT_LABEL"
   label.padding_left=4
   label.padding_right=4
-  padding_left=5
-  padding_right=5
+  padding_left=8
+  padding_right=8
+  background.border_color=$COLOR_BORDER
+  background.height=32
+  background.corner_radius=0
+  background.border_width=0
 )
 sketchybar --default "${default[@]}"
 
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
+# Define Items
+apple=(
+  icon=􀣺
+  label.drawing=off
+  icon.font="SF Pro:Bold:18.0"
+)
 
+# Set and add items to bar (to display them)
+# Add in the desired order, left items from
+# the leading edge, and right items from trailing
 sketchybar --add item apple left \
-           --set apple icon=􀣺 label.drawing=off
+           --set apple "${apple[@]}"
 
-##### Adding Aerospace Workspace Indicators #####
+# Aerospace Workspace Indicators
 sketchybar --add event aerospace_workspace_change
 
-for i in {1..6}; do
-  sketchybar --add item space.$i left --set space.$i
-  sketchybar --set space.$i script="~/.config/sketchybar/plugins/aerospace.sh $i" \
-             click_script="aerospace workspace $i" \
-             --subscribe space.$i mouse.clicked \
-             --subscribe space.$i aerospace_workspace_change
+for i in {1..6} 0; do
+  for item in space.$i space.short.$i; do
+    sketchybar --add item $item left
+    sketchybar --set $item script="~/.config/sketchybar/plugins/aerospace.sh $i" \
+               click_script="aerospace workspace $i" \
+               --subscribe $item mouse.clicked \
+               --subscribe $item aerospace_workspace_change
+  done
 done
-sketchybar --set space.1 icon=􃌦 label=Things
-sketchybar --set space.2 icon=􃌧 label=Safari
-sketchybar --set space.3 icon=􃌨 label=Terminal
-sketchybar --set space.4 icon=􃌩 label=Code
-sketchybar --set space.5 icon=􃌪 label=Comms
-sketchybar --set space.6 icon=􃌫 label=Other
 
-sketchybar --add bracket spaces '/space\..*/' \
-           --set spaces \
-                        background.corner_radius=4 \
-                        background.height=20 \
-                        background.border_width=1 \
-                        background.border_color=0x26000000
+set_space() {
+  sketchybar --set space.$1 icon="$2" label="$3" \
+             --set space.short.$1 icon="$2" label="$3"
+}
 
-#### Adding Other Left Items
+set_space 1 􃌦 Things
+set_space 2 􃌧 Safari
+set_space 3 􃌨 Terminal
+set_space 4 􃌩 Code
+set_space 5 􃌪 Comms
+set_space 6 􃌫 Other
+
+sketchybar --set space.0 icon=󰏫 icon.font="$NERD_FONT" \
+           --set space.short.0 icon=󰏫 icon.font="$NERD_FONT"
+
+sketchybar --add item displays left \
+           --set displays drawing=off script="$PLUGIN_DIR/displays.sh" \
+           --subscribe displays display_change system_woke
+
+# Highlight currently focused workspace
+sketchybar --set '/space\..*/' background.color=$COLOR_WORKSPACE_BACKGROUND_ACTIVE
+sketchybar --set '/space\..*/' background.border_color=$COLOR_WORKSPACE_BORDER_ACTIVE
+sketchybar --set '/space\..*/' label.color=$COLOR_WORKSPACE_TEXT_ACTIVE
+sketchybar --set '/space\..*/' icon.color=$COLOR_WORKSPACE_ICON_ACTIVE
+sketchybar --set '/space\..*/' padding_left=6 padding_right=6
+sketchybar --set '/space\..*/' icon.padding_left=10 label.padding_right=10
+
 sketchybar --add item chevron left \
            --set chevron icon=􀯻 label.drawing=off
 
@@ -66,22 +107,60 @@ sketchybar --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
-##### Adding Right Items #####
-#
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
 sketchybar --add item clock right \
            --set clock update_freq=10 icon=􀐫 script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item meeting right \
+           --set meeting icon=􀉉 update_freq=60 script="$PLUGIN_DIR/meeting.sh" \
+                         label.max_chars=28 \
+           --subscribe meeting system_woke
 
 sketchybar --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change
+sketchybar --set volume update_freq=15
+sketchybar --set volume icon.font="$NERD_FONT"
 
 sketchybar --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+sketchybar --add item network right \
+           --set network icon=􀙇 script="$PLUGIN_DIR/network.sh" \
+           --subscribe network wifi_change system_woke
+
+sketchybar --add item github right \
+           --set github icon=􀋚 update_freq=120 script="$PLUGIN_DIR/github.sh" \
+                        click_script="open https://github.com/notifications" \
+           --subscribe github system_woke
+
+sketchybar --set github icon=󰊢 icon.font="$NERD_FONT"
+
+sketchybar --add item mail right \
+           --set mail icon=􀍕 update_freq=60 script="$PLUGIN_DIR/mail.sh" \
+                      click_script="open -a Mail" \
+           --subscribe mail system_woke
+
+sketchybar --add item slack right \
+           --set slack icon=󰒱 icon.font="$NERD_FONT" update_freq=30 \
+                       script="$PLUGIN_DIR/slack.sh" click_script="open -a Slack" \
+           --subscribe slack system_woke
+
+sketchybar --add item teams right \
+           --set teams icon=󰊻 icon.font="$NERD_FONT" update_freq=30 \
+                       script="$PLUGIN_DIR/teams.sh" click_script="open -a 'Microsoft Teams'" \
+           --subscribe teams system_woke
+
+sketchybar --add item things right \
+           --set things icon=󰄵 icon.font="$NERD_FONT" update_freq=60 \
+                        script="$PLUGIN_DIR/things.sh" click_script="open -a Things3" \
+           --subscribe things system_woke
+
+sketchybar --add item copilot right \
+           --set copilot icon= icon.font="$NERD_FONT" padding_right=14
+
+sketchybar --add item claude right \
+           --set claude icon= icon.font="$NERD_FONT" update_freq=60 script="$PLUGIN_DIR/llm.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
